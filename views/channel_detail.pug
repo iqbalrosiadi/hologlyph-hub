@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+  h1 channel Detail: 
+  
+  div(style='margin-left:20px;margin-top:20px')
+    h4 channel Name: 
+    p #{channel.channel_name}
+    h4 channel Id: 
+    p #{channel._id}
+      
+  hr
+  p
+    a(href=channel.url+'/delete') Delete channel
+  p
+    a(href=channel.url+'/update') Update channel

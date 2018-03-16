@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+  h1 marker Detail: 
+  
+  div(style='margin-left:20px;margin-top:20px')
+    h4 marker Name: 
+    p #{marker.marker_name}
+    h4 marker Id: 
+    p #{marker._id}
+      
+  hr
+  p
+    a(href=marker.url+'/delete') Delete marker
+  p
+    a(href=marker.url+'/update') Update marker

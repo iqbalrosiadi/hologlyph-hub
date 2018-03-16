@@ -1,0 +1,21 @@
+extends layout
+
+block content
+	h1=title
+
+	.contentBox
+		h4.border-bottom HEADINGS
+		.table-responsive
+			table.table.table-hover.va-middle.u-mr-top-20
+				thead
+					tr
+						th TYPE
+				tbody
+					each val in list_glyph
+						tr
+							td 
+								a(href=val.url) 
+									h3 #{val.glyph_name}
+					else
+						tr
+							td There are no glyph.

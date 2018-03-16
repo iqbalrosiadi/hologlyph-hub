@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  form(method='POST' action='')
+  .row
+    .col-sm-2
+      form(method='POST' action='')
+        div.form-group
+          label(for='marker_name') Name of the marker :
+          input#marker_name.form-control(type='text', placeholder='Mark-00, Mark-01, etc.' name='marker_name' value=(undefined===marker ? '' : marker.marker_name))
+        button.btn.btn-primary(type='submit') Submit
+
+    if errors 
+      ul
+        for error in errors
+          li!= error.msg

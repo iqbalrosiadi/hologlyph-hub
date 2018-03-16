@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='glyph_name') Name of the mark :
+      input#glyph_name.form-control(type='text', placeholder='Height, Size, Colour etc.' name='glyph_name' value=(undefined===glyph ? '' : glyph.glyph_name))
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

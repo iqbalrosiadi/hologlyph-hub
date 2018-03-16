@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+  h1 Glyph Detail: 
+  
+  div(style='margin-left:20px;margin-top:20px')
+    h4 Glyph Name: 
+    p #{glyph.glyph_name}
+    h4 Glyph Id: 
+    p #{glyph._id}
+      
+  hr
+  p
+    a(href=glyph.url+'/delete') Delete glyph
+  p
+    a(href=glyph.url+'/update') Update glyph

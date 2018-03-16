@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='channel_name') Name of the Channel :
+      input#channel_name.form-control(type='text', placeholder='Height, Size, Color, etc.' name='channel_name' value=(undefined===channel ? '' : channel.channel_name))
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  
+  ul
+  each val in list_marker
+    li 
+      a(href=val.url) #{val.marker_name}
+
+  else
+    li There are no marker.
