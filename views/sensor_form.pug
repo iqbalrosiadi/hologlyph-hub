@@ -1,0 +1,61 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='sensor_name') Sensor Name:
+      input#sensor_name.form-control(type='text' placeholder='Set sensor name' name='sensor_name' required='true' value=(undefined===sensor ? '' : sensor.sensor_name))
+
+    div.form-group
+      label(for='glyph') Mark:
+      select#glyph.form-control(type='select' placeholder='Select status' name='glyph' required='true')
+        for glyph in mark_list
+          if sensor
+            option(value=glyph._id selected=(sensor.glyph.toString()==glyph._id.toString() ? 'selected' : false)) #{glyph.marker_name}
+          else
+            option(value=glyph._id) #{glyph.glyph_name}
+
+    div.form-group
+      label(for='channel') Channel:
+      select#channel.form-control(type='select' placeholder='Select status' name='channel' required='true')
+        for channel in channel_list
+          if sensor
+            option(value=channel._id selected=(sensor.channel.toString()==channel._id.toString() ? 'selected' : false)) #{channel.channel_name}
+          else
+            option(value=channel._id) #{channel.channel_name}
+
+
+    .contentBox
+        .block
+          .row
+            .col-sm-6
+              div.form-group
+                label(for='min_val') Minimum Value:
+                input#min_val.form-control(type='text' placeholder='Set minimum value of your sensor data, 10, 13, 300, etc'  name='min_val'         required='true' value=(undefined===sensor ? '' : sensor.min_val))
+  
+            .col-sm-6
+              div.form-group
+                label(for='max_val') Maximum Value:
+                input#max_val.form-control(type='text' placeholder='Set maximum value of your data, 10, 13, 300, etc'  name='max_val'         required='true' value=(undefined===sensor ? '' : sensor.max_val))
+
+          .row
+            .col-sm-6
+              div.form-group
+                label(for='range') Range data in minutes to be visualized:
+                .input-group
+                  input.form-control#range(type="text", placeholder="60, 120, etc", aria-describedby="basic-addon2")
+                  span.input-group-addon#basic-addon2 minutes
+  
+            .col-sm-6
+              div.form-group
+                label(for='calculation') Calculation:
+                select#calculation.form-control(type='text' placeholder='Set sensor name'  name='calculation'         required='true' value=(undefined===sensor ? '' : sensor.calculation))
+                        option(value='lst') Last Value
+                        option(value='count') Count
+                        option(value='average') Average
+                        option(value='summary') Summary
+
+
+    button.btn.btn-primary(type='submit') Submit

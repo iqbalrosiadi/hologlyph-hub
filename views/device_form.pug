@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='device_name') Device Name:
+      input#device_name.form-control(type='text' placeholder='Set device name' name='device_name' required='true' value=(undefined===device ? '' : device.device_name))
+        
+    div.form-group
+      label(for='glyph') Mark:
+      select#glyph.form-control(type='select' placeholder='Select status' name='glyph' required='true')
+        for glyph in glyph_list
+          if device
+            option(value=glyph._id selected=(device.glyph.toString()==glyph._id.toString() ? 'selected' : false)) #{glyph.glyph_name}
+          else
+            option(value=glyph._id) #{glyph.glyph_name}
+
+    div.form-group
+      label(for='marker') Object Marker:
+      select#marker.form-control(type='select' placeholder='Select status' name='marker' required='true')
+        for marker in marker_list
+          if device
+            option(value=marker._id selected=(device.marker.toString()==marker._id.toString() ? 'selected' : false)) #{marker.marker_name}
+          else
+            option(value=marker._id) #{marker.marker_name}
+    
+    div.form-group
+      label(for='status') Number of Mark:
+      select#status.form-control(type='select' placeholder='Select status' name='status' required='true')
+        option(value='1') Single Mark
+        option(value='0') Multiple mark
+
+    button.btn.btn-primary(type='submit') Submit
+
+    
