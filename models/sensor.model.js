@@ -27,11 +27,11 @@ SensorSchema
 	);
 
 SensorSchema
-.virtual('Id_Sensor')
-.get(function () {
-		return this.IdSensor;
-	}
-	);
+.virtual('data_populated', {
+  ref: 'Data',
+  localField: '_id',
+  foreignField: 'sensor'
+});
 
 SensorSchema
 .virtual('url')

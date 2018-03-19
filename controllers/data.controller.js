@@ -44,23 +44,43 @@ exports.data_create_get = [
 
 		}else
 		{
+			
 
-			data.save(function (err){
 
-				if(err) { return next(err);}
 					Sensor.findOneAndUpdate(
 					{"_id": req.params.id}, {$push: {"data": data._id}} ,
-					function(errs,results)
+					function(errs,sensor_detail)
 					{
 						if(errs) { return next(errz);}
-						results.save(function (err){
+
+						sensor_detail.save(function (err){
 								if(err) { return next(err);}
-									res.send('Data is saved');
+								var start = new Date(new Date().getTime() - (1 * 60 * 1000));
+								Data.find({ "date": { "$lte": start } }).select("date _id").exec(function(err,data_details){
+									console.log('paling lama :'+ data_details);
+										Data.deleteMany({"_id": { $in: data_details }}, function(errors, data_deleted){
+											console.log('deleting sensor blbla'+ data_details);
+											Sensor.findByIdAndUpdate(sensor_detail._id, { $pull: { data: { $in: data_details }}}, function (err) {
+									        //console.log('deleting sensor data');
+									            if (errors) { return next(errors);}
+									            			data.save(function (err){
+																if(err) { return next(err);}
+																res.send('Data is saved iniih'+ data);
+															});
+									            
+									        });
+
+										});
+
+									      
+									
+								});
+									
 
 							});
 					});
 
-			});
+
 
 
 		}
@@ -104,7 +124,7 @@ exports.data_create_post = [
 						if(errs) { return next(errz);}
 						results.save(function (err){
 								if(err) { return next(err);}
-									res.send('Data is saved'+data.value);
+									res.send('Data is saved blabla'+results.data_range_minute);
 
 							});
 					});
