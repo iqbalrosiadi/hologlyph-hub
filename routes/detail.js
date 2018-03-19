@@ -125,6 +125,8 @@ router.get('/data/create/:id/:val', data_controller.data_create_get);
 // POST request for creating data.
 router.post('/data/create/:id/:val', data_controller.data_create_post);
 
+router.put('/data/create/:id/:val', data_controller.data_create_post);
+
 // GET request to delete data.
 router.get('/data/:id/delete', data_controller.data_delete_get);
 
