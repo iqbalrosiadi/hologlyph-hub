@@ -42,10 +42,10 @@ router.get('/devices', device_controller.device_list);
 /// SENSOR ROUTES ///
 
 // GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
-router.get('/sensor/create', sensor_controller.sensor_create_get);
+router.get('/device/:id/addsensor', sensor_controller.sensor_create_get);
 
-// POST request for creating sensor.
-router.post('/sensor/create', sensor_controller.sensor_create_post);
+// POST request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
+router.post('/device/:id/addsensor', sensor_controller.sensor_create_post);
 
 // GET request to delete sensor.
 router.get('/sensor/:id/delete', sensor_controller.sensor_delete_get);
@@ -120,10 +120,10 @@ router.get('/markers', marker_controller.marker_list);
 /// data ROUTES ///
 
 // GET request for creating a data. NOTE This must come before routes that display data (uses id).
-router.get('/data/create', data_controller.data_create_get);
+router.get('/data/create/:id/:val', data_controller.data_create_get);
 
 // POST request for creating data.
-router.post('/data/create', data_controller.data_create_post);
+router.post('/data/create/:id/:val', data_controller.data_create_post);
 
 // GET request to delete data.
 router.get('/data/:id/delete', data_controller.data_delete_get);

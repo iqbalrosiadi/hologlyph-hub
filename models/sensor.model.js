@@ -9,11 +9,11 @@ var SensorSchema = new Schema(
 			sensor_name: {type: String},
 			channel: {type: Schema.ObjectId, ref: 'Channel', required: true },
 			glyph: {type: Schema.ObjectId, ref: 'Glyph', required: true },
-			max_val: {type: String},
-			min_val: {type: String},
-			max_act: {type: String},
-			min_act: {type: String},
+			max_val: {type: Number},
+			min_val: {type: Number},
 			default_act: {type: String},
+			calculation: {type: String, enum: ['avg', 'sum', 'lst', 'cnt'], default:'lst'},
+			data_range_minute: {type: Number, min:0 , default:60},
 			data: [{type: Schema.ObjectId, ref: 'Data'}]
 		}
 );
