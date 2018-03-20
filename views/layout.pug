@@ -19,24 +19,20 @@ html(lang='en')
               li 
                 a(href='/') Home
               li 
-                a(href='/detail/devices') All devices
+                a(href='/detail/devices') List All Devices
               li 
-                a(href='/detail/sensors') All sensors
+                a(href='/detail/sensors') List All Sensors
               li 
-                a(href='/detail/markers') All markers
+                a(href='/detail/markers') Configuring Markers
               li 
-                a(href='/detail/glyphs') All marks
+                a(href='/detail/glyphs') Configuring Marks
               li 
-                a(href='/detail/channels') All channels
+                a(href='/detail/channels') Configuring Channels
                 hr
-              li 
-                a(href='/detail/device/create') Create new device
-              li 
-                a(href='/detail/glyph/create') Create new glyph
-              li 
-                a(href='/detail/marker/create') Create new marker
-              li 
-                a(href='/detail/channel/create') Create new channel
+              a(href='device/create') 
+                button.btn.btn-success (+) Register New Device
+
+ 
                 
         div(class='col-sm-10')
             block content

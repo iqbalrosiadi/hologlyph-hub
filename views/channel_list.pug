@@ -3,6 +3,7 @@ extends layout
 block content
   h1= title
   
+  a(href='/detail/channel/create') (+) Create new channel
   ul
   each val in list_channel
     li 
@@ -10,6 +11,8 @@ block content
 
   else
     li There are no channel.
+
+  
 
   style.
     .bigred 
