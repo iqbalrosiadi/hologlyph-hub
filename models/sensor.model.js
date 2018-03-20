@@ -30,7 +30,8 @@ SensorSchema
 .virtual('data_populated', {
   ref: 'Data',
   localField: '_id',
-  foreignField: 'sensor'
+  foreignField: 'sensor',
+  justOne: false
 });
 
 SensorSchema

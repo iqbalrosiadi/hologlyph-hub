@@ -9,6 +9,14 @@ var GlyphSchema = new Schema(
 	);
 
 
+
+GlyphSchema
+.virtual('name')
+.get(function () {
+		return this.glyph_name;
+	}
+	);
+
 GlyphSchema
 .virtual('url')
 .get(function () {

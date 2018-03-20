@@ -55,7 +55,7 @@ exports.data_create_get = [
 
 						sensor_detail.save(function (err){
 								if(err) { return next(err);}
-								var start = new Date(new Date().getTime() - (1 * 60 * 1000));
+								var start = new Date(new Date().getTime() - (sensor_detail.data_range_minute * 60 * 1000));
 								Data.find({ "date": { "$lte": start } }).select("date _id").exec(function(err,data_details){
 									console.log('paling lama :'+ data_details);
 										Data.deleteMany({"_id": { $in: data_details }}, function(errors, data_deleted){

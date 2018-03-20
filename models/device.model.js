@@ -17,12 +17,12 @@ var DeviceSchema = new Schema(
 	);
 
 
-DeviceSchema
-.virtual('name')
-.get(function () {
-		return this.dev_name;
-	}
-	);
+DeviceSchema.virtual('posts', {
+  ref: 'BlogPost',
+  localField: '_id',
+  foreignField: 'author'
+});
+
 
 DeviceSchema
 .virtual('url')

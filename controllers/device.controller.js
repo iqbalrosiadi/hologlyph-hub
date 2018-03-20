@@ -1,5 +1,8 @@
 var async = require('async');
 
+var Data = require('../models/data.model.js');
+var Channel = require('../models/channel.model.js');
+var Sensor = require('../models/sensor.model.js');
 var Device = require('../models/device.model.js');
 var Glyph = require('../models/glyph.model.js');
 var Marker = require('../models/marker.model.js');
@@ -7,8 +10,19 @@ var Marker = require('../models/marker.model.js');
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
-exports.index = function(req, res) {
-    res.send('NOT IMPLEMENTED: Site Home Page');
+exports.index = function(req, res, next) {
+    Device.find()
+	.populate('marker', "marker_name -_id")
+	.populate('glyph', "glyph_name -_id")
+	.populate({
+		path: 'sensor',
+		populate: 'data'
+	})
+	.exec(function(err, list_devices){
+		if (err) { return next(err); }
+		res.render('visualized', { title: 'Registered Device', list_devices: JSON.stringify( list_devices, undefined, 4 )});
+	});
+
 };
 
 // Display list of device
