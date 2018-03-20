@@ -163,11 +163,77 @@ exports.sensor_delete_post = function(req, res) {
 };
 
 // Display list of device
-exports.sensor_update_get = function(req, res) {
-	res.send('NOT IMPLEMENTED: sensor_list');
+exports.sensor_update_get = function(req, res, next) {
+	
+	async.parallel({
+		glyphs: function(callback){
+			Glyph.find(callback);
+		},
+		channel: function(callback){ 
+			Channel.find(callback);
+		},
+		sensor: function(callback){ 
+			Sensor.findById(req.params.id).exec(callback);
+		},
+	},
+		function(err, sensor) {
+        if (err) { return next(err); }
+        if (sensor==null) { // No results.
+            var err = new Error('Sensor not found');
+            err.status = 404;
+            return next(err);
+        }
+        // Success.
+        res.render('sensor_form', { title: 'Update Sensor', 
+        	sensor: sensor.sensor, mark_list: sensor.glyphs, 
+        	channel_list: sensor.channel, errors: err });
+    });
 };
 
 // Display list of device
-exports.sensor_update_post = function(req, res) {
-	res.send('NOT IMPLEMENTED: sensor_list');
-};
+exports.sensor_update_post = [
+   
+    // Validate that the name field is not empty.
+    body('sensor_name', 'Sensor name required').isLength({ min: 1 }).trim(),
+    
+    // Sanitize (trim and escape) the name field.
+    sanitizeBody('sensor_name').trim().escape(),
+
+    // Process request after validation and sanitization.
+    (req, res, next) => {
+
+        // Extract the validation errors from a request .
+        const errors = validationResult(req);
+
+    // Create a genre object with escaped and trimmed data (and the old id!)
+        	var sensor = new Sensor(
+	          { 
+	          	_id: req.params.id,
+	          	sensor_name: req.body.sensor_name, 
+	          	glyph: req.body.glyph,
+	          	channel: req.body.channel,
+	          	max_val: req.body.max_val,
+	          	min_val: req.body.min_val,
+	          	calculation: req.body.calculation,
+	          	data_range_minute: req.body.range
+	          }
+	        );
+
+
+        if (!errors.isEmpty()) {
+            // There are errors. Render the form again with sanitized values and error messages.
+        	res.render('sensor_form', { title: 'Update Sensor', 
+        	sensor: sensor.sensor, mark_list: sensor.glyphs, 
+        	channel_list: sensor.channel, errors: err });
+        return;
+        }
+        else {
+            // Data from form is valid. Update the record.
+            Sensor.findByIdAndUpdate(req.params.id, sensor, {}, function (err,thechannel) {
+                if (err) { return next(err); }
+                   // Successful - redirect to channel detail page.
+                   res.redirect(thechannel.url);
+                });
+        }
+    }
+];

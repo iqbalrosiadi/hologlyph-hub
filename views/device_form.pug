@@ -13,7 +13,7 @@ block content
       select#glyph.form-control(type='select' placeholder='Select status' name='glyph' required='true')
         for glyph in glyph_list
           if device
-            option(value=glyph.glyph_name selected=(device.glyph.toString()==glyph.glyph_name.toString() ? 'selected' : false)) #{glyph.glyph_name}
+            option(value=glyph.glyph_name selected=(device.glyph==glyph.glyph_name ? 'selected' : false)) #{glyph.glyph_name}
           else
             option(value=glyph.glyph_name) #{glyph.glyph_name}
 
@@ -22,7 +22,7 @@ block content
       select#marker.form-control(type='select' placeholder='Select status' name='marker' required='true')
         for marker in marker_list
           if device
-            option(value=marker.marker_name selected=(device.marker.toString()==marker.marker_name.toString() ? 'selected' : false)) #{marker.marker_name}
+            option(value=marker.marker_name selected=(device.marker==marker.marker_name ? 'selected' : false)) #{marker.marker_name}
           else
             option(value=marker.marker_name) #{marker.marker_name}
     

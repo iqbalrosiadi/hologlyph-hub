@@ -62,7 +62,7 @@ exports.data_create_get = [
 											data.save(function (err){
 												if(err) { return next(err);}
 												//console.log('blaabla');
-												if(sensor_detail.calculation == 'sum'){
+												if(sensor_detail.calculation == 'summary'){
 													Data.aggregate([
 												        {$match: { 
 												        		"date": { "$gte": start },
@@ -83,7 +83,7 @@ exports.data_create_get = [
 													});
 												}
 
-												if(sensor_detail.calculation == 'avg'){
+												if(sensor_detail.calculation == 'average'){
 													Data.aggregate([
 												        {$match: { 
 												        		"date": { "$gte": start },
@@ -105,7 +105,7 @@ exports.data_create_get = [
 												}
 
 
-												if(sensor_detail.calculation == 'lst'){
+												if(sensor_detail.calculation == 'lastvalue'){
 													Data.findOne({'sensor': sensor_detail._id})
 													.sort({date: -1})
 													.exec(function(err, result) { 

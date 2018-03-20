@@ -13,7 +13,7 @@ block content
       select#glyph.form-control(type='select' placeholder='Select status' name='glyph' required='true')
         for glyph in mark_list
           if sensor
-            option(value=glyph.glyph_name selected=(sensor.glyph.toString()==glyph.glyph_name.toString() ? 'selected' : false)) #{glyph.marker_name}
+            option(value=glyph.glyph_name selected=(sensor.glyph==glyph.glyph_name ? 'selected' : false)) #{glyph.glyph_name}
           else
             option(value=glyph.glyph_name) #{glyph.glyph_name}
 
@@ -22,7 +22,7 @@ block content
       select#channel.form-control(type='select' placeholder='Select status' name='channel' required='true')
         for channel in channel_list
           if sensor
-            option(value=channel.channel_name selected=(sensor.channel.toString()==channel.channel_name.toString() ? 'selected' : false)) #{channel.channel_name}
+            option(value=channel.channel_name selected=(sensor.channel==channel.channel_name ? 'selected' : false)) #{channel.channel_name}
           else
             option(value=channel.channel_name) #{channel.channel_name}
 
@@ -52,10 +52,10 @@ block content
               div.form-group
                 label(for='calculation') Calculation:
                 select#calculation.form-control(type='text' placeholder='Set sensor name'  name='calculation'         required='true' value=(undefined===sensor ? '' : sensor.calculation))
-                        option(value='lst') Last Value
-                        option(value='cnt') Count
-                        option(value='avg') Average
-                        option(value='sum') Summary
+                        option(value='lastvalue') Last Value
+                        option(value='count') Count
+                        option(value='average') Average
+                        option(value='summary') Summary
 
 
     button.btn.btn-primary(type='submit') Submit

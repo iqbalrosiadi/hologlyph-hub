@@ -173,11 +173,75 @@ exports.device_delete_post = function(req, res, next) {
 };
 
 // Display list of device
-exports.device_update_get = function(req, res) {
-	res.send('NOT IMPLEMENTED: device_list');
+exports.device_update_get = function(req, res, next) {
+	
+	async.parallel({
+		glyphs: function(callback){
+			Glyph.find(callback);
+		},
+		markers: function(callback){ 
+			Marker.find(callback);
+		},
+		device: function(callback){ 
+			Device.findById(req.params.id).exec(callback);
+		},
+	},
+		function(err, device) {
+        if (err) { return next(err); }
+        if (device==null) { // No results.
+            var err = new Error('Device not found');
+            err.status = 404;
+            return next(err);
+        }
+        // Success.
+        res.render('device_form', { title: 'Update Device', 
+        	device: device.device, glyph_list: device.glyphs, 
+        	marker_list: device.markers, errors: err });
+    });
 };
 
 // Display list of device
-exports.device_update_post = function(req, res) {
-	res.send('NOT IMPLEMENTED: device_list');
-};
+exports.device_update_post = [
+   
+    // Validate that the name field is not empty.
+    body('device_name', 'Device name required').isLength({ min: 1 }).trim(),
+    
+    // Sanitize (trim and escape) the name field.
+    sanitizeBody('device_name').trim().escape(),
+
+    // Process request after validation and sanitization.
+    (req, res, next) => {
+
+        // Extract the validation errors from a request .
+        const errors = validationResult(req);
+
+    // Create a genre object with escaped and trimmed data (and the old id!)
+        	var device = new Device(
+	          { 
+	          	_id: req.params.id,
+	          	device_name: req.body.device_name, 
+	          	glyph: req.body.glyph,
+	          	marker: req.body.marker,
+	          	as_one_glyph: req.body.one_glyph
+	          }
+	        );
+
+
+        if (!errors.isEmpty()) {
+            // There are errors. Render the form again with sanitized values and error messages.
+            res.render('device_form', { title: 'Update device', 
+            	device: device.device, glyph_list: device.glyphs, 
+        		marker_list: device.markers,  
+            	errors: errors.array()});
+        return;
+        }
+        else {
+            // Data from form is valid. Update the record.
+            Device.findByIdAndUpdate(req.params.id, device, {}, function (err,thechannel) {
+                if (err) { return next(err); }
+                   // Successful - redirect to channel detail page.
+                   res.redirect(thechannel.url);
+                });
+        }
+    }
+];
