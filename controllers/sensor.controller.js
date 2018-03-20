@@ -24,11 +24,11 @@ exports.sensor_detail = function(req, res, next) {
 			Sensor.findById(req.params.id).populate('device').exec(callback);
 		},
 		datas: function(callback){ 
-			Data.find(req.params.id, 'date value -_id').sort([['date','descending']]).exec(callback);
+			Data.find({'sensor':req.params.id}, 'date value -_id').sort([['date','descending']]).exec(callback);
 		},
 	}, function(err, sensors){
 		if (err) { return next(err); }
-		res.render('sensor_detail', { title: 'Registered Device', sensor: sensors.sensor_detail, data: sensors.datas});
+		res.render('sensor_detail', { title: 'Registered Sensor', sensor: sensors.sensor_detail, data: sensors.datas});
 	});
 };
 
