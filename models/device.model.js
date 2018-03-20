@@ -4,8 +4,6 @@ var Schema = mongoose.Schema;
 
 var DeviceSchema = new Schema(
 		{
-
-
 		//IdDevice: {type: Schema.ObjectId},
 		sensor: [{type: Schema.ObjectId, ref: 'Sensor'}],
 		device_name: {type: String},

@@ -9,7 +9,7 @@ var DataSchema = new Schema(
 		{
 			sensor: {type: Schema.ObjectId, ref: 'Sensor', required: true },
 			date: {type: Date, default: Date.now},
-			value: {type: SchemaTypes.Double}
+			value: {type: Number}
 		}
 );
 

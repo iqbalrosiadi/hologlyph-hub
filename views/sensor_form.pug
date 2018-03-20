@@ -13,18 +13,18 @@ block content
       select#glyph.form-control(type='select' placeholder='Select status' name='glyph' required='true')
         for glyph in mark_list
           if sensor
-            option(value=glyph._id selected=(sensor.glyph.toString()==glyph._id.toString() ? 'selected' : false)) #{glyph.marker_name}
+            option(value=glyph.glyph_name selected=(sensor.glyph.toString()==glyph.glyph_name.toString() ? 'selected' : false)) #{glyph.marker_name}
           else
-            option(value=glyph._id) #{glyph.glyph_name}
+            option(value=glyph.glyph_name) #{glyph.glyph_name}
 
     div.form-group
       label(for='channel') Channel:
       select#channel.form-control(type='select' placeholder='Select status' name='channel' required='true')
         for channel in channel_list
           if sensor
-            option(value=channel._id selected=(sensor.channel.toString()==channel._id.toString() ? 'selected' : false)) #{channel.channel_name}
+            option(value=channel.channel_name selected=(sensor.channel.toString()==channel.channel_name.toString() ? 'selected' : false)) #{channel.channel_name}
           else
-            option(value=channel._id) #{channel.channel_name}
+            option(value=channel.channel_name) #{channel.channel_name}
 
 
     .contentBox

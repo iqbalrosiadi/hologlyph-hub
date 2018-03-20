@@ -45,39 +45,88 @@ exports.data_create_get = [
 		}else
 		{
 			
-
-
-					Sensor.findOneAndUpdate(
-					{"_id": req.params.id}, {$push: {"data": data._id}} ,
+					Sensor.findOne(
+					{"_id": req.params.id}, 
 					function(errs,sensor_detail)
-					{
-						if(errs) { return next(errz);}
-
-						sensor_detail.save(function (err){
-								if(err) { return next(err);}
+					{				
+						if(sensor_detail)
+						{
+							if(errs) { return next(errs);}
 								var start = new Date(new Date().getTime() - (sensor_detail.data_range_minute * 60 * 1000));
 								Data.find({ "date": { "$lte": start } }).select("date _id").exec(function(err,data_details){
+									if(err) { return next(err);}
 									console.log('paling lama :'+ data_details);
-										Data.deleteMany({"_id": { $in: data_details }}, function(errors, data_deleted){
-											console.log('deleting sensor blbla'+ data_details);
-											Sensor.findByIdAndUpdate(sensor_detail._id, { $pull: { data: { $in: data_details }}}, function (err) {
-									        //console.log('deleting sensor data');
-									            if (errors) { return next(errors);}
-									            			data.save(function (err){
-																if(err) { return next(err);}
-																res.send('Data is saved iniih'+ data);
-															});
-									            
-									        });
+										Data.deleteMany({"_id": { $in: data_details }}, function(errors){
+											console.log('deleting sensor paling lama :'+ data_details);
+											if(errors) { return next(errors);}
+											data.save(function (err){
+												if(err) { return next(err);}
+												//console.log('blaabla');
+												if(sensor_detail.calculation == 'sum'){
+													Data.aggregate([
+												        {$match: { 
+												        		"date": { "$gte": start },
+												        		"sensor": sensor_detail._id
+												    			}},
+												        {$group: {
+												        	_id: '$sensor',
+												        	average: {$sum: '$value'}
+												        }}
+												    ], function (err, result) {
+														if(err) { return next(err);}
+														Sensor.findByIdAndUpdate(sensor_detail._id, {data: result[0].average} , function (err, hasil) {
+												            if (errors) { return next(errors);}
+															res.send('Data is saved ini '+ result[0].average);
+												            
+												        });
+														
+													});
+												}
 
-										});
+												if(sensor_detail.calculation == 'avg'){
+													Data.aggregate([
+												        {$match: { 
+												        		"date": { "$gte": start },
+												        		"sensor": sensor_detail._id
+												    			}},
+												        {$group: {
+												        	_id: '$sensor',
+												        	average: {$avg: '$value'}
+												        }}
+												    ], function (err, result) {
+														if(err) { return next(err);}
+														Sensor.findByIdAndUpdate(sensor_detail._id, {data: result[0].average} , function (err, hasil) {
+												            if (errors) { return next(errors);}
+															res.send('Data is saved ini '+ result[0].average);
+												            
+												        });
+														
+													});
+												}
 
-									      
-									
+
+												if(sensor_detail.calculation == 'lst'){
+													Data.findOne({'sensor': sensor_detail._id})
+													.sort({date: -1})
+													.exec(function(err, result) { 
+														if(err) { return next(err);}
+														Sensor.findByIdAndUpdate(sensor_detail._id, {data: result.value} , function (err, hasil) {
+												            if (err) { return next(err);}
+															res.send('Data is saved ini '+ result.value);
+												            
+												        });
+													});
+												}
+
+												});
+										});    
 								});
-									
+						}else
+						{
+							res.send('Sensor is not found');
+							return;
+						}
 
-							});
 					});
 
 

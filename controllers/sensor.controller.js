@@ -5,6 +5,7 @@ var Device = require('../models/device.model.js');
 var Glyph = require('../models/glyph.model.js');
 var Channel = require('../models/channel.model.js');
 var Marker = require('../models/marker.model.js');
+var Data = require('../models/data.model.js');
 
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
@@ -17,8 +18,18 @@ exports.sensor_list = function(req, res) {
 };
 
 // Display list of device
-exports.sensor_detail = function(req, res) {
-	res.send('NOT IMPLEMENTED: sensor_list');
+exports.sensor_detail = function(req, res, next) {
+	async.parallel({
+		sensor_detail: function(callback){
+			Sensor.findById(req.params.id).populate('device').exec(callback);
+		},
+		datas: function(callback){ 
+			Data.find(req.params.id, 'date value -_id').sort([['date','descending']]).exec(callback);
+		},
+	}, function(err, sensors){
+		if (err) { return next(err); }
+		res.render('sensor_detail', { title: 'Registered Device', sensor: sensors.sensor_detail, data: sensors.datas});
+	});
 };
 
 // Display list of device

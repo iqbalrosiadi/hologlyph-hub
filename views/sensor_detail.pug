@@ -1,0 +1,68 @@
+extends layout
+
+block content
+  
+  h1 Sensor Detail: 
+  
+  div(style='margin-left:20px;margin-top:20px')
+    h2 Sensor Channel: 
+    p.listingname #{sensor.sensor_name}
+    h3 Sensor Id: 
+    p.listingname.italic #{sensor._id}
+    h3 Assigned to device: 
+    p.listingname #{sensor.device.device_name}
+    h3 Using Mark: 
+    p.listingname #{sensor.glyph}
+
+    h3 User Defined Minimum Value: 
+    p.listingname #{sensor.min_val}
+
+    h3 User Defined Maximum Value: 
+    p.listingname #{sensor.max_val}
+
+    h3 Current Aggregation method: 
+    p.listingname #{sensor.calculation}
+
+    h3 Current Aggregated data: 
+    p.listingname #{sensor.data}
+    hr
+
+    .contentBox
+      h4.border-bottom
+      .table-responsive
+        table.table.table-hover.va-middle.u-mr-top-20
+          thead
+            tr
+              th.h3 latest #{sensor.data_range_minute} minutes of data
+          tbody
+            each val in data
+              tr
+                td  
+                  h5.italic #{val.date} 
+                  h4 #{val.value}
+                  
+            else
+              tr
+                td There are no glyph.
+
+    hr
+    p
+      a(href=sensor.url+'/delete') Delete Sensor
+    p
+      a(href=sensor.url+'/update') Update Sensor
+
+
+  style.
+    .bigred 
+    { 
+    font-size: 1.5em;
+    color: red; 
+    }
+    .italic
+    {
+     font-style: italic;
+    }
+    .listingname 
+    { 
+    font-size: 1.5em;
+    }

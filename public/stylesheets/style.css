@@ -1,5 +1,73 @@
+body {
+  padding: 30px;
+  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+table {
+  margin-bottom: 1.25rem;
+  border: none;
+  table-layout: auto;
+  color: gray;
+  width: 100%;
+}
+
+table th {
+  letter-spacing: 1px;
+  font-size: .75rem;
+  text-transform: uppercase;
+  font-weight: normal;
+  background: white;
+  cursor: pointer;
+  white-space: normal;
+  text-align: left;
+  display: table-cell;
+  line-height: 1.125rem;
+  vertical-align: middle;
+  padding: 0.5rem 0.625rem 0.625rem;
+}
+
+table .selected::after {
+  border-top: 8px solid #999cab;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #e4eaf7;
+}
+
+table tr td {
+  font-size: .8rem;
+  display: table-cell;
+  line-height: 1.125rem;
+  vertical-align: middle;
+  padding: 0.5rem 0.625rem 0.625rem;
+}
+
+@media (max-width: 750px) {
+  thead tr th {
+    display: none;
+  }
+  tbody tr td {
+    display: block;
+  }
+  tbody tr td:first-child {
+    padding-top: 1rem;
+  }
+  tbody tr td:last-child {
+    padding-bottom: 1rem;
+  }
+  tbody tr td:before {
+    display: block;
+    content: attr(data-th) ": ";
+    text-transform: uppercase;
+    width: 10rem;
+  }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
 .sidebar-nav {
     margin-top: 20px;
     padding: 0;
     list-style: none;
 }
+
