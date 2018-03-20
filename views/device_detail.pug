@@ -11,7 +11,8 @@ block content
     p.listingname #{device.glyph.glyph_name}
     h2 Device Id: 
     p.listingname.italic #{device._id}
-
+    h2 Marker: 
+    p.listingname.italic #{device.marker.marker_name}
     hr
     p
       a(href=device._id+'/addsensor') 
