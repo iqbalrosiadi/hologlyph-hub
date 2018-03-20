@@ -13,8 +13,15 @@ const { sanitizeBody } = require('express-validator/filter');
 
 
 // Display list of device
-exports.sensor_list = function(req, res) {
-	res.send('NOT IMPLEMENTED: sensor_list');
+exports.sensor_list = function(req, res, next) {
+	async.parallel({
+		sensor_detail: function(callback){
+			Sensor.find().populate('device').exec(callback);
+		}
+	}, function(err, sensors){
+		if (err) { return next(err); }
+		res.render('sensor_list', { title: 'Registered Sensor', sensor: sensors.sensor_detail});
+	});
 };
 
 // Display list of device
@@ -138,7 +145,7 @@ exports.sensor_delete_get = function(req, res, next) {
 };
 
 // Display list of device
-exports.sensor_delete_post = function(req, res) {
+exports.sensor_delete_post = function(req, res, next) {
 		async.parallel({
         sensor: function(callback) {
             Sensor.findById(req.params.id).exec(callback);

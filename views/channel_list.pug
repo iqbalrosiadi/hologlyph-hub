@@ -1,1 +1,31 @@
-!=list_channel
+extends layout
+
+block content
+  h1= title
+  
+  ul
+  each val in list_channel
+    li 
+      a(href=val.url).listingname #{val.channel_name}
+
+  else
+    li There are no channel.
+
+  style.
+    .bigred 
+    { 
+    font-size: 1.5em;
+    color: red; 
+    }
+    .italic
+    {
+     font-style: italic;
+    }
+    .listingname 
+    { 
+    font-size: 2em;
+    }
+    .redish 
+    { 
+    color: red; 
+    }

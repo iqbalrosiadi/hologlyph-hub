@@ -1,0 +1,621 @@
+remote: Compressing source files... done.        
+remote: Building source:        
+remote: 
+remote: -----> Node.js app detected        
+remote: 
+remote: -----> Creating runtime environment        
+remote:                
+remote:        NPM_CONFIG_LOGLEVEL=error        
+remote:        NODE_VERBOSE=false        
+remote:        NODE_ENV=production        
+remote:        NODE_MODULES_CACHE=true        
+remote: 
+remote: -----> Installing binaries        
+remote:        engines.node (package.json):  unspecified        
+remote:        engines.npm (package.json):   unspecified (use default)        
+remote:                
+remote:        Resolving node version 8.x...        
+remote:        Downloading and installing node 8.10.0...        
+remote:        Using default npm version: 5.6.0        
+remote: 
+remote: -----> Restoring cache        
+remote:        Loading 2 from cacheDirectories (default):        
+remote:        - node_modules (exists - skipping)        
+remote:        - bower_components (not cached - skipping)        
+remote: 
+remote: -----> Building dependencies        
+remote:        Prebuild detected (node_modules already exists)        
+remote:        Rebuilding any native modules        
+remote:                
+remote:        > uws@0.14.5 install /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/uws        
+remote:        > node-gyp rebuild > build_log.txt 2>&1 || exit 0        
+remote:                
+remote:                
+remote:        > nodemon@1.14.11 postinstall /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/nodemon        
+remote:        > node -e "console.log('u001b[32mLove nodemon? You can now support the project via the open collective:u001b[22mu001b[39mn > u001b[96mu001b[1mhttps://opencollective.com/nodemon/donateu001b[0mn')" || exit 0        
+remote:                
+remote:        [32mLove nodemon? You can now support the project via the open collective:[22m[39m        
+remote:        > [96m[1mhttps://opencollective.com/nodemon/donate[0m        
+remote:                
+remote:                
+remote:        > fsevents@1.1.3 install /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents        
+remote:        > node install        
+remote:                
+remote:        async@2.6.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/async        
+remote:        lodash@4.17.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/lodash        
+remote:        bluebird@3.5.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/bluebird        
+remote:        body-parser@1.18.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/body-parser        
+remote:        bytes@3.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/bytes        
+remote:        content-type@1.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/content-type        
+remote:        debug@2.6.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/body-parser/node_modules/debug        
+remote:        ms@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/ms        
+remote:        depd@1.1.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/depd        
+remote:        http-errors@1.6.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/http-errors        
+remote:        depd@1.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/http-errors/node_modules/depd        
+remote:        inherits@2.0.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/inherits        
+remote:        setprototypeof@1.0.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/setprototypeof        
+remote:        statuses@1.4.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/statuses        
+remote:        iconv-lite@0.4.19 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/iconv-lite        
+remote:        on-finished@2.3.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/on-finished        
+remote:        ee-first@1.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/ee-first        
+remote:        qs@6.5.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/qs        
+remote:        raw-body@2.3.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/raw-body        
+remote:        unpipe@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/unpipe        
+remote:        type-is@1.6.15 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/type-is        
+remote:        media-typer@0.3.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/media-typer        
+remote:        mime-types@2.1.17 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mime-types        
+remote:        mime-db@1.30.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mime-db        
+remote:        cookie-parser@1.4.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/cookie-parser        
+remote:        cookie@0.3.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/cookie        
+remote:        cookie-signature@1.0.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/cookie-signature        
+remote:        debug@3.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/debug        
+remote:        express@4.16.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/express        
+remote:        accepts@1.3.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/accepts        
+remote:        negotiator@0.6.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/negotiator        
+remote:        array-flatten@1.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/array-flatten        
+remote:        content-disposition@0.5.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/content-disposition        
+remote:        debug@2.6.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/express/node_modules/debug        
+remote:        encodeurl@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/encodeurl        
+remote:        escape-html@1.0.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/escape-html        
+remote:        etag@1.8.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/etag        
+remote:        finalhandler@1.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/finalhandler        
+remote:        debug@2.6.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/finalhandler/node_modules/debug        
+remote:        parseurl@1.3.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/parseurl        
+remote:        statuses@1.3.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/finalhandler/node_modules/statuses        
+remote:        fresh@0.5.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fresh        
+remote:        merge-descriptors@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/merge-descriptors        
+remote:        methods@1.1.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/methods        
+remote:        path-to-regexp@0.1.7 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/path-to-regexp        
+remote:        proxy-addr@2.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/proxy-addr        
+remote:        forwarded@0.1.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/forwarded        
+remote:        ipaddr.js@1.5.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/ipaddr.js        
+remote:        range-parser@1.2.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/range-parser        
+remote:        safe-buffer@5.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/safe-buffer        
+remote:        send@0.16.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/send        
+remote:        debug@2.6.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/send/node_modules/debug        
+remote:        destroy@1.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/destroy        
+remote:        mime@1.4.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mime        
+remote:        statuses@1.3.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/send/node_modules/statuses        
+remote:        serve-static@1.13.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/serve-static        
+remote:        setprototypeof@1.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/express/node_modules/setprototypeof        
+remote:        statuses@1.3.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/express/node_modules/statuses        
+remote:        utils-merge@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/utils-merge        
+remote:        vary@1.1.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/vary        
+remote:        express-validator@5.0.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/express-validator        
+remote:        validator@9.4.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/validator        
+remote:        mongoose@4.12.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mongoose        
+remote:        async@2.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mongoose/node_modules/async        
+remote:        bson@1.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/bson        
+remote:        hooks-fixed@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/hooks-fixed        
+remote:        kareem@1.5.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/kareem        
+remote:        mongodb@2.2.31 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mongodb        
+remote:        es6-promise@3.2.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/es6-promise        
+remote:        mongodb-core@2.1.15 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mongodb-core        
+remote:        require_optional@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/require_optional        
+remote:        resolve-from@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/resolve-from        
+remote:        semver@5.5.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/semver        
+remote:        readable-stream@2.2.7 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/readable-stream        
+remote:        buffer-shims@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/buffer-shims        
+remote:        core-util-is@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/core-util-is        
+remote:        isarray@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/isarray        
+remote:        process-nextick-args@1.0.7 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/process-nextick-args        
+remote:        string_decoder@1.0.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/string_decoder        
+remote:        util-deprecate@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/util-deprecate        
+remote:        mpath@0.3.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mpath        
+remote:        mpromise@0.5.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mpromise        
+remote:        mquery@2.3.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mquery        
+remote:        debug@2.6.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mquery/node_modules/debug        
+remote:        regexp-clone@0.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/regexp-clone        
+remote:        sliced@0.0.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mquery/node_modules/sliced        
+remote:        muri@1.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/muri        
+remote:        sliced@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/sliced        
+remote:        mongoose-double@0.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mongoose-double        
+remote:        morgan@1.9.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/morgan        
+remote:        basic-auth@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/basic-auth        
+remote:        debug@2.6.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/morgan/node_modules/debug        
+remote:        on-headers@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/on-headers        
+remote:        pug@2.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pug        
+remote:        pug-code-gen@2.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pug-code-gen        
+remote:        constantinople@3.1.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/constantinople        
+remote:        @types/babel-types@7.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/@types/babel-types        
+remote:        @types/babylon@6.16.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/@types/babylon        
+remote:        babel-types@6.26.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/babel-types        
+remote:        babel-runtime@6.26.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/babel-runtime        
+remote:        core-js@2.5.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/core-js        
+remote:        regenerator-runtime@0.11.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/regenerator-runtime        
+remote:        esutils@2.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/esutils        
+remote:        to-fast-properties@1.0.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/to-fast-properties        
+remote:        babylon@6.18.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/babylon        
+remote:        doctypes@1.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/doctypes        
+remote:        js-stringify@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/js-stringify        
+remote:        pug-attrs@2.0.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pug-attrs        
+remote:        pug-runtime@2.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pug-runtime        
+remote:        pug-error@1.3.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pug-error        
+remote:        void-elements@2.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/void-elements        
+remote:        with@5.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/with        
+remote:        acorn@3.3.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/acorn        
+remote:        acorn-globals@3.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/acorn-globals        
+remote:        acorn@4.0.13 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/acorn-globals/node_modules/acorn        
+remote:        pug-filters@3.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pug-filters        
+remote:        clean-css@3.4.28 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/clean-css        
+remote:        commander@2.8.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/commander        
+remote:        graceful-readlink@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/graceful-readlink        
+remote:        source-map@0.4.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/clean-css/node_modules/source-map        
+remote:        amdefine@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/amdefine        
+remote:        jstransformer@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/jstransformer        
+remote:        is-promise@2.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-promise        
+remote:        promise@7.3.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/promise        
+remote:        asap@2.0.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/asap        
+remote:        pug-walk@1.1.7 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pug-walk        
+remote:        resolve@1.5.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/resolve        
+remote:        path-parse@1.0.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/path-parse        
+remote:        uglify-js@2.8.29 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/uglify-js        
+remote:        source-map@0.5.7 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/source-map        
+remote:        yargs@3.10.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/yargs        
+remote:        camelcase@1.2.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/yargs/node_modules/camelcase        
+remote:        cliui@2.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/cliui        
+remote:        center-align@0.1.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/center-align
+remote:        align-text@0.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/align-text        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/align-text/node_modules/kind-of        
+remote:        is-buffer@1.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-buffer        
+remote:        longest@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/longest        
+remote:        repeat-string@1.6.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/repeat-string        
+remote:        lazy-cache@1.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/center-align/node_modules/lazy-cache        
+remote:        right-align@0.1.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/right-align        
+remote:        wordwrap@0.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/wordwrap        
+remote:        decamelize@1.2.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/decamelize        
+remote:        window-size@0.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/window-size        
+remote:        pug-lexer@4.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pug-lexer        
+remote:        character-parser@2.2.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/character-parser        
+remote:        is-regex@1.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-regex        
+remote:        has@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/has        
+remote:        function-bind@1.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/function-bind        
+remote:        is-expression@3.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-expression        
+remote:        acorn@4.0.13 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-expression/node_modules/acorn        
+remote:        object-assign@4.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/object-assign        
+remote:        pug-linker@3.0.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pug-linker        
+remote:        pug-load@2.0.11 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pug-load        
+remote:        pug-parser@5.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pug-parser        
+remote:        token-stream@0.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/token-stream        
+remote:        pug-strip-comments@1.0.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pug-strip-comments        
+remote:        serve-favicon@2.4.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/serve-favicon        
+remote:        socket.io@2.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/socket.io        
+remote:        debug@2.6.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/socket.io/node_modules/debug        
+remote:        engine.io@3.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/engine.io        
+remote:        accepts@1.3.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/engine.io/node_modules/accepts        
+remote:        base64id@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/base64id        
+remote:        debug@2.6.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/engine.io/node_modules/debug        
+remote:        engine.io-parser@2.1.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/engine.io-parser        
+remote:        after@0.8.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/after        
+remote:        arraybuffer.slice@0.0.7 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/arraybuffer.slice        
+remote:        base64-arraybuffer@0.1.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/base64-arraybuffer        
+remote:        blob@0.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/blob        
+remote:        has-binary2@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/has-binary2        
+remote:        isarray@2.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/has-binary2/node_modules/isarray        
+remote:        ws@3.3.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/ws        
+remote:        async-limiter@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/async-limiter        
+remote:        ultron@1.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/ultron        
+remote:        socket.io-adapter@1.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/socket.io-adapter        
+remote:        socket.io-client@2.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/socket.io-client        
+remote:        backo2@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/backo2        
+remote:        component-bind@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/component-bind        
+remote:        component-emitter@1.2.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/component-emitter        
+remote:        debug@2.6.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/socket.io-client/node_modules/debug        
+remote:        engine.io-client@3.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/engine.io-client        
+remote:        component-inherit@0.0.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/component-inherit        
+remote:        debug@2.6.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/engine.io-client/node_modules/debug        
+remote:        has-cors@1.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/has-cors        
+remote:        indexof@0.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/indexof        
+remote:        parseqs@0.0.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/parseqs        
+remote:        better-assert@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/better-assert        
+remote:        callsite@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/callsite        
+remote:        parseuri@0.0.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/parseuri        
+remote:        xmlhttprequest-ssl@1.5.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/xmlhttprequest-ssl        
+remote:        yeast@0.1.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/yeast        
+remote:        object-component@0.0.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/object-component        
+remote:        socket.io-parser@3.1.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/socket.io-parser        
+remote:        debug@2.6.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/socket.io-parser/node_modules/debug        
+remote:        isarray@2.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/socket.io-parser/node_modules/isarray        
+remote:        to-array@0.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/to-array        
+remote:        abbrev@1.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/abbrev        
+remote:        ansi-align@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/ansi-align        
+remote:        string-width@2.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/string-width        
+remote:        is-fullwidth-code-point@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-fullwidth-code-point        
+remote:        strip-ansi@4.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/strip-ansi        
+remote:        ansi-regex@3.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/ansi-regex        
+remote:        ansi-styles@3.2.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/ansi-styles        
+remote:        color-convert@1.9.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/color-convert        
+remote:        color-name@1.1.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/color-name        
+remote:        anymatch@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/anymatch        
+remote:        micromatch@3.1.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/micromatch        
+remote:        arr-diff@4.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/arr-diff        
+remote:        array-unique@0.3.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/array-unique        
+remote:        braces@2.3.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/braces        
+remote:        arr-flatten@1.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/arr-flatten        
+remote:        define-property@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/define-property        
+remote:        is-descriptor@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-descriptor        
+remote:        is-accessor-descriptor@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-accessor-descriptor        
+remote:        kind-of@6.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/kind-of        
+remote:        is-data-descriptor@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-data-descriptor        
+remote:        extend-shallow@2.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/extend-shallow        
+remote:        is-extendable@0.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-extendable        
+remote:        fill-range@4.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fill-range        
+remote:        is-number@3.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-number        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-number/node_modules/kind-of        
+remote:        to-regex-range@2.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/to-regex-range        
+remote:        isobject@3.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/isobject        
+remote:        repeat-element@1.1.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/repeat-element        
+remote:        snapdragon@0.8.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/snapdragon        
+remote:        base@0.11.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/base        
+remote:        cache-base@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/cache-base        
+remote:        collection-visit@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/collection-visit        
+remote:        map-visit@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/map-visit        
+remote:        object-visit@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/object-visit        
+remote:        get-value@2.0.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/get-value        
+remote:        has-value@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/has-value        
+remote:        has-values@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/has-values        
+remote:        kind-of@4.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/has-values/node_modules/kind-of        
+remote:        set-value@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/set-value        
+remote:        is-plain-object@2.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-plain-object        
+remote:        split-string@3.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/split-string        
+remote:        extend-shallow@3.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/split-string/node_modules/extend-shallow        
+remote:        assign-symbols@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/assign-symbols        
+remote:        is-extendable@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/split-string/node_modules/is-extendable        
+remote:        to-object-path@0.3.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/to-object-path        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/to-object-path/node_modules/kind-of        
+remote:        union-value@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/union-value        
+remote:        arr-union@3.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/arr-union        
+remote:        set-value@0.4.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/union-value/node_modules/set-value        
+remote:        unset-value@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/unset-value        
+remote:        has-value@0.3.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/unset-value/node_modules/has-value        
+remote:        has-values@0.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/unset-value/node_modules/has-values        
+remote:        isobject@2.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/unset-value/node_modules/has-value/node_modules/isobject        
+remote:        class-utils@0.3.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/class-utils        
+remote:        define-property@0.2.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/class-utils/node_modules/define-property        
+remote:        is-descriptor@0.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/class-utils/node_modules/is-descriptor        
+remote:        is-accessor-descriptor@0.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/class-utils/node_modules/is-accessor-descriptor        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/class-utils/node_modules/is-accessor-descriptor/node_modules/kind-of        
+remote:        is-data-descriptor@0.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/class-utils/node_modules/is-data-descriptor        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/class-utils/node_modules/is-data-descriptor/node_modules/kind-of        
+remote:        kind-of@5.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/class-utils/node_modules/kind-of        
+remote:        static-extend@0.1.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/static-extend        
+remote:        define-property@0.2.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/static-extend/node_modules/define-property        
+remote:        is-descriptor@0.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/static-extend/node_modules/is-descriptor        
+remote:        is-accessor-descriptor@0.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/static-extend/node_modules/is-accessor-descriptor        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/static-extend/node_modules/is-accessor-descriptor/node_modules/kind-of        
+remote:        is-data-descriptor@0.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/static-extend/node_modules/is-data-descriptor        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/static-extend/node_modules/is-data-descriptor/node_modules/kind-of        
+remote:        kind-of@5.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/static-extend/node_modules/kind-of        
+remote:        object-copy@0.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/object-copy        
+remote:        copy-descriptor@0.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/copy-descriptor        
+remote:        define-property@0.2.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/object-copy/node_modules/define-property        
+remote:        is-descriptor@0.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/object-copy/node_modules/is-descriptor        
+remote:        is-accessor-descriptor@0.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/object-copy/node_modules/is-accessor-descriptor        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/object-copy/node_modules/kind-of        
+remote:        is-data-descriptor@0.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/object-copy/node_modules/is-data-descriptor        
+remote:        kind-of@5.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/object-copy/node_modules/is-descriptor/node_modules/kind-of        
+remote:        mixin-deep@1.3.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mixin-deep        
+remote:        for-in@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/for-in        
+remote:        is-extendable@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/mixin-deep/node_modules/is-extendable        
+remote:        pascalcase@0.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pascalcase        
+remote:        debug@2.6.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/snapdragon/node_modules/debug        
+remote:        define-property@0.2.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/snapdragon/node_modules/define-property        
+remote:        is-descriptor@0.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/snapdragon/node_modules/is-descriptor        
+remote:        is-accessor-descriptor@0.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/snapdragon/node_modules/is-accessor-descriptor        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/snapdragon/node_modules/is-accessor-descriptor/node_modules/kind-of        
+remote:        is-data-descriptor@0.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/snapdragon/node_modules/is-data-descriptor        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/snapdragon/node_modules/is-data-descriptor/node_modules/kind-of        
+remote:        kind-of@5.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/snapdragon/node_modules/kind-of        
+remote:        map-cache@0.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/map-cache        
+remote:        source-map-resolve@0.5.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/source-map-resolve        
+remote:        atob@2.0.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/atob        
+remote:        decode-uri-component@0.2.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/decode-uri-component        
+remote:        resolve-url@0.2.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/resolve-url        
+remote:        source-map-url@0.4.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/source-map-url        
+remote:        urix@0.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/urix        
+remote:        use@2.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/use        
+remote:        define-property@0.2.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/use/node_modules/define-property        
+remote:        is-descriptor@0.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/use/node_modules/is-descriptor        
+remote:        is-accessor-descriptor@0.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/use/node_modules/is-accessor-descriptor        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/use/node_modules/is-accessor-descriptor/node_modules/kind-of        
+remote:        is-data-descriptor@0.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/use/node_modules/is-data-descriptor        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/use/node_modules/is-data-descriptor/node_modules/kind-of        
+remote:        kind-of@5.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/use/node_modules/kind-of        
+remote:        lazy-cache@2.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/lazy-cache        
+remote:        set-getter@0.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/set-getter        
+remote:        snapdragon-node@2.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/snapdragon-node        
+remote:        snapdragon-util@3.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/snapdragon-util        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/snapdragon-util/node_modules/kind-of        
+remote:        to-regex@3.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/to-regex        
+remote:        define-property@0.2.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/to-regex/node_modules/define-property        
+remote:        is-descriptor@0.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/to-regex/node_modules/is-descriptor        
+remote:        is-accessor-descriptor@0.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/to-regex/node_modules/is-accessor-descriptor        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/to-regex/node_modules/is-accessor-descriptor/node_modules/kind-of        
+remote:        is-data-descriptor@0.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/to-regex/node_modules/is-data-descriptor        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/to-regex/node_modules/is-data-descriptor/node_modules/kind-of        
+remote:        kind-of@5.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/to-regex/node_modules/kind-of        
+remote:        regex-not@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/regex-not        
+remote:        extglob@2.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/extglob        
+remote:        expand-brackets@2.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/expand-brackets        
+remote:        debug@2.6.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/expand-brackets/node_modules/debug        
+remote:        define-property@0.2.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/expand-brackets/node_modules/define-property        
+remote:        is-descriptor@0.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/expand-brackets/node_modules/is-descriptor        
+remote:        is-accessor-descriptor@0.1.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/expand-brackets/node_modules/is-accessor-descriptor        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/expand-brackets/node_modules/is-accessor-descriptor/node_modules/kind-of
+remote:        is-data-descriptor@0.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/expand-brackets/node_modules/is-data-descriptor        
+remote:        kind-of@3.2.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/expand-brackets/node_modules/is-data-descriptor/node_modules/kind-of        
+remote:        kind-of@5.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/expand-brackets/node_modules/kind-of        
+remote:        posix-character-classes@0.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/posix-character-classes        
+remote:        fragment-cache@0.2.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fragment-cache        
+remote:        nanomatch@1.2.7 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/nanomatch        
+remote:        is-odd@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-odd        
+remote:        kind-of@5.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/nanomatch/node_modules/kind-of        
+remote:        object.pick@1.3.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/object.pick        
+remote:        normalize-path@2.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/normalize-path        
+remote:        remove-trailing-separator@1.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/remove-trailing-separator        
+remote:        async-each@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/async-each        
+remote:        balanced-match@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/balanced-match        
+remote:        binary-extensions@1.11.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/binary-extensions        
+remote:        boxen@1.3.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/boxen        
+remote:        camelcase@4.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/camelcase        
+remote:        chalk@2.3.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/chalk        
+remote:        escape-string-regexp@1.0.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/escape-string-regexp        
+remote:        supports-color@4.5.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/supports-color        
+remote:        has-flag@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/has-flag        
+remote:        cli-boxes@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/cli-boxes        
+remote:        term-size@1.2.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/term-size        
+remote:        execa@0.7.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/execa        
+remote:        cross-spawn@5.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/cross-spawn        
+remote:        lru-cache@4.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/lru-cache        
+remote:        pseudomap@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pseudomap        
+remote:        yallist@2.1.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/yallist        
+remote:        shebang-command@1.2.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/shebang-command        
+remote:        shebang-regex@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/shebang-regex        
+remote:        which@1.3.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/which        
+remote:        isexe@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/isexe        
+remote:        get-stream@3.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/get-stream        
+remote:        is-stream@1.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-stream        
+remote:        npm-run-path@2.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/npm-run-path
+remote:        path-key@2.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/path-key        
+remote:        p-finally@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/p-finally        
+remote:        signal-exit@3.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/signal-exit        
+remote:        strip-eof@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/strip-eof        
+remote:        widest-line@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/widest-line        
+remote:        brace-expansion@1.1.8 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/brace-expansion        
+remote:        concat-map@0.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/concat-map        
+remote:        capture-stack-trace@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/capture-stack-trace        
+remote:        chokidar@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/chokidar        
+remote:        glob-parent@3.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/glob-parent        
+remote:        is-glob@3.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/glob-parent/node_modules/is-glob        
+remote:        is-extglob@2.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-extglob        
+remote:        path-dirname@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/path-dirname        
+remote:        is-binary-path@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-binary-path        
+remote:        is-glob@4.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-glob        
+remote:        path-is-absolute@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/path-is-absolute        
+remote:        readdirp@2.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/readdirp        
+remote:        graceful-fs@4.1.11 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/graceful-fs        
+remote:        minimatch@3.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/minimatch        
+remote:        set-immediate-shim@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/set-immediate-shim        
+remote:        configstore@3.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/configstore        
+remote:        dot-prop@4.2.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/dot-prop        
+remote:        is-obj@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-obj        
+remote:        make-dir@1.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/make-dir        
+remote:        pify@3.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pify        
+remote:        unique-string@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/unique-string        
+remote:        crypto-random-string@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/crypto-random-string        
+remote:        write-file-atomic@2.3.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/write-file-atomic        
+remote:        imurmurhash@0.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/imurmurhash        
+remote:        xdg-basedir@3.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/xdg-basedir        
+remote:        create-error-class@3.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/create-error-class        
+remote:        deep-extend@0.4.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/deep-extend        
+remote:        duplexer@0.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/duplexer        
+remote:        duplexer3@0.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/duplexer3        
+remote:        event-stream@3.3.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/event-stream        
+remote:        from@0.1.7 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/from        
+remote:        map-stream@0.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/map-stream        
+remote:        pause-stream@0.0.11 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pause-stream        
+remote:        through@2.3.8 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/through        
+remote:        split@0.3.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/split        
+remote:        stream-combiner@0.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/stream-combiner        
+remote:        global-dirs@0.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/global-dirs        
+remote:        ini@1.3.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/ini        
+remote:        got@6.7.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/got        
+remote:        is-redirect@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-redirect        
+remote:        is-retry-allowed@1.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-retry-allowed        
+remote:        lowercase-keys@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/lowercase-keys        
+remote:        timed-out@4.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/timed-out        
+remote:        unzip-response@2.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/unzip-response        
+remote:        url-parse-lax@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/url-parse-lax        
+remote:        prepend-http@1.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/prepend-http        
+remote:        ignore-by-default@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/ignore-by-default        
+remote:        import-lazy@2.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/import-lazy        
+remote:        is-installed-globally@0.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-installed-globally        
+remote:        is-path-inside@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-path-inside        
+remote:        path-is-inside@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/path-is-inside        
+remote:        is-npm@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/is-npm        
+remote:        latest-version@3.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/latest-version        
+remote:        package-json@4.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/package-json        
+remote:        registry-auth-token@3.3.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/registry-auth-token        
+remote:        rc@1.2.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/rc        
+remote:        minimist@1.2.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/minimist        
+remote:        strip-json-comments@2.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/strip-json-comments        
+remote:        registry-url@3.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/registry-url        
+remote:        nan@2.8.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/nan        
+remote:        ps-tree@1.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/ps-tree        
+remote:        pstree.remy@1.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/pstree.remy        
+remote:        save-dev@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/save-dev        
+remote:        semver-diff@2.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/semver-diff        
+remote:        uglify-to-browserify@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/uglify-to-browserify        
+remote:        update-notifier@2.3.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/update-notifier        
+remote:        uws@0.14.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/uws        
+remote:        nopt@1.0.10 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/nopt        
+remote:        touch@3.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/touch        
+remote:        undefsafe@2.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/undefsafe        
+remote:        debug@2.6.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/undefsafe/node_modules/debug        
+remote:        nodemon@1.14.11 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/nodemon        
+remote:        debug@3.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/nodemon/node_modules/debug        
+remote:        fsevents@1.1.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents        
+remote:        node-pre-gyp@0.6.39 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/node-pre-gyp        
+remote:        detect-libc@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/detect-libc        
+remote:        hawk@3.1.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/hawk        
+remote:        boom@2.10.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/boom        
+remote:        hoek@2.16.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/hoek        
+remote:        cryptiles@2.0.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/cryptiles        
+remote:        sntp@1.0.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/sntp        
+remote:        mkdirp@0.5.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/mkdirp        
+remote:        minimist@0.0.8 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/minimist        
+remote:        nopt@4.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/nopt        
+remote:        abbrev@1.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/abbrev        
+remote:        osenv@0.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/osenv        
+remote:        os-homedir@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/os-homedir        
+remote:        os-tmpdir@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/os-tmpdir        
+remote:        npmlog@4.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/npmlog        
+remote:        are-we-there-yet@1.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/are-we-there-yet        
+remote:        delegates@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/delegates        
+remote:        readable-stream@2.2.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/readable-stream        
+remote:        buffer-shims@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/buffer-shims        
+remote:        core-util-is@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/core-util-is        
+remote:        inherits@2.0.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/inherits        
+remote:        isarray@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/isarray        
+remote:        process-nextick-args@1.0.7 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/process-nextick-args        
+remote:        string_decoder@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/string_decoder        
+remote:        safe-buffer@5.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/safe-buffer        
+remote:        util-deprecate@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/util-deprecate        
+remote:        console-control-strings@1.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/console-control-strings        
+remote:        gauge@2.7.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/gauge        
+remote:        aproba@1.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/aproba        
+remote:        has-unicode@2.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/has-unicode        
+remote:        object-assign@4.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/object-assign        
+remote:        signal-exit@3.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/signal-exit        
+remote:        string-width@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/string-width        
+remote:        code-point-at@1.1.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/code-point-at        
+remote:        is-fullwidth-code-point@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/is-fullwidth-code-point        
+remote:        number-is-nan@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/number-is-nan        
+remote:        strip-ansi@3.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/strip-ansi        
+remote:        ansi-regex@2.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/ansi-regex        
+remote:        wide-align@1.1.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/wide-align        
+remote:        set-blocking@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/set-blocking        
+remote:        rc@1.2.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/rc        
+remote:        deep-extend@0.4.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/deep-extend        
+remote:        ini@1.3.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/ini        
+remote:        minimist@1.2.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/rc/node_modules/minimist        
+remote:        strip-json-comments@2.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/strip-json-comments        
+remote:        request@2.81.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/request        
+remote:        aws-sign2@0.6.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/aws-sign2        
+remote:        aws4@1.6.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/aws4        
+remote:        caseless@0.12.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/caseless        
+remote:        combined-stream@1.0.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/combined-stream        
+remote:        delayed-stream@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/delayed-stream        
+remote:        extend@3.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/extend        
+remote:        forever-agent@0.6.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/forever-agent        
+remote:        form-data@2.1.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/form-data        
+remote:        asynckit@0.4.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/asynckit        
+remote:        mime-types@2.1.15 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/mime-types        
+remote:        mime-db@1.27.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/mime-db        
+remote:        har-validator@4.2.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/har-validator        
+remote:        ajv@4.11.8 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/ajv        
+remote:        co@4.6.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/co        
+remote:        json-stable-stringify@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/json-stable-stringify        
+remote:        jsonify@0.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/jsonify        
+remote:        har-schema@1.0.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/har-schema        
+remote:        http-signature@1.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/http-signature        
+remote:        assert-plus@0.2.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/assert-plus        
+remote:        jsprim@1.4.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/jsprim        
+remote:        assert-plus@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/jsprim/node_modules/assert-plus        
+remote:        extsprintf@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/extsprintf        
+remote:        json-schema@0.2.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/json-schema        
+remote:        verror@1.3.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/verror        
+remote:        sshpk@1.13.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/sshpk        
+remote:        asn1@0.2.3 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/asn1        
+remote:        assert-plus@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/sshpk/node_modules/assert-plus        
+remote:        dashdash@1.14.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/dashdash        
+remote:        assert-plus@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/dashdash/node_modules/assert-plus        
+remote:        getpass@0.1.7 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/getpass        
+remote:        assert-plus@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/getpass/node_modules/assert-plus        
+remote:        is-typedarray@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/is-typedarray        
+remote:        isstream@0.1.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/isstream        
+remote:        json-stringify-safe@5.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/json-stringify-safe        
+remote:        oauth-sign@0.8.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/oauth-sign        
+remote:        performance-now@0.2.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/performance-now        
+remote:        qs@6.4.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/qs        
+remote:        stringstream@0.0.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/stringstream        
+remote:        tough-cookie@2.3.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/tough-cookie        
+remote:        punycode@1.4.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/punycode        
+remote:        tunnel-agent@0.6.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/tunnel-agent        
+remote:        uuid@3.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/uuid        
+remote:        rimraf@2.6.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/rimraf        
+remote:        glob@7.1.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/glob        
+remote:        fs.realpath@1.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/fs.realpath        
+remote:        inflight@1.0.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/inflight        
+remote:        once@1.4.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/once        
+remote:        wrappy@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/wrappy        
+remote:        minimatch@3.0.4 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/minimatch        
+remote:        brace-expansion@1.1.7 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/brace-expansion        
+remote:        balanced-match@0.4.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/balanced-match        
+remote:        concat-map@0.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/concat-map        
+remote:        path-is-absolute@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/path-is-absolute        
+remote:        semver@5.3.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/semver        
+remote:        tar@2.2.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/tar        
+remote:        block-stream@0.0.9 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/block-stream        
+remote:        fstream@1.0.11 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/fstream        
+remote:        graceful-fs@4.1.11 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/graceful-fs        
+remote:        tar-pack@3.4.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/tar-pack        
+remote:        debug@2.6.8 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/debug        
+remote:        ms@2.0.0 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/ms        
+remote:        fstream-ignore@1.0.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/fstream-ignore        
+remote:        uid-number@0.0.6 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/uid-number        
+remote:        bcrypt-pbkdf@1.0.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/bcrypt-pbkdf        
+remote:        tweetnacl@0.14.5 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/tweetnacl        
+remote:        ecc-jsbn@0.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/ecc-jsbn        
+remote:        jsbn@0.1.1 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/jsbn        
+remote:        jodid25519@1.0.2 /tmp/build_c5d61e9a719692eeebba68ca6fb6c0bc/node_modules/fsevents/node_modules/jodid25519        
+remote:        Installing any new modules (package.json)        
+remote:        added 3 packages, removed 5 packages and updated 6 packages in 3.871s        
+remote: 
+remote: -----> Caching build        
+remote:        Clearing previous node cache        
+remote:        Saving 2 cacheDirectories (default):        
+remote:        - node_modules        
+remote:        - bower_components (nothing to cache)        
+remote: 
+remote: -----> Pruning devDependencies        
+remote:        Skipping because npm 5.6.0 sometimes fails when running 'npm prune' due to a known issue        
+remote:        https://github.com/npm/npm/issues/19356        
+remote:                
+remote:        You can silence this warning by updating to at least npm 5.7.1 in your package.json        
+remote:        https://devcenter.heroku.com/articles/nodejs-support#specifying-an-npm-version        
+remote: 
+remote: -----> Build succeeded!        
+remote: -----> Discovering process types        
+remote:        Procfile declares types     -> (none)        
+remote:        Default types for buildpack -> web        
+remote: 
+remote: -----> Compressing...        
+remote:        Done: 57.6M        
+remote: -----> Launching...        
+remote:        Released v15        
+remote:        https://hologlyph-hub.herokuapp.com/ deployed to Heroku        
+remote: 
+remote: Verifying deploy... done.        
+To https://git.heroku.com/hologlyph-hub.git
+   831c209..506e066  master -> master

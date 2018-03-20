@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
   //res.render('style_guide', { title: 'Express' });
 	//var ob = { action:"date +%s", result:"1367263074"};
 	//res.render('backup_style', { title : 'layout' });
-	res.render('sensor_form', { title : 'layout'});
+	res.render('backup_style', { title : 'layout'});
 });
 
 module.exports = router;

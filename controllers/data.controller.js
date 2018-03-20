@@ -191,13 +191,32 @@ exports.data_create_post = [
 
 ];
 // Display list of device
-exports.data_delete_get = function(req, res) {
-	res.send('NOT IMPLEMENTED: data_list');
+exports.data_delete_get = function(req, res, next) {
+		async.parallel({
+        sensor: function(callback) {
+            Sensor.findById(req.params.id)
+            .exec(callback);
+        },
+        data: function(callback) {
+        Data.find({'sensor':req.params.id})
+        .exec(callback);
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+        if (results.sensor==null) { // No results.
+            res.redirect('/detail/devices');
+        }
+        // Successful, so render.
+        res.render('data_delete', { title: 'Delete whole data from the sensor', sensor: results.sensor, data: results } );
+    });
 };
 
 // Display list of device
-exports.data_delete_post = function(req, res) {
-	res.send('NOT IMPLEMENTED: data_list');
+exports.data_delete_post = function(req, res, next) {
+			  Data.deleteMany({"sensor": req.params.id }, function deleteChannel(err) {
+				                if (err) { return next(err); }
+				                res.redirect('/detail/sensor/'+req.params.id);
+				    });
 };
 
 // Display list of device

@@ -6,7 +6,26 @@ block content
   ul
   each val in list_marker
     li 
-      a(href=val.url) #{val.marker_name}
+      a(href=val.url).listingname #{val.marker_name}
 
   else
     li There are no marker.
+
+  style.
+    .bigred 
+    { 
+    font-size: 1.5em;
+    color: red; 
+    }
+    .italic
+    {
+     font-style: italic;
+    }
+    .listingname 
+    { 
+    font-size: 2em;
+    }
+    .redish 
+    { 
+    color: red; 
+    }

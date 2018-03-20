@@ -5,21 +5,28 @@ block content
   h1 Device Detail: 
   
   div(style='margin-left:20px;margin-top:20px')
-    h2 Device Name: 
-    p.listingname #{device.device_name}
-    h2 Marker: 
-    p.listingname #{device.glyph}
-    h2 Device Id: 
-    p.listingname.italic #{device._id}
-    h2 Marker: 
-    p.listingname.italic #{device.marker}
-    h3 marker tag image:
-    .image-block
-      img.image(src='/marker/' + device.marker+'.png' width="250" height="250" alt="Marker")
+    .contentBox
+      .block
+        .row
+          div(style='margin-left:20px;margin-top:20px') 
+            .col-sm-6
+              h2 Device Name: 
+              p.listingname #{device.device_name}
+              h2 Mark: 
+              p.listingname #{device.glyph}
+              h2 Marker: 
+              p.listingname.italic #{device.marker}   
+          div(style='margin-left:20px;margin-top:20px') 
+            .col-sm-6
+              h3 Marker Tag image:
+              .image-block
+                img.image(src='/marker/' + device.marker+'.png' width="250" height="250" alt="Marker")
+              h4
+                a(href='/marker/'+device.marker+'.png') print tag
     hr
     p
       a(href=device._id+'/addsensor') 
-        button.btn.btn-primary Add New Sensor
+        button.btn.btn-success (+) Add New Sensor
     contentBox
      .table-responsive
        table.table.table-hover.va-middle.u-mr-top-20
@@ -37,16 +44,20 @@ block content
              tr
                td There are no glyph.
     hr
-    p
-      a(href=device.url+'/delete') Delete device
-    p
-      a(href=device.url+'/update') Update device
+  div(style='margin-left:20px;margin-top:20px')
+    .contentBox
+      .block
+        .row
+          .col-sm-6
+            p.listingname 
+              a(href=device.url+'/delete').bigred Delete Device 
+              | | 
+              a(href=device.url+'/update')  Edit Device
 
 
   style.
     .bigred 
     { 
-    font-size: 1.5em;
     color: red; 
     }
     .italic

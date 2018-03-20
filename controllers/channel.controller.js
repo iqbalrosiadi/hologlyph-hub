@@ -14,7 +14,7 @@ exports.channel_list = function(req, res, next)  {
     .exec(function (err, list_channels) {
       if (err) { return next(err); }
       // Successful, so render.
-      res.render('channel_list', { title: 'Channel List', list_channel: JSON.stringify(list_channels)});
+      res.render('channel_list', { title: 'Channel List', list_channel: list_channels});
     });
 
 };

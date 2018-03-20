@@ -1,0 +1,32 @@
+extends layout
+
+block content
+
+  h1 Delete All Gathered data from #{sensor.sensor_name} sensor
+  
+  h3 Do you really want to delete all data from this sensor?
+  p.bold.bigred  There is no rollback!
+    
+    form(method='POST' action='')
+      div.form-group
+        input#id.form-control(type='hidden',name='id', required='true', value=data.sensor)
+      button.btn.btn-primary(type='submit') Delete
+
+  style.
+    .bigred 
+    { 
+    font-size: 2em;
+    color: red; 
+    }
+    .italic
+    {
+     font-style: italic;
+    }
+    .listingname 
+    { 
+    font-size: 1.5em;
+    }
+    .redish 
+    { 
+    color: red; 
+    }
