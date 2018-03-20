@@ -121,13 +121,45 @@ exports.sensor_create_post = [
 ];
 
 // Display list of device
-exports.sensor_delete_get = function(req, res) {
-	res.send('NOT IMPLEMENTED: sensor_list');
+exports.sensor_delete_get = function(req, res, next) {
+		async.parallel({
+        sensor: function(callback) {
+            Sensor.findById(req.params.id)
+            .exec(callback);
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+        if (results.sensor==null) { // No results.
+            res.redirect('/detail/devices');
+        }
+        // Successful, so render.
+        res.render('sensor_delete', { title: 'Delete sensor', sensor: results.sensor } );
+    });
 };
 
 // Display list of device
 exports.sensor_delete_post = function(req, res) {
-	res.send('NOT IMPLEMENTED: sensor_list');
+		async.parallel({
+        sensor: function(callback) {
+            Sensor.findById(req.params.id).exec(callback);
+        },
+        data: function(callback) {
+        	Data.find({'sensor':req.params.id}).exec(callback);
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+
+			  Data.deleteMany({"sensor": results.sensor._id }, function deleteChannel(err) {
+				                if (err) { return next(err); }
+				    });
+
+			  Sensor.findByIdAndRemove(results.sensor._id, function deleteChannel(err) {
+                if (err) { return next(err); }
+                // Success - go to genres list.
+                res.redirect('/detail/device/'+results.sensor.device);
+            });
+
+    });
 };
 
 // Display list of device

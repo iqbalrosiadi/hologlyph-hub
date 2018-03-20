@@ -12,8 +12,6 @@ const { sanitizeBody } = require('express-validator/filter');
 
 exports.index = function(req, res, next) {
     Device.find()
-	.populate('marker', "marker_name -_id")
-	.populate('glyph', "glyph_name -_id")
 	.populate({
 		path: 'sensor',
 		populate: 'data'
@@ -28,8 +26,6 @@ exports.index = function(req, res, next) {
 // Display list of device
 exports.device_list = function(req, res, next) {
 	Device.find()
-	.populate('marker')
-	.populate('glyph')
 	.populate('sensor')
 	.sort([['device_name', 'ascending']])
 	.exec(function(err, list_devices){
@@ -44,8 +40,6 @@ exports.device_list = function(req, res, next) {
 // Display list of device
 exports.device_detail = function(req, res, next) {
 	Device.findById(req.params.id)
-	.populate('marker')
-	.populate('glyph')
 	.populate('sensor')
 	.exec(function(err, device_detail){
 		if (err) { return next(err); }
@@ -130,13 +124,52 @@ exports.device_create_post = [
 ];
 
 // Display list of device
-exports.device_delete_get = function(req, res) {
-	res.send('NOT IMPLEMENTED: device_list');
+exports.device_delete_get = function(req, res, next) {
+	 async.parallel({
+        device: function(callback) {
+            Device.findById(req.params.id)
+            .populate('sensor')
+            .exec(callback);
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+        if (results.device==null) { // No results.
+            res.redirect('/detail/devices');
+        }
+        // Successful, so render.
+        res.render('device_delete', { title: 'Delete Device', device: results.device } );
+    });
 };
 
 // Display list of device
-exports.device_delete_post = function(req, res) {
-	res.send('NOT IMPLEMENTED: device_list');
+exports.device_delete_post = function(req, res, next) {
+	async.parallel({
+        device: function(callback) {
+            Device.findById(req.params.id).exec(callback);
+        },
+        sensor: function(callback) {
+        	Sensor.find({'device':req.params.id}).exec(callback);
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+
+        	  for (var i = 0; i < results.sensor.length; i++) {
+				Data.deleteMany({"sensor": results.sensor[i]._id }, function deleteChannel(err) {
+				                if (err) { return next(err); }
+				    });
+			  }
+
+			  Sensor.deleteMany({"device": results.device._id }, function deleteChannel(err) {
+				                if (err) { return next(err); }
+				    });
+
+			  Device.findByIdAndRemove(results.device._id, function deleteChannel(err) {
+                if (err) { return next(err); }
+                // Success - go to genres list.
+                res.redirect('/detail/devices');
+            });
+
+    });
 };
 
 // Display list of device

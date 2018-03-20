@@ -1,0 +1,13 @@
+extends layout
+
+block content
+
+  h1 Delete Channel: #{sensor.sensor_name}
+  
+  p Do you really want to delete this Sensor with all related data?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#id.form-control(type='hidden',name='id', required='true', value=sensor._id )
+
+      button.btn.btn-primary(type='submit') Delete

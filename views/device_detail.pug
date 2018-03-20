@@ -8,11 +8,14 @@ block content
     h2 Device Name: 
     p.listingname #{device.device_name}
     h2 Marker: 
-    p.listingname #{device.glyph.glyph_name}
+    p.listingname #{device.glyph}
     h2 Device Id: 
     p.listingname.italic #{device._id}
     h2 Marker: 
-    p.listingname.italic #{device.marker.marker_name}
+    p.listingname.italic #{device.marker}
+    h3 marker tag image:
+    .image-block
+      img.image(src='/marker/' + device.marker+'.png' width="250" height="250" alt="Marker")
     hr
     p
       a(href=device._id+'/addsensor') 

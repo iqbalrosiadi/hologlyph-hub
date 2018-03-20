@@ -9,7 +9,10 @@ block content
     p #{marker.marker_name}
     h4 marker Id: 
     p #{marker._id}
-      
+    h3 marker tag image:
+    .image-block
+      img.image(src='/marker/' + marker.marker_name+'.png' width="250" height="250" alt="Marker")
+
   hr
   p
     a(href=marker.url+'/delete') Delete marker

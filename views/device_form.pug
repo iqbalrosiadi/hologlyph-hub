@@ -13,22 +13,22 @@ block content
       select#glyph.form-control(type='select' placeholder='Select status' name='glyph' required='true')
         for glyph in glyph_list
           if device
-            option(value=glyph._id selected=(device.glyph.toString()==glyph._id.toString() ? 'selected' : false)) #{glyph.glyph_name}
+            option(value=glyph.glyph_name selected=(device.glyph.toString()==glyph.glyph_name.toString() ? 'selected' : false)) #{glyph.glyph_name}
           else
-            option(value=glyph._id) #{glyph.glyph_name}
+            option(value=glyph.glyph_name) #{glyph.glyph_name}
 
     div.form-group
       label(for='marker') Object Marker:
       select#marker.form-control(type='select' placeholder='Select status' name='marker' required='true')
         for marker in marker_list
           if device
-            option(value=marker._id selected=(device.marker.toString()==marker._id.toString() ? 'selected' : false)) #{marker.marker_name}
+            option(value=marker.marker_name selected=(device.marker.toString()==marker.marker_name.toString() ? 'selected' : false)) #{marker.marker_name}
           else
-            option(value=marker._id) #{marker.marker_name}
+            option(value=marker.marker_name) #{marker.marker_name}
     
     div.form-group
-      label(for='status') Number of Mark:
-      select#status.form-control(type='select' placeholder='Select status' name='status' required='true')
+      label(for='one_glyph') Number of Mark:
+      select#one_glyph.form-control(type='select' placeholder='Select As one glyph' name='one_glyph' required='true')
         option(value='1') Single Mark
         option(value='0') Multiple mark
 

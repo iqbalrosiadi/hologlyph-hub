@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+  h1 Delete Channel: #{device.device_name}
+  
+  h3 Do you really want to delete this device with all related sensor and data?
+
+    
+    form(method='POST' action='')
+      div.form-group
+        input#id.form-control(type='hidden',name='id', required='true', value=device._id )
+
+      button.btn.btn-primary(type='submit') Delete

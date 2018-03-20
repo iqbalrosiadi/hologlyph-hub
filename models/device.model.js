@@ -4,22 +4,13 @@ var Schema = mongoose.Schema;
 
 var DeviceSchema = new Schema(
 		{
-		//IdDevice: {type: Schema.ObjectId},
 		sensor: [{type: Schema.ObjectId, ref: 'Sensor'}],
 		device_name: {type: String},
-		glyph: {type: Schema.ObjectId, ref: 'Glyph'},
-		marker: {type: Schema.ObjectId, ref: 'Marker'},
+		glyph: {type: String},
+		marker: {type: String},
 		as_one_glyph: {type: String}
-
 		}
 	);
-
-
-DeviceSchema.virtual('posts', {
-  ref: 'BlogPost',
-  localField: '_id',
-  foreignField: 'author'
-});
 
 
 DeviceSchema
