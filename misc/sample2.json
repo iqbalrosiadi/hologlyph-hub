@@ -4,6 +4,7 @@
     "sname": "Plant no 1",
     "glyph": "Cylinder",
     "as_one_glyph": "1",
+    "marker": "Mark-00",
     "sensor": [
     {
         "_id": "5a71cc81a0ce7806b36a75a8",
@@ -35,6 +36,7 @@
     "sname": "Plant no 1",
     "glyph": "Cylinder",
     "as_one_glyph": "0",
+    "marker": "Mark-01",
     "sensor": [
         {
         "_id": "5a71cc81a0ce7806b36a75a8",
