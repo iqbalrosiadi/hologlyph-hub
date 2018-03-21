@@ -45,7 +45,7 @@ block content
               div.form-group
                 label(for='range') Range data in minutes to be visualized:
                 .input-group
-                  input.form-control#range(type="text", placeholder="60, 120, etc", aria-describedby="basic-addon2")
+                  input#range.form-control(type='text' placeholder='Set maximum value of your data, 10, 13, 300, etc'  name='range' required='true' value=(undefined===sensor ? '' : sensor.data_range_minute) aria-describedby="basic-addon2")
                   span.input-group-addon#basic-addon2 minutes
   
             .col-sm-6

@@ -39,7 +39,19 @@ block content
           
               h3 Current Aggregated Data value: 
               p.listingname.bigred #{sensor.data}
-      
+  hr
+  div(style='margin-left:20px;margin-top:20px')
+    .contentBox
+      .block
+        .row
+          .col-sm-6
+            p.listingname 
+              a(href=sensor.url+'/update') Edit Sensor 
+              | |
+              a(href='/detail/data/'+sensor._id+'/delete')  Clear All #{sensor.sensor_name} Sensor Data  
+              | | 
+              a(href=sensor.url+'/delete').redish  Delete Sensor 
+                  
 
   hr
   div(style='margin-left:20px;margin-top:20px')
@@ -49,7 +61,7 @@ block content
         table.table.table-hover.va-middle.u-mr-top-20
           thead
             tr
-              th.h3 latest #{sensor.data_range_minute} minutes of data
+              th.h3 7 rows of the latest #{sensor.data_range_minute} minutes of data
           tbody
             each val in data
               tr
@@ -59,20 +71,7 @@ block content
                   
             else
               tr
-                td There are no glyph.
-
-  hr
-  div(style='margin-left:20px;margin-top:20px')
-    .contentBox
-      .block
-        .row
-          .col-sm-6
-            p.listingname 
-              a(href='/detail/data/'+sensor._id+'/delete') Clear All Sensor #{sensor.sensor_name} Data 
-              | | 
-              a(href=sensor.url+'/delete').redish Delete Sensor 
-              | | 
-              a(href=sensor.url+'/update')  Edit Sensor
+                td There are no Data Gathered.
 
 
   style.

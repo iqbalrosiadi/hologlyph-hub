@@ -15,13 +15,19 @@ block content
 					each val in list_devices
 						tr
 							td
-								div(style='margin-top:-20px;margin-left:-5px;') 
+								div(style='max-width: 700px;')
 									.col-sm-6
+										h5 Assigned tag marker: #{val.marker}
+										.image-block
+												img.image(src='/marker/' + val.marker+'.png' width="225" height="225" alt="Marker")
+									.col-sm-6(style='margin-left:-100px;')
 										a(href=val.url)
 											h2 #{val.device_name}
 										h4.italic Number of sensor: #{val.sensor.length}
 										each val_sensor in val.sensor
-											h4 - Sensor #{val_sensor.sensor_name}
+											h5 
+												li
+													a(href=val_sensor.url) #{val_sensor.sensor_name} Sensor
 
 										br
 										br

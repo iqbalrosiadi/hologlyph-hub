@@ -213,10 +213,17 @@ exports.data_delete_get = function(req, res, next) {
 
 // Display list of device
 exports.data_delete_post = function(req, res, next) {
-			  Data.deleteMany({"sensor": req.params.id }, function deleteChannel(err) {
-				                if (err) { return next(err); }
-				                res.redirect('/detail/sensor/'+req.params.id);
-				    });
+	console.log('sensor id '+ req.params.id);
+	Data.find({"sensor": req.params.id }).select("_id").exec(function(err,data_details){
+			if(err) { return next(err);}
+			Data.deleteMany({"_id": { $in: data_details }}, function deleteChannel(err) {
+	                if (err) { return next(err); }
+	                res.redirect('/detail/sensor/'+req.params.id);
+	    });
+
+	});
+
+
 };
 
 // Display list of device

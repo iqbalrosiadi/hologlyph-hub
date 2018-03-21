@@ -40,6 +40,17 @@ block content
                td 
                  a(href=val.url) 
                    h3 #{val.sensor_name}
+                 h4.bold ID Sensor: #{val._id}
+                    h4.bold Device Name: 
+                      a(href=val.device.url) #{val.device.device_name}
+                    p.listingname Current aggegated Value: #{val.data} | Aggregation type: #{val.calculation}
+                    br
+
+                    a(href='/detail/sensor/'+val._id)(style='margin-right:10px;')
+                      button.btn.btn-primary View Sensor Detail 
+                    | 
+                    a(href='/detail/sensor/'+val._id+'/update') 
+                      button.btn.btn-primary Edit Sensor Detail
            else
              tr
                td There are no glyph.

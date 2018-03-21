@@ -32,6 +32,11 @@ block content
         option(value='1') Single Mark
         option(value='0') Multiple mark
 
+    div.form-group
+      if device
+        input#sensor.form-control(type='hidden' name='sensor' value=device.sensor)
+
+
     button.btn.btn-primary(type='submit') Submit
 
     

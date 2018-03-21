@@ -31,7 +31,7 @@ exports.sensor_detail = function(req, res, next) {
 			Sensor.findById(req.params.id).populate('device').exec(callback);
 		},
 		datas: function(callback){ 
-			Data.find({'sensor':req.params.id}, 'date value -_id').sort([['date','descending']]).exec(callback);
+			Data.find({'sensor':req.params.id}, 'date value -_id').sort([['date','descending']]).limit(7).exec(callback);
 		},
 	}, function(err, sensors){
 		if (err) { return next(err); }
@@ -77,7 +77,8 @@ exports.sensor_create_post = [
 	          	data_range_minute: req.body.range
 	          }
 	        );
-
+		console.log("SENSOR LIST " + req.body.range);
+		
 		if (!errors.isEmpty()) {
 
 				async.parallel({

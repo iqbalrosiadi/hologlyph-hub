@@ -183,7 +183,7 @@ exports.device_update_get = function(req, res, next) {
 			Marker.find(callback);
 		},
 		device: function(callback){ 
-			Device.findById(req.params.id).exec(callback);
+			Device.findById(req.params.id).populate('sensor', '_id').exec(callback);
 		},
 	},
 		function(err, device) {
@@ -215,17 +215,20 @@ exports.device_update_post = [
         // Extract the validation errors from a request .
         const errors = validationResult(req);
 
-    // Create a genre object with escaped and trimmed data (and the old id!)
+    	
+    	// Create a genre object with escaped and trimmed data (and the old id!)
         	var device = new Device(
 	          { 
 	          	_id: req.params.id,
 	          	device_name: req.body.device_name, 
 	          	glyph: req.body.glyph,
 	          	marker: req.body.marker,
-	          	as_one_glyph: req.body.one_glyph
+	          	as_one_glyph: req.body.one_glyph,
+	          	sensor: JSON.parse(req.body.sensor)
 	          }
 	        );
 
+        	console.log("SENSOR LIST " + JSON.parse(req.body.sensor));
 
         if (!errors.isEmpty()) {
             // There are errors. Render the form again with sanitized values and error messages.

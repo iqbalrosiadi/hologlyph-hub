@@ -15,19 +15,41 @@ block content
 					each val in sensor
 						tr
 							td
-								div(style='margin-top:-20px;margin-left:-5px;') 
+								div(style='max-width: 750px;') 
 									.col-sm-6
+										h5 Assigned tag marker: #{val.device.marker}
+										.image-block
+												img.image(src='/marker/' + val.device.marker+'.png' width="225" height="225" alt="Marker")
+
+									.col-sm-6(style='margin-left:-130px;')
 										a(href=val.url)
-											h2 #{val.sensor_name}
-										h4 ID Sensor: #{val._id}
-										h4 Device Name: #{val.device.device_name}
+											h2 #{val.sensor_name} Sensor 
+										h4.bold ID Sensor: #{val._id}
+										h4.bold Device Name: 
+											a(href=val.device.url) #{val.device.device_name}
+										p.listingname Current aggegated Value: #{val.data} | Aggregation type: #{val.calculation}
 										br
-										br
+
 										a(href='sensor/'+val._id)(style='margin-right:10px;')
 											button.btn.btn-primary View Sensor Detail 
 										| 
 										a(href='sensor/'+val._id+'/update') 
 											button.btn.btn-primary Edit Sensor Detail 
+
 					else
 						tr
-							td There are no glyph.
+							td There are no Sensor Registred.
+	style.
+		.bigred 
+		{ 
+		font-size: 1.5em;
+		color: red; 
+		}
+		.italic
+		{
+		 font-style: italic;
+		}
+		.listingname 
+		{ 
+		font-size: 1.75em;
+		}

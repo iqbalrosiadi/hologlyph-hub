@@ -15,7 +15,7 @@
         "max_val" : "1.00",
         "min_val" : "0.2",
         "__v": 0,
-        "data": 0.123
+        "data": 0.5
     },
     {
         "_id": "5a71cc81a0ce7806b36a75a8",
@@ -44,9 +44,9 @@
         "fieldn": "field1",
         "name": "humidity",
         "channel":"height", 
-        "max_val" : "1.00",
-        "min_val" : "0.2",          
         "__v": 0,
+        "max_val" : "1.00",
+        "min_val" : "0.2", 
         "data": 0.753980788104721
     },
     {
@@ -56,9 +56,9 @@
         "name": "humidity",
         "channel":"height", 
         "max_val" : "1.00",
-        "min_val" : "0.2",          
+        "min_val" : "0.2", 
         "__v": 0,
-        "data": 0.753980788104721
+        "data": 0.63980788104721
     },
     {
         "_id": "5a71cc81a0ce7806b36a75a8",
@@ -67,7 +67,7 @@
         "name": "temperature",
         "channel":"height",
         "max_val":0.9,
-        "min_val":0.1,       
+        "min_val":0.5,       
         "__v": 0,
         "data": 0.50953980788104721
     }
