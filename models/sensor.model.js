@@ -9,9 +9,10 @@ var SensorSchema = new Schema(
 			sensor_name: {type: String},
 			channel: {type: String, default:'none'},//{type: Schema.ObjectId, ref: 'Channel', required: true },
 			glyph: {type: String, default:'none'},//{type: Schema.ObjectId, ref: 'Glyph', required: true },
-			max_val: {type: Number},
-			min_val: {type: Number},
-			default_act: {type: String},
+			max_val: {type: Number, default:100},
+			min_val: {type: Number, default:0},
+			max_color: {type: String, default:'#ff0000'},
+			min_color: {type: String, default:'#008000'},
 			calculation: {type: String, enum: ['average', 'summary', 'lastvalue'], default:'lastvalue'},
 			data_range_minute: {type: Number, min:0 , default:60},
 			data: {type: Number, default:0}

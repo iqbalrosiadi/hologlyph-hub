@@ -27,9 +27,21 @@ block content
             div(style='margin-left:20px;margin-top:20px')
               h3 User Defined Minimum Value: 
               p.listingname #{sensor.min_val}
+
+              h3 Color Minimum Value:
+                .input-group(class='colorpicker-component' id='min_col_val')
+                  span.input-group-addon#basic-addon2  Chosen Color
+                  input#min_col_val.form-control(type='text' class='input-lg' name='min_col_val' placeholder='Set maximum value of your data, 10, 13, 300, etc' required='true' value=(undefined===sensor ? '' : sensor.min_color) disabled)
+                script(type="text/javascript") $(function (){ $('#min_col_val').colorpicker() });
           
               h3 User Defined Maximum Value: 
               p.listingname #{sensor.max_val}
+
+              h3 Color Minimum Value:
+                .input-group(class='colorpicker-component' id='max_col_val')
+                  span.input-group-addon#basic-addon2  Chosen Color
+                  input#max_col_val.form-control(type='text' class='input-lg' name='max_col_val' placeholder='Set maximum value of your data, 10, 13, 300, etc' required='true' value=(undefined===sensor ? '' : sensor.max_color) disabled)
+                script(type="text/javascript") $(function (){ $('#max_col_val').colorpicker() });
               
               h3 Data range in minutes: 
               p.listingname #{sensor.data_range_minute}

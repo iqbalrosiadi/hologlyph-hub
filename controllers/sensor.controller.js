@@ -74,7 +74,9 @@ exports.sensor_create_post = [
 	          	max_val: req.body.max_val,
 	          	min_val: req.body.min_val,
 	          	calculation: req.body.calculation,
-	          	data_range_minute: req.body.range
+	          	data_range_minute: req.body.range,
+	          	max_color: req.body.max_col_val,
+	          	min_color: req.body.min_col_val
 	          }
 	        );
 		console.log("SENSOR LIST " + req.body.range);
@@ -223,10 +225,11 @@ exports.sensor_update_post = [
 	          	max_val: req.body.max_val,
 	          	min_val: req.body.min_val,
 	          	calculation: req.body.calculation,
-	          	data_range_minute: req.body.range
+	          	data_range_minute: req.body.range,
+	          	max_color: req.body.max_col_val,
+	          	min_color: req.body.min_col_val
 	          }
 	        );
-
 
         if (!errors.isEmpty()) {
             // There are errors. Render the form again with sanitized values and error messages.
