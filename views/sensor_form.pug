@@ -75,5 +75,9 @@ block content
                         option(value='average') Average
                         option(value='summary') Summary
 
+            div.form-group
+              if sensor
+                input#data.form-control(type='hidden' name='data' value=sensor.data)
+
 
     button.btn.btn-primary(type='submit') Submit

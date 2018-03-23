@@ -194,6 +194,7 @@ exports.sensor_update_get = function(req, res, next) {
             return next(err);
         }
         // Success.
+        console.log(" SENSOR DATA "+sensor.sensor.data);
         res.render('sensor_form', { title: 'Update Sensor', 
         	sensor: sensor.sensor, mark_list: sensor.glyphs, 
         	channel_list: sensor.channel, errors: err });
@@ -227,7 +228,8 @@ exports.sensor_update_post = [
 	          	calculation: req.body.calculation,
 	          	data_range_minute: req.body.range,
 	          	max_color: req.body.max_col_val,
-	          	min_color: req.body.min_col_val
+	          	min_color: req.body.min_col_val,
+	          	data: req.body.data
 	          }
 	        );
 
