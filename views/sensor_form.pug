@@ -32,6 +32,47 @@ block content
           .row
             .col-sm-6
               div.form-group
+                label(for='default_color') Default Color :
+                .input-group(class='colorpicker-component' id='default_color')
+                  input#default_color.form-control(type='text' class='input-lg' name='default_color' placeholder='Set maximum value of your data, 10, 13, 300, etc' required='true' value=(undefined===sensor ? '#85a3ff' : sensor.def_color))
+                  span.input-group-addon#basic-addon2 Choose Colour 
+                    i 
+                script(type="text/javascript") $(function (){ $('#default_color').colorpicker() });
+
+            .col-sm-6
+              div.form-group
+                label(for='opacity') Opacity of the Mark :
+                .input-group(class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id='opacity')
+                  input#amount.form-control(type='text' name='amount' placeholder='100 %'  style="border: 0 none;border-radius: 5px 5px 5px 5px;padding-left: 5px;width: 70px;")
+                div#slider(class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all")
+                div(class='steps')
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 6%;") 0%
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 10
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 20
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 30
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 40
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 50
+                      br                      
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 60
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 70
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 80
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 5%;") 90
+                      br                 
+                    span(style="display:inline-block;width: 3%;text-align:right;") 100%
+                      br
+                script(type="text/javascript") $( function() {$( "#slider" ).slider({ value:100, min: 0,max:100, step: 10, slide: function( event, ui ) { $( "#amount" ).val(ui.value + "%");}});});
+
+          .row
+            .col-sm-6
+              div.form-group
                 label(for='min_val') Minimum Value:
                 input#min_val.form-control(type='text' placeholder='Set minimum value of your sensor data, 10, 13, 300, etc'  name='min_val'         required='true' value=(undefined===sensor ? '' : sensor.min_val))
   
@@ -40,12 +81,14 @@ block content
                 label(for='max_val') Maximum Value:
                 input#max_val.form-control(type='text' placeholder='Set maximum value of your data, 10, 13, 300, etc'  name='max_val' required='true' value=(undefined===sensor ? '' : sensor.max_val))
 
+
+
           .row
             .col-sm-6
               div.form-group
                 label(for='min_col_val') Color Minimum Value:
                 .input-group(class='colorpicker-component' id='min_col_val')
-                  input#min_col_val.form-control(type='text' class='input-lg' name='min_col_val' placeholder='Set maximum value of your data, 10, 13, 300, etc' required='true' value=(undefined===sensor ? '' : sensor.min_color))
+                  input#min_col_val.form-control(type='text' class='input-lg' name='min_col_val' placeholder='Set maximum value of your data, 10, 13, 300, etc' required='true' value=(undefined===sensor ? '#0dff0d' : sensor.min_color))
                   span.input-group-addon#basic-addon2 Choose Colour 
                     i 
                 script(type="text/javascript") $(function (){ $('#min_col_val').colorpicker() });
@@ -54,7 +97,7 @@ block content
               div.form-group
                 label(for='max_col_val') Color Maximum Value:
                 .input-group(class='colorpicker-component' id='max_col_val')
-                  input#max_col_val.form-control(type='text' class='input-lg' name='max_col_val' placeholder='Set maximum value of your data, 10, 13, 300, etc' required='true' value=(undefined===sensor ? '' : sensor.max_color))
+                  input#max_col_val.form-control(type='text' class='input-lg' name='max_col_val' placeholder='Set maximum value of your data, 10, 13, 300, etc' required='true' value=(undefined===sensor ? '#ff0707' : sensor.max_color))
                   span.input-group-addon#basic-addon2 Choose Colour 
                     i 
                 script(type="text/javascript") $(function (){ $('#max_col_val').colorpicker() });

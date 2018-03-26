@@ -23,6 +23,10 @@ block content
           
               h3 On the channel Mark: 
               p.listingname #{sensor.channel}
+
+              h3 Current Aggregation Method: 
+              p.listingname #{sensor.calculation}
+              
           .col-sm-6
             div(style='margin-left:20px;margin-top:20px')
               h3 User Defined Minimum Value: 
@@ -46,8 +50,6 @@ block content
               h3 Data range in minutes: 
               p.listingname #{sensor.data_range_minute}
           
-              h3 Current Aggregation Method: 
-              p.listingname #{sensor.calculation}
           
               h3 Current Aggregated Data value: 
               p.listingname.bigred #{sensor.data}

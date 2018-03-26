@@ -4,7 +4,6 @@ var Schema = mongoose.Schema;
 
 var SensorSchema = new Schema(
 		{
-			//IdSensor: {type: Schema.ObjectId},
 			device: {type: Schema.ObjectId, ref: 'Device', required: true },
 			sensor_name: {type: String},
 			channel: {type: String, default:'none'},//{type: Schema.ObjectId, ref: 'Channel', required: true },
@@ -13,8 +12,9 @@ var SensorSchema = new Schema(
 			min_val: {type: Number, default:0},
 			max_color: {type: String, default:'#ff0000'},
 			min_color: {type: String, default:'#008000'},
+			def_color: {type: String, default:'#000000'},
+			opacity: {type: String, min:'0%' , default:'100%'},
 			calculation: {type: String, enum: ['average', 'summary', 'lastvalue'], default:'lastvalue'},
-			data_range_minute: {type: Number, min:0 , default:60},
 			data: {type: Number, default:0}
 		}
 );

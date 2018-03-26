@@ -215,8 +215,12 @@ exports.sensor_update_post = [
 
         // Extract the validation errors from a request .
         const errors = validationResult(req);
-
+        var opacity = "100%";
     // Create a genre object with escaped and trimmed data (and the old id!)
+    	if (req.body.amount)
+    	{	
+    		opacity = req.body.amount;
+    	}
         	var sensor = new Sensor(
 	          { 
 	          	_id: req.params.id,
@@ -229,9 +233,14 @@ exports.sensor_update_post = [
 	          	data_range_minute: req.body.range,
 	          	max_color: req.body.max_col_val,
 	          	min_color: req.body.min_col_val,
-	          	data: req.body.data
+	          	data: req.body.data,
+	          	opacity: opacity,
+	          	def_color: req.body.default_color
 	          }
 	        );
+
+	        console.log("AMOUNT " + opacity);
+	        //console.log("DEFAULT COLOR " + req.body.default_color);
 
         if (!errors.isEmpty()) {
             // There are errors. Render the form again with sanitized values and error messages.
