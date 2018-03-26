@@ -53,6 +53,7 @@ exports.data_create_get = [
 						{
 							if(errs) { return next(errs);}
 								var start = new Date(new Date().getTime() - (sensor_detail.data_range_minute * 60 * 1000));
+								//console.log('DATA');
 								Data.find({ "date": { "$lte": start } }).select("date _id").exec(function(err,data_details){
 									if(err) { return next(err);}
 									console.log('paling lama :'+ data_details);

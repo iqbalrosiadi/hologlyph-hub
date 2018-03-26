@@ -13,6 +13,7 @@ var SensorSchema = new Schema(
 			max_color: {type: String, default:'#ff0000'},
 			min_color: {type: String, default:'#008000'},
 			def_color: {type: String, default:'#000000'},
+			data_range_minute: {type: Number, default:60},
 			opacity: {type: String, min:'0%' , default:'100%'},
 			calculation: {type: String, enum: ['average', 'summary', 'lastvalue'], default:'lastvalue'},
 			data: {type: Number, default:0}
