@@ -25,6 +25,18 @@ exports.sensor_list = function(req, res, next) {
 };
 
 // Display list of device
+exports.sensor_code = function(req, res, next) {
+	async.parallel({
+		sensor_detail: function(callback){
+			Sensor.findById(req.params.id).populate('device').exec(callback);
+		}
+	}, function(err, sensors){
+		if (err) { return next(err); }
+		res.render('sensor_code', { title: 'Embedded Code for Arduino', sensor: sensors.sensor_detail});
+	});
+};
+
+// Display list of device
 exports.sensor_detail = function(req, res, next) {
 	async.parallel({
 		sensor_detail: function(callback){
@@ -216,11 +228,18 @@ exports.sensor_update_post = [
         // Extract the validation errors from a request .
         const errors = validationResult(req);
         var opacity = "100%";
+        var set_size = "0.5";
     // Create a genre object with escaped and trimmed data (and the old id!)
     	if (req.body.amount)
     	{	
     		opacity = req.body.amount;
     	}
+
+    	if (req.body.amountsize)
+    	{	
+    		set_size = req.body.amountsize;
+    	}
+    	
         	var sensor = new Sensor(
 	          { 
 	          	_id: req.params.id,
@@ -235,11 +254,12 @@ exports.sensor_update_post = [
 	          	min_color: req.body.min_col_val,
 	          	data: req.body.data,
 	          	opacity: opacity,
-	          	def_color: req.body.default_color
+	          	def_color: req.body.default_color,
+	          	set_size:set_size
 	          }
 	        );
 
-	        console.log("AMOUNT " + opacity);
+	        console.log("AMOUNTSIZE " + req.body.amountsize);
 	        //console.log("DEFAULT COLOR " + req.body.default_color);
 
         if (!errors.isEmpty()) {

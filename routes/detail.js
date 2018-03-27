@@ -62,6 +62,9 @@ router.post('/sensor/:id/update', sensor_controller.sensor_update_post);
 // GET request for one sensor.
 router.get('/sensor/:id', sensor_controller.sensor_detail);
 
+// GET request for one sensor.
+router.get('/sensor/code/:id', sensor_controller.sensor_code);
+
 // GET request for list of all sensor items.
 router.get('/sensors', sensor_controller.sensor_list);
 

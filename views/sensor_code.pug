@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  h1=title
+
+  p copy this source code to your arduino script
+  .pre
+  p.listingname //include this header to your arduino code
+  p.listingname #include "SPI.h"
+  p.listingname #include "HttpClient.h"
+  p.listingname #include "Bridge.h"
+  p.listingname String webserver_name = "your server link";
+  p.listingname 
+  p.listingname void setup()
+  p.listingname { } //fill this with your own arduino code
+  p.listingname 
+  p.listingname //copy this function to your arduino
+  p.listingname void posting_data(String sensor, String sensor_value)
+  p.listingname {
+  p.listingname aclient.get("http://"+webserver_name+"/detail/data/create/"+sensor+"/"+sensor_value);
+  p.listingname }
+  p.listingname 
+  p.listingname void loop()
+  p.listingname {
+  p.listingname 
+  p.listingname //put it on the last line of your code in loop function
+  p.listingname //change variable temp below with your sensor variable
+  p.listingname posting_data("#{sensor._id}", String(temp));
+  p.listingname }
+
+  
+
+
+  style.
+    .bigred 
+    { 
+    font-size: 1.5em;
+    color: red; 
+    }
+    .italic
+    {
+     font-style: italic;
+    }
+    .listingname 
+    { 
+    font-size: 1.5em;
+    font-family: "Courier New";
+    padding-bottom: -11px;
+    }
+    .redish 
+    { 
+    color: red; 
+    }

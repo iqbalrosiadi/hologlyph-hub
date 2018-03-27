@@ -16,29 +16,30 @@ block content
             option(value=glyph.glyph_name selected=(sensor.glyph==glyph.glyph_name ? 'selected' : false)) #{glyph.glyph_name}
           else
             option(value=glyph.glyph_name) #{glyph.glyph_name}
-
-    div.form-group
-      label(for='channel') Channel:
-      select#channel.form-control(type='select' placeholder='Select status' name='channel' required='true')
-        for channel in channel_list
-          if sensor
-            option(value=channel.channel_name selected=(sensor.channel==channel.channel_name ? 'selected' : false)) #{channel.channel_name}
-          else
-            option(value=channel.channel_name) #{channel.channel_name}
-
-
+    br
+    hr
     .contentBox
         .block
           .row
             .col-sm-6
               div.form-group
+                label(for='channel') Channel:
+                select#channel.form-control(type='select' placeholder='Select status' name='channel' required='true')
+                  for channel in channel_list
+                    if sensor
+                      option(value=channel.channel_name selected=(sensor.channel==channel.channel_name ? 'selected' : false)) #{channel.channel_name}
+                    else
+                      option(value=channel.channel_name) #{channel.channel_name}
+
+            .col-sm-6
+              div.form-group
                 label(for='default_color') Default Color :
                 .input-group(class='colorpicker-component' id='default_color')
-                  input#default_color.form-control(type='text' class='input-lg' name='default_color' placeholder='Set maximum value of your data, 10, 13, 300, etc' required='true' value=(undefined===sensor ? '#85a3ff' : sensor.def_color))
+                  input#default_color.form-control(type='text' class='input-lg' style="height:35px;" name='default_color' placeholder='Set maximum value of your data, 10, 13, 300, etc' required='true' value=(undefined===sensor ? '#9eebcd' : sensor.def_color))
                   span.input-group-addon#basic-addon2 Choose Colour 
                     i 
                 script(type="text/javascript") $(function (){ $('#default_color').colorpicker() });
-
+          .row
             .col-sm-6
               div.form-group
                 label(for='opacity') Opacity of the Mark :
@@ -69,6 +70,37 @@ block content
                     span(style="display:inline-block;width: 3%;text-align:right;") 100%
                       br
                 script(type="text/javascript") $( function() {$( "#slider" ).slider({ value:100, min: 0,max:100, step: 10, slide: function( event, ui ) { $( "#amount" ).val(ui.value + "%");}});});
+
+            .col-sm-6
+              div.form-group
+                label(for='size') Size of the Object :
+                .input-group(class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id='opacity')
+                  input#amountsize.form-control(type='text' name='amountsize' placeholder='0.5'  style="border: 0 none;border-radius: 5px 5px 5px 5px;padding-left: 5px;width: 50px;")
+                div#slider2(class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all")
+                div(class='steps')
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 6%;") 0
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 0.5
+                      br                      
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 7%;") 
+                      br
+                    span(style="display:inline-block;width: 3%;text-align:left;margin-right: 5%;") 
+                      br                 
+                    span(style="display:inline-block;width: 3%;text-align:right;") 2
+                      br
+                script(type="text/javascript") $( function() {$( "#slider2" ).slider({ value:0.5, min: 0,max:1, step: 0.1, slide: function( event, ui ) { $( "#amountsize" ).val(ui.value);}});});
 
           .row
             .col-sm-6
