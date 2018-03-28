@@ -15,8 +15,8 @@ block content
 					each val in list_devices
 						tr
 							td
-								div(style='max-width: 750px;')
-									.col-sm-6
+								div(style='max-width: 1080px;')
+									.col-sm-6(style='margin-right:-200px;') 
 										h5 Assigned tag marker: #{val.marker}
 										.image-block
 												img.image(src='/marker/' + val.marker+'.png' width="225" height="225" alt="Marker")
@@ -41,7 +41,10 @@ block content
 
 										br
 										br
-										a(href='device/'+val._id)(style='margin-right:10px;')
+										a(href='device/'+val._id+'/addsensor')(style='margin-right:10px;') 
+											button.btn.btn-success (+) Add New Sensor 
+										|  
+										a(href='device/'+val._id)(style='margin-right:10px;') 
 											button.btn.btn-primary View Device Detail 
 										| 
 										a(href='device/'+val._id+'/update') 
