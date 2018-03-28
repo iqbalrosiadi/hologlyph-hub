@@ -15,7 +15,7 @@ block content
 					each val in list_devices
 						tr
 							td
-								div(style='max-width: 700px;')
+								div(style='max-width: 750px;')
 									.col-sm-6
 										h5 Assigned tag marker: #{val.marker}
 										.image-block
@@ -24,10 +24,20 @@ block content
 										a(href=val.url)
 											h2 #{val.device_name}
 										h4.italic Number of sensor: #{val.sensor.length}
+										if (val.as_one_glyph == '1')
+											img.image(src='/glyph/' + val.glyph+'.png' width="50" height="50" alt="Marker")
+										if (val.as_one_glyph == '1')
+											h5.italic Visualizing multiple sensor as a one mark #{val.glyph}
+										else
+											h5.italic Visualizing multiple sensor for multiple marks
 										each val_sensor in val.sensor
 											h5 
 												li
-													a(href=val_sensor.url) #{val_sensor.sensor_name} Sensor
+													if (val.as_one_glyph == '0')
+														img.image(src='/glyph/' + val_sensor.glyph+'.png' width="50" height="50" alt="Marker")
+														a(href=val_sensor.url)  #{val_sensor.glyph} : #{val_sensor.sensor_name} Sensor on (#{val_sensor.channel})
+													else
+														a(href=val_sensor.url) #{val_sensor.sensor_name} Sensor assigned to channel : #{val_sensor.channel}
 
 										br
 										br

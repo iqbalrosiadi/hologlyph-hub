@@ -22,12 +22,20 @@ block content
 												img.image(src='/marker/' + val.device.marker+'.png' width="225" height="225" alt="Marker")
 
 									.col-sm-6(style='margin-left:-130px;')
+										
 										a(href=val.url)
 											h2 #{val.sensor_name} Sensor 
 										h4.bold ID Sensor: #{val._id}
 										h4.bold Device Name: 
 											a(href=val.device.url) #{val.device.device_name}
 										p.listingname Current aggegated Value: #{val.data} | Aggregation type: #{val.calculation}
+										if (val.device.as_one_glyph == '0')
+											h5 Visualized as a Single Mark to (#{val.channel})
+											img.image(src='/glyph/' + val.glyph+'.png' width="50" height="50" alt="Marker")
+										else
+											h5 Visualized to One Mark to (#{val.channel})
+											img.image(src='/glyph/' + val.device.glyph+'.png' width="50" height="50" alt="Marker")
+										br
 										br
 
 										a(href='sensor/'+val._id)(style='margin-right:10px;')
