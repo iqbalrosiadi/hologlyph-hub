@@ -207,7 +207,7 @@ exports.sensor_update_get = function(req, res, next) {
         }
         // Success.
         console.log(" SENSOR DATA "+sensor.sensor.data);
-        res.render('sensor_form', { title: 'Update Sensor', 
+        res.render('sensor_form', { title: 'Costumize AR Visualisation', 
         	sensor: sensor.sensor, mark_list: sensor.glyphs, 
         	channel_list: sensor.channel, errors: err });
     });
@@ -217,10 +217,10 @@ exports.sensor_update_get = function(req, res, next) {
 exports.sensor_update_post = [
    
     // Validate that the name field is not empty.
-    body('sensor_name', 'Sensor name required').isLength({ min: 1 }).trim(),
+    //body('sensor_name', 'Sensor name required').isLength({ min: 1 }).trim(),
     
     // Sanitize (trim and escape) the name field.
-    sanitizeBody('sensor_name').trim().escape(),
+    //sanitizeBody('sensor_name').trim().escape(),
 
     // Process request after validation and sanitization.
     (req, res, next) => {
@@ -270,12 +270,7 @@ exports.sensor_update_post = [
         return;
         }
         else {
-            // Data from form is valid. Update the record.
-            Sensor.findByIdAndUpdate(req.params.id, sensor, {}, function (err,thechannel) {
-                if (err) { return next(err); }
-                   // Successful - redirect to channel detail page.
-                   res.redirect(thechannel.url);
-                });
+            res.redirect('/');
         }
     }
 ];

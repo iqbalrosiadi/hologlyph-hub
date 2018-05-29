@@ -14,31 +14,6 @@ html(lang='en')
     script(src='/dist/js/bootstrap-colorpicker.js')
 
 
-  body
-    div(class='container-fluid')
-      div(class='row')
-        div(class='col-sm-2')
-          br
-          br
-          block sidebar
-            ul(class='sidebar-nav')
-              li 
-                a(href='/') Home
-              li 
-                a(href='/detail/devices') List All Devices
-              li 
-                a(href='/detail/sensors') List All Sensors
-              li 
-                a(href='/detail/markers') Configuring Markers
-              li 
-                a(href='/detail/glyphs') Configuring Marks
-              li 
-                a(href='/detail/channels') Configuring Channels
-                hr
-              a(href='/detail/device/create') 
-                button.btn.btn-success (+) Register New Device
-
- 
-                
-        div(class='col-sm-10')
+  body            
+    div(class='col-sm-10')
             block content

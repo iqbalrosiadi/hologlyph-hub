@@ -6,10 +6,10 @@ block content
   form(method='POST' action='')
     div.form-group
       label(for='sensor_name') Sensor Name:
-      input#sensor_name.form-control(type='text' placeholder='Set sensor name' name='sensor_name' required='true' value=(undefined===sensor ? '' : sensor.sensor_name))
+      input#sensor_name.form-control(type='text' placeholder='Set sensor name' name='sensor_name' disabled value=(undefined===sensor ? '' : sensor.sensor_name))
 
     div.form-group
-      label(for='glyph') Mark:
+      label(for='glyph') AR 3D Model:
       select#glyph.form-control(type='select' placeholder='Select status' name='glyph' required='true')
         for glyph in mark_list
           if sensor
@@ -101,26 +101,27 @@ block content
                     span(style="display:inline-block;width: 3%;text-align:right;") 1
                       br
                 script(type="text/javascript") $( function() {$( "#slider2" ).slider({ value:0.5, min: 0,max:1, step: 0.1, slide: function( event, ui ) { $( "#amountsize" ).val(ui.value);}});});
-
+          br
+          br
+          p.listingname Disabled Function
+          hr
           .row
             .col-sm-6
               div.form-group
                 label(for='min_val') Minimum Value:
-                input#min_val.form-control(type='text' style="height:35px;" placeholder='Set minimum value of your sensor data, 10, 13, 300, etc'  name='min_val'        required='true' value=(undefined===sensor ? '' : sensor.min_val))
+                input#min_val.form-control(type='text' style="height:35px;" placeholder='Set minimum value of your sensor data, 10, 13, 300, etc'  name='min_val' disabled value=(undefined===sensor ? '' : sensor.min_val))
   
             .col-sm-6
               div.form-group
                 label(for='max_val') Maximum Value:
-                input#max_val.form-control(type='text' style="height:35px;" placeholder='Set maximum value of your data, 10, 13, 300, etc'  name='max_val' required='true' value=(undefined===sensor ? '' : sensor.max_val))
-
-
+                input#max_val.form-control(type='text' style="height:35px;" placeholder='Set maximum value of your data, 10, 13, 300, etc'  name='max_val' disabled value=(undefined===sensor ? '' : sensor.max_val))
 
           .row
             .col-sm-6
               div.form-group
                 label(for='min_col_val') Color Minimum Value:
                 .input-group(class='colorpicker-component' id='min_col_val')
-                  input#min_col_val.form-control(type='text' class='input-lg' name='min_col_val' placeholder='Set maximum value of your data, 10, 13, 300, etc' required='true' value=(undefined===sensor ? '#0dff0d' : sensor.min_color))
+                  input#min_col_val.form-control(type='text' class='input-lg' name='min_col_val' placeholder='Set maximum value of your data, 10, 13, 300, etc' required='true' disabled value=(undefined===sensor ? '#0dff0d' : sensor.min_color))
                   span.input-group-addon#basic-addon2 Choose Colour 
                     i 
                 script(type="text/javascript") $(function (){ $('#min_col_val').colorpicker() });
@@ -129,7 +130,7 @@ block content
               div.form-group
                 label(for='max_col_val') Color Maximum Value:
                 .input-group(class='colorpicker-component' id='max_col_val')
-                  input#max_col_val.form-control(type='text' class='input-lg' name='max_col_val' placeholder='Set maximum value of your data, 10, 13, 300, etc' required='true' value=(undefined===sensor ? '#ff0707' : sensor.max_color))
+                  input#max_col_val.form-control(type='text' class='input-lg' name='max_col_val' placeholder='Set maximum value of your data, 10, 13, 300, etc' required='true' disabled value=(undefined===sensor ? '#ff0707' : sensor.max_color))
                   span.input-group-addon#basic-addon2 Choose Colour 
                     i 
                 script(type="text/javascript") $(function (){ $('#max_col_val').colorpicker() });
@@ -139,13 +140,13 @@ block content
               div.form-group
                 label(for='range') Range data in minutes to be visualized:
                 .input-group
-                  input#range.form-control(type='text' placeholder='Set maximum value of your data, 10, 13, 300, etc'  name='range' required='true' value=(undefined===sensor ? '' : sensor.data_range_minute) aria-describedby="basic-addon2")
+                  input#range.form-control(type='text' placeholder='Set maximum value of your data, 10, 13, 300, etc'  disabled name='range' required='true' value=(undefined===sensor ? '' : sensor.data_range_minute) aria-describedby="basic-addon2")
                   span.input-group-addon#basic-addon2 minutes
   
             .col-sm-6
               div.form-group
                 label(for='calculation') Calculation:
-                select#calculation.form-control(type='text' placeholder='Set sensor name'  name='calculation'         required='true' value=(undefined===sensor ? '' : sensor.calculation))
+                select#calculation.form-control(type='text' placeholder='Set sensor name'  name='calculation'  disabled value=(undefined===sensor ? '' : sensor.calculation))
                         option(value='lastvalue') Last Value
                         option(value='average') Average
                         option(value='summary') Summary
@@ -154,5 +155,14 @@ block content
               if sensor
                 input#data.form-control(type='hidden' name='data' value=sensor.data)
 
+    hr
+    br
+    button.btn.btn-success(type='submit') Save Configuration
+    
+    a(href='/') 
+      button.btn.btn-danger Cancel
 
-    button.btn.btn-primary(type='submit') Submit
+    br
+    br
+    br
+    br

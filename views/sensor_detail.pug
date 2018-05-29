@@ -70,16 +70,8 @@ block content
       .block
         .row
           .col-sm-6
-            a(href='/detail/sensor/code/'+ sensor._id) 
-              button.btn.btn-success Generate code for arduino
-            br
-            br
             p.listingname 
               a(href=sensor.url+'/update') Edit Sensor 
-              | |
-              a(href='/detail/data/'+sensor._id+'/delete')  Clear All #{sensor.sensor_name} Sensor Data  
-              | | 
-              a(href=sensor.url+'/delete').redish  Delete Sensor 
                   
 
   hr

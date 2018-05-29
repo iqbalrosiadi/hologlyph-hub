@@ -26,9 +26,8 @@ block content
 										a(href=val.url)
 											h2 #{val.sensor_name} Sensor 
 										h4.bold ID Sensor: #{val._id}
-										h4.bold Device Name: 
-											a(href=val.device.url) #{val.device.device_name}
-										p.listingname Current aggegated Value: #{val.data} | Aggregation type: #{val.calculation}
+										p.listingname Current aggegated Value: #{val.data}
+										p.listingname Aggregation type: #{val.calculation}
 										if (val.device.as_one_glyph == '0')
 											h5 Visualized as a Single #{val.glyph} Mark to channel (#{val.channel})
 											img.image(src='/glyph/' + val.glyph+'.png' width="50" height="50" alt="Marker")
@@ -38,14 +37,11 @@ block content
 										br
 										br
 
-										a(href='sensor/'+val._id)(style='margin-right:10px;')
+										a(href='detail/sensor/'+val._id)(style='margin-right:10px;')
 											button.btn.btn-primary View Sensor Detail 
 										| 
-										a(href='sensor/'+val._id+'/update') 
-											button.btn.btn-primary Edit Sensor Detail
-										| 
-										a(href='/detail/sensor/code/'+ val._id style='margin-top:130px;') 
-											button.btn.btn-success Generate code for arduino 
+										a(href='detail/sensor/'+val._id+'/update') 
+											button.btn.btn-primary Edit AR Visualisation
 
 					else
 						tr
