@@ -42,7 +42,7 @@ table tr td {
   padding: 0.5rem 0.625rem 0.625rem;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 100px) {
   thead tr th {
     display: none;
   }
