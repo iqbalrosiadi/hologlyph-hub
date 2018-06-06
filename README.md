@@ -1,2 +1,2 @@
 # hologlyph-hub
-This is for Degree Show
+This is the 2nd version
