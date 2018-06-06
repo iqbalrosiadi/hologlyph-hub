@@ -1,3 +1,3 @@
 module.exports = {
-    url: 'mongodb://holoroot:babibubebo@ds113849.mlab.com:13849/local_hologlyph'
+    url: 'mongodb://holovertwo:Holover2@ds245478.mlab.com:45478/hologlyph_2'
 }
