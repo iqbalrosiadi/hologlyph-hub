@@ -36,7 +36,7 @@ exports.data_create_get = [
 	          }
 	        );
 
-		console.log("name of the channel before " + data.value);
+		console.log("name of the channel before " + data._id);
 
 		if (!errors.isEmpty()) {
 			res.send('Data is not complete');
@@ -63,62 +63,11 @@ exports.data_create_get = [
 											data.save(function (err){
 												if(err) { return next(err);}
 												//console.log('blaabla');
-												if(sensor_detail.calculation == 'summary'){
-													Data.aggregate([
-												        {$match: { 
-												        		"date": { "$gte": start },
-												        		"sensor": sensor_detail._id
-												    			}},
-												        {$group: {
-												        	_id: '$sensor',
-												        	average: {$sum: '$value'}
-												        }}
-												    ], function (err, result) {
-														if(err) { return next(err);}
-														Sensor.findByIdAndUpdate(sensor_detail._id, {data: result[0].average} , function (err, hasil) {
+														Sensor.findByIdAndUpdate(sensor_detail._id, {$push: {"data": data._id}}  , function (err, hasil) {
 												            if (errors) { return next(errors);}
-															res.send('Data is saved ini '+ result[0].average);
+															res.send('Data is saved ini ');
 												            
 												        });
-														
-													});
-												}
-
-												if(sensor_detail.calculation == 'average'){
-													Data.aggregate([
-												        {$match: { 
-												        		"date": { "$gte": start },
-												        		"sensor": sensor_detail._id
-												    			}},
-												        {$group: {
-												        	_id: '$sensor',
-												        	average: {$avg: '$value'}
-												        }}
-												    ], function (err, result) {
-														if(err) { return next(err);}
-														Sensor.findByIdAndUpdate(sensor_detail._id, {data: result[0].average} , function (err, hasil) {
-												            if (errors) { return next(errors);}
-															res.send('Data is saved ini '+ result[0].average);
-												            
-												        });
-														
-													});
-												}
-
-
-												if(sensor_detail.calculation == 'lastvalue'){
-													Data.findOne({'sensor': sensor_detail._id})
-													.sort({date: -1})
-													.exec(function(err, result) { 
-														if(err) { return next(err);}
-														Sensor.findByIdAndUpdate(sensor_detail._id, {data: result.value} , function (err, hasil) {
-												            if (err) { return next(err);}
-															res.send('Data is saved ini '+ result.value);
-												            
-												        });
-													});
-												}
-
 												});
 										});    
 								});
@@ -159,7 +108,7 @@ exports.data_create_post = [
 	          }
 	        );
 
-		console.log("name of the channel before " + data.value);
+		console.log("name of the channel befores " + data._id);
 
 		if (!errors.isEmpty()) {
 			res.send('Data is not complete');
@@ -185,63 +134,12 @@ exports.data_create_post = [
 											if(errors) { return next(errors);}
 											data.save(function (err){
 												if(err) { return next(err);}
-												//console.log('blaabla');
-												if(sensor_detail.calculation == 'summary'){
-													Data.aggregate([
-												        {$match: { 
-												        		"date": { "$gte": start },
-												        		"sensor": sensor_detail._id
-												    			}},
-												        {$group: {
-												        	_id: '$sensor',
-												        	average: {$sum: '$value'}
-												        }}
-												    ], function (err, result) {
-														if(err) { return next(err);}
-														Sensor.findByIdAndUpdate(sensor_detail._id, {data: result[0].average} , function (err, hasil) {
+												console.log('blaabla');
+														Sensor.findByIdAndUpdate(sensor_detail._id, {$push: {"data": data._id}} , function (err, hasil) {
 												            if (errors) { return next(errors);}
 															res.send('Data is saved ini '+ result[0].average);
 												            
 												        });
-														
-													});
-												}
-
-												if(sensor_detail.calculation == 'average'){
-													Data.aggregate([
-												        {$match: { 
-												        		"date": { "$gte": start },
-												        		"sensor": sensor_detail._id
-												    			}},
-												        {$group: {
-												        	_id: '$sensor',
-												        	average: {$avg: '$value'}
-												        }}
-												    ], function (err, result) {
-														if(err) { return next(err);}
-														Sensor.findByIdAndUpdate(sensor_detail._id, {data: result[0].average} , function (err, hasil) {
-												            if (errors) { return next(errors);}
-															res.send('Data is saved ini '+ result[0].average);
-												            
-												        });
-														
-													});
-												}
-
-
-												if(sensor_detail.calculation == 'lastvalue'){
-													Data.findOne({'sensor': sensor_detail._id})
-													.sort({date: -1})
-													.exec(function(err, result) { 
-														if(err) { return next(err);}
-														Sensor.findByIdAndUpdate(sensor_detail._id, {data: result.value} , function (err, hasil) {
-												            if (err) { return next(err);}
-															res.send('Data is saved ini '+ result.value);
-												            
-												        });
-													});
-												}
-
 												});
 										});    
 								});

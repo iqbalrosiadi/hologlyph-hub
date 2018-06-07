@@ -12,9 +12,13 @@ const { sanitizeBody } = require('express-validator/filter');
 
 exports.index = function(req, res, next) {
     Device.find()
-	.populate({
+	/*.populate({
 		path: 'sensor',
 		populate: 'data'
+	})*/
+	.populate({
+		path: 'sensor',
+		populate: { path: 'data' }
 	})
 	.exec(function(err, list_devices){
 		if (err) { return next(err); }

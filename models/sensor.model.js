@@ -17,7 +17,7 @@ var SensorSchema = new Schema(
 			set_size: {type: String, default:'0.5'},
 			opacity: {type: String, min:'0%' , default:'100%'},
 			calculation: {type: String, enum: ['average', 'summary', 'lastvalue'], default:'lastvalue'},
-			data: {type: Number, default:0}
+			data: [{type: Schema.ObjectId, ref: 'Data'}]
 		}
 );
 
