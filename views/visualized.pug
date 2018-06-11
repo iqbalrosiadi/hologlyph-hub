@@ -1,1 +1,70 @@
-!=list_devices
+extends layout
+
+block content
+    each val, idx in list_devices
+        div
+            h3 #{val.device_name} 
+                a(href='detail/device/'+val._id+'/addsensor')(style='margin-right:10px; font-size:10px') (+) add sensor
+            div(class="box" style=" display: flex; align-items: stretch; flex-wrap: wrap; border-bottom: 2px solid red; background-color: #F5F5F5;")
+                each sensor, index in val.sensor
+                    div(style="position: relative; border: 1px solid #C0C0C0; border-radius:2px; margin:5px; margin-bottom:15px; background-color: white;")
+                        div(class="chart-container" style="position: relative; height:100px; width:200px;")
+                            canvas(id=sensor._id)
+                        h6(style="margin:5px") 
+                            b #{sensor.sensor_name}
+                        h6(style="margin:5px; font-size:10px;") (id: #{sensor._id})
+                        h6(style="margin:5px; margin-top:0px; font-size:8px;") last data update: #{sensor.last_input_date}
+                        div(style="margin:5px; text-align: right")
+                            p
+                                a(href='detail/device/'+sensor._id+'/edit')(style='font-size:10px') Edit |  
+                                |
+                                a(href='detail/device/'+sensor._id+'/delete')(style='font-size:10px; color:red') Delete    
+
+                        script(type="text/javascript"). 
+                            var ctx = document.getElementById("#{sensor._id}").getContext('2d');
+                            Chart.defaults.global.legend.display = false;
+                            Chart.defaults.global.defaultFontSize = 10;
+                            var MyChart = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: ["1", "2", "3", "4", "5", "6","7","8","9","10"],
+                                    datasets: [{
+                                        label: '#{sensor.sensor_name}',
+                                        data: [#{sensor.data}],
+                                        fill: false,
+                                        pointRadius:0,
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(0,128,0,1)'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    maintainAspectRatio: false,
+                                    title: {
+                                          display: true,
+                                          text: '#{sensor.sensor_name}'
+                                    },
+                                    scales: {
+                                            yAxes: [{
+                                              //stacked: true,
+                                              gridLines: {
+                                                display: true,
+                                                color: "rgba(255,99,132,0.2)"
+                                              }
+                                            }],
+                                            xAxes: [{
+                                              gridLines: {
+                                                display: true
+                                              }
+                                            }]
+                                          }
+                                }
+                            });
+    div(style="margin:10px; text-align: right;")
+        a(href='device/addsensor')
+            button.btn.btn-success (+) Add New Microcontroller
+    br

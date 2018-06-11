@@ -1,0 +1,32 @@
+.box {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  border: 2px solid black;
+}
+     
+.inside {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  border-radius:10px;
+} 
+
+<div class="box">
+  <div class="inside">One</div>
+  <div>Two</div>
+  <div>Three
+    <br>has
+    <br>extra
+    <br>text
+  </div>
+<div>Two</div>
+<div>Two</div>
+<div>Two</div>
+<div>Two</div>
+<div>Two</div>
+<div>Two</div>
+<div>Two</div>
+</div>
+      

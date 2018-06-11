@@ -12,17 +12,67 @@ const { sanitizeBody } = require('express-validator/filter');
 
 exports.index = function(req, res, next) {
     Device.find()
-	/*.populate({
-		path: 'sensor',
-		populate: 'data'
-	})*/
+	.select('device_name _id')
 	.populate({
 		path: 'sensor',
-		populate: { path: 'data' }
+		populate: { 
+			path: 'data',
+			select: '_id value date'
+
+		},
+		select: 'sensor_name _id'
 	})
 	.exec(function(err, list_devices){
 		if (err) { return next(err); }
-		res.render('visualized', { title: 'Registered Device', list_devices: JSON.stringify( list_devices, undefined, 4 )});
+
+		
+		var obj = "[" ;
+		//obj.device = [];
+		var i;
+		
+		for(i=0; i<list_devices.length; i++)
+		{
+			obj=obj+"{";
+
+			var j;
+			obj=obj+'"sensor":[';
+			for(j=0; j<list_devices[i].sensor.length; j++)
+			{
+				var k;
+				obj=obj+"{";
+				obj=obj+'"sensor_name":"'+list_devices[i].sensor[j].sensor_name+'",';
+				obj=obj+'"_id":"'+list_devices[i].sensor[j]._id+'",';
+				obj=obj+'"data":[';
+				for(k=0; k<list_devices[i].sensor[j].data.length; k++)
+				{
+					obj=obj+list_devices[i].sensor[j].data[k].value;
+					if(k!=(list_devices[i].sensor[j].data.length-1)){obj=obj+",";}
+				}
+				obj=obj+"]";
+				//console.log(list_devices[i].sensor[j].data.length);
+				if(list_devices[i].sensor[j].data.length!=0)
+				{
+					//let date = new Date(list_devices[i].sensor[j].data[k-1].value);
+					obj=obj+',"last_input_date":"'+list_devices[i].sensor[j].data[k-1].date+'"';
+				}
+				//obj=obj+',"datee":"'+list_devices[i].sensor[j].data[k].value+'"';
+				obj=obj+"}";
+				if(j!=(list_devices[i].sensor.length-1)){obj=obj+",";}
+			} 
+			obj=obj+'],';
+			//console.log(list_devices[i].sensor[0].dataset);
+			obj=obj+'"_id":"'+list_devices[i]._id+'",';
+			obj=obj+'"device_name":"'+list_devices[i].device_name+'"';
+			obj=obj+"}";
+			if(i!=(list_devices.length-1)){obj=obj+",";}
+
+		}
+		//console.log(list_devices[0].sensor[1].dataset);
+		obj= obj+"]";
+		var dataset = JSON.parse(obj);
+		//console.log(blabla[0].sensor[0].data);
+		//JSON.stringify( blabla, undefined, 4 )
+		res.render('visualized', { title: 'Registered Device', list_devices: dataset});
 	});
 
 };

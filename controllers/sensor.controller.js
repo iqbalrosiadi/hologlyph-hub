@@ -60,10 +60,16 @@ exports.sensor_create_get = function(req, res, next) {
 		glyphs: function(callback){ 
 			Glyph.find(callback);
 		},
+		marker: function(callback){ 
+			Marker.find(callback);
+		},
+		sensor: function(callback){ 
+			Sensor.find(callback);
+		},
 	}, function(err, results){
 		if (err) { return next(err); }
-        res.render('sensor_form', { title: 'Add a New Sensor', 
-        	channel_list: results.channels, mark_list: results.glyphs, errors: err });
+        res.render('sensor_form', { title: 'Create a New Glyph', 
+        	channel_list: results.channels, mark_list: results.sensor, marker_list: results.marker, errors: err });
 
 	});
 };
@@ -195,7 +201,9 @@ exports.sensor_update_get = function(req, res, next) {
 			Channel.find(callback);
 		},
 		sensor: function(callback){ 
-			Sensor.findById(req.params.id).exec(callback);
+			Sensor.findById(req.params.id)
+			.populate('data')
+			.exec(callback);
 		},
 	},
 		function(err, sensor) {
@@ -206,7 +214,10 @@ exports.sensor_update_get = function(req, res, next) {
             return next(err);
         }
         // Success.
-        console.log(" SENSOR DATA "+sensor.sensor.data);
+
+
+        //console.log(" SENSOR DATA "+sensor.sensor.data.length);
+        console.log(" SENSOR DATA "+sensor.sensor);
         res.render('sensor_form', { title: 'Costumize AR Visualisation', 
         	sensor: sensor.sensor, mark_list: sensor.glyphs, 
         	channel_list: sensor.channel, errors: err });
