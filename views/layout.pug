@@ -15,6 +15,29 @@ html(lang='en')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js')
 
 
-  body            
-    div(class='col-sm-10')
+  body
+    div(class='container-fluid')
+      div(class='row')
+        div(class='col-sm-2')
+          br
+          br
+          block sidebar
+            ul(class='sidebar-nav' style='font-size:13px')
+              li 
+                a(href='/') Home
+              li 
+                a(href='/detail/glyph/create') Glyph and Chart List
+              li 
+                a(href='/detail/glyph/create') Create New Single Glyph
+              li 
+                a(href='/detail/glyph/create') Create New Bar Chart
+              li 
+                a(href='/detail/glyph/create') Create New Line Chart
+              li 
+                a(href='/detail/glyph/create') Create New Scatterd Plot
+                hr
+
+ 
+                
+        div(class='col-sm-10')
             block content

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var sensor_controller = require('../controllers/sensor.controller.js');
+var device_controller = require('../controllers/device.controller.js');
 
 // GET home page.
 /*
@@ -11,6 +11,6 @@ router.get('/', function(req, res) {
 }); */
 
 // GET request for list of all device items.
-router.get('/', sensor_controller.sensor_list);
+router.get('/', device_controller.index);
 
 module.exports = router;

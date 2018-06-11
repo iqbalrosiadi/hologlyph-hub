@@ -2,7 +2,7 @@ extends layout
 
 block content
     each val, idx in list_devices
-        div
+        div(style="margin:20px")
             h3 #{val.device_name} 
                 a(href='detail/device/'+val._id+'/addsensor')(style='margin-right:10px; font-size:10px') (+) add sensor
             div(class="box" style=" display: flex; align-items: stretch; flex-wrap: wrap; border-bottom: 2px solid red; background-color: #F5F5F5;")
