@@ -44,6 +44,9 @@ router.get('/devices', device_controller.device_list);
 // GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
 router.get('/device/:id/addsensor', sensor_controller.sensor_create_get);
 
+// GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
+router.get('/glyph/create', sensor_controller.sensor_create_get);
+
 // POST request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
 router.post('/device/:id/addsensor', sensor_controller.sensor_create_post);
 
