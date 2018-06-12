@@ -1,0 +1,65 @@
+extends layout
+
+block content
+  h3=title
+  div(style="margin-left: auto; margin-right: auto; background-color: #F5F5F5; border-bottom: 2px solid red;")
+    form(method='POST' action='')
+      div(style="padding: 30px;")
+        div.form-group
+          label(for='sensor_name') Glyph Name:
+          input#sensor_name.form-control(type='text' placeholder='Set sensor name' name='sensor_name' required='false' value=(undefined===sensor ? '' :  sensor.sensor_name))
+  
+        div.form-group
+          label(for='glyph') Marker:
+          select#glyph.form-control(type='select' placeholder='Select status' name='glyph' required='false')
+            for glyph in marker_list
+              if sensor
+                option(value=glyph.marker_name selected=(sensor.glyph==glyph.marker_name ? 'selected' : false)) #{glyph.marker_name}
+              else
+                option(value=glyph.marker_name) #{glyph.marker_name}
+
+        div.form-group
+          label(for='glyph') Chart Type:
+          select#glyph.form-control(type='select' placeholder='Select status' name='glyph' required='false')
+            for glyph in marker_list
+              if sensor
+                option(value=glyph.marker_name selected=(sensor.glyph==glyph.marker_name ? 'selected' : false)) #{glyph.marker_name}
+              else
+                option(value=glyph.marker_name) #{glyph.marker_name}
+
+        hr
+        .contentBox
+            .block
+              .row
+                  .col-sm-2
+                      div.form-group
+                        label(for='glyph') Sensor :
+                        select#glyph.form-control(type='select'  placeholder='Select status' name='glyph' required='false' style="width:130px;")
+                          for glyph in mark_list
+                            if sensor
+                              option(value=glyph.sensor_name selected=(sensor.glyph==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
+                            else
+                              option(value=glyph.sensor_name) #{glyph.sensor_name}
+
+                  .col-sm-2
+                    div.form-group
+                      label(for='default_color') Default Color :
+                      .input-group(class='colorpicker-component' id='default_color')
+                        input#default_color.form-control(type='text' class='input-lg' style="width:120px; height:35px;" name='default_color' placeholder='Set maximum vyour data,  10, 13, 300, etc' required='false' value=(undefined===sensor ? '#9eebcd' : sensor.def_color))
+                        span.input-group-addon#basic-addon2 Choose Colour 
+                          i 
+                      script(type="text/javascript") $(function (){ $('#default_color').colorpicker() });
+
+                  .col-sm-2(style="margin-left:150px")
+                    div.form-group
+                      label(for='min_val') Min. Value
+                      input#min_val.form-control(type='text' style="width:60px;" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+
+                  .col-sm-2(style="margin-left:-50px")
+                    div.form-group
+                      label(for='min_val')  Max. Value
+                      input#min_val.form-control(type='text' style="width:60px;" placeholder='100'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+
+
+        hr
+        button.btn.btn-primary() Submit

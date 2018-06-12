@@ -68,7 +68,76 @@ exports.sensor_create_get = function(req, res, next) {
 		},
 	}, function(err, results){
 		if (err) { return next(err); }
-        res.render('sensor_form', { title: 'Create a New Glyph', 
+        res.render('sensor_form', { title: 'Create a New Sensor', 
+        	channel_list: results.channels, mark_list: results.sensor, marker_list: results.marker, errors: err });
+
+	});
+};
+
+
+// Display list of device
+exports.new_glyph_create_get = function(req, res, next) {
+		async.parallel({
+		channels: function(callback){
+			Channel.find(callback);
+		},
+		glyphs: function(callback){ 
+			Glyph.find(callback);
+		},
+		marker: function(callback){ 
+			Marker.find(callback);
+		},
+		sensor: function(callback){ 
+			Sensor.find(callback);
+		},
+	}, function(err, results){
+		if (err) { return next(err); }
+        res.render('new_glyph_form', { title: 'Create a New Glyph', 
+        	channel_list: results.channels, mark_list: results.sensor, marker_list: results.marker, errors: err });
+
+	});
+};
+
+exports.new_chart_create_get = function(req, res, next) {
+		async.parallel({
+		channels: function(callback){
+			Channel.find(callback);
+		},
+		glyphs: function(callback){ 
+			Glyph.find(callback);
+		},
+		marker: function(callback){ 
+			Marker.find(callback);
+		},
+		sensor: function(callback){ 
+			Sensor.find(callback);
+		},
+	}, function(err, results){
+		if (err) { return next(err); }
+        res.render('new_chart_form', { title: 'Create a New Chart', 
+        	channel_list: results.channels, mark_list: results.sensor, marker_list: results.marker, errors: err });
+
+	});
+};
+
+
+exports.new_scatter_create_get = function(req, res, next) {
+		async.parallel({
+		channels: function(callback){
+			Channel.find(callback);
+		},
+		glyphs: function(callback){ 
+			Glyph.find(callback);
+		},
+		marker: function(callback){ 
+			Marker.find(callback);
+		},
+		sensor: function(callback){ 
+			Sensor.find(callback);
+		},
+	}, function(err, results){
+		if (err) { return next(err); }
+        res.render('new_scatter_plot', { title: 'Create a New Scatter Plot', 
         	channel_list: results.channels, mark_list: results.sensor, marker_list: results.marker, errors: err });
 
 	});
