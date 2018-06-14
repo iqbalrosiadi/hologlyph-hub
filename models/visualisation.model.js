@@ -2,18 +2,16 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var SensorSchema = new Schema(
+var VisualSchema = new Schema(
 		{
-			sensor_name: {type: String},
-			sensor_type: {type: String},
-			device: {type: Schema.ObjectId, ref: 'Device', required: true },
-			data_range_minute: {type: Number, default:1080},
-			data: [{type: Schema.ObjectId, ref: 'Data'}]
+			glyph: {type: String},
+			marker: {type: String},
+			as_one_glyph: {type: String}
 		}
 );
 
 
-SensorSchema
+VisualSchema
 .virtual('name')
 .get(function () {
 		return this.sensor_name;

@@ -5,10 +5,7 @@ var Schema = mongoose.Schema;
 var DeviceSchema = new Schema(
 		{
 		sensor: [{type: Schema.ObjectId, ref: 'Sensor'}],
-		device_name: {type: String},
-		glyph: {type: String},
-		marker: {type: String},
-		as_one_glyph: {type: String}
+		device_name: {type: String}
 		}
 	);
 
@@ -16,7 +13,7 @@ var DeviceSchema = new Schema(
 DeviceSchema
 .virtual('url')
 .get(function () {
-		return '/detail/device/' + this._id;
+		return '/';
 	}
 	);
 

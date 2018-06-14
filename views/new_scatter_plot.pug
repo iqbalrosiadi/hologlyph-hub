@@ -7,7 +7,7 @@ block content
       div(style="padding: 30px;")
         div.form-group
           label(for='sensor_name') Glyph Name:
-          input#sensor_name.form-control(type='text' placeholder='Set sensor name' name='sensor_name' required='false' value=(undefined===sensor ? '' :  sensor.sensor_name))
+          input#sensor_name.form-control(type='text' placeholder='Set plot name' name='sensor_name' required='false' value=(undefined===sensor ? '' :  sensor.sensor_name))
   
         div.form-group
           label(for='glyph') Marker:
@@ -18,9 +18,51 @@ block content
               else
                 option(value=glyph.marker_name) #{glyph.marker_name}
 
+        .row
+          div
+            .col-sm-2
+              div
+                h4 Glyph Position
+            .col-sm-2
+              div.form-group
+                label(for='glyph') X Axis:
+                input#min_val.form-control(type='text' style="height:35px; width:70px;" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+
+            .col-sm-2
+              div.form-group
+                label(for='glyph') Y Axis:
+                input#min_val.form-control(type='text' style="height:35px; width:70px;" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+
+            .col-sm-2
+              div.form-group
+                label(for='glyph') Z Axis:
+                input#min_val.form-control(type='text' style="height:35px; width:70px;" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+
+        .row
+          div
+            .col-sm-2
+              div
+                h4 Glyph Rotation
+            .col-sm-2
+              div.form-group
+                label(for='glyph') X Axis:
+                input#min_val.form-control(type='text' style="height:35px; width:70px;" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+
+            .col-sm-2
+              div.form-group
+                label(for='glyph') Y Axis:
+                input#min_val.form-control(type='text' style="height:35px; width:70px;" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+
+            .col-sm-2
+              div.form-group
+                label(for='glyph') Z Axis:
+                input#min_val.form-control(type='text' style="height:35px; width:70px;" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+
+
         hr
         .contentBox
             .block
+              h4 Data Mapping
               .row
                   .col-sm-2
                       div.form-group

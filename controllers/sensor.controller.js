@@ -10,6 +10,15 @@ var Data = require('../models/data.model.js');
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
+var sensor_type_list='[';
+sensor_type_list=sensor_type_list+'{"sensor_type":"Temperature"},';
+sensor_type_list=sensor_type_list+'{"sensor_type":"Humidity"},';
+sensor_type_list=sensor_type_list+'{"sensor_type":"Sound"},';
+sensor_type_list=sensor_type_list+'{"sensor_type":"Light Intensity"}';
+sensor_type_list=sensor_type_list+']';
+var sens_type = JSON.parse(sensor_type_list);
+
+
 
 
 // Display list of device
@@ -53,100 +62,16 @@ exports.sensor_detail = function(req, res, next) {
 
 // Display list of device
 exports.sensor_create_get = function(req, res, next) {
-		async.parallel({
-		channels: function(callback){
-			Channel.find(callback);
-		},
-		glyphs: function(callback){ 
-			Glyph.find(callback);
-		},
-		marker: function(callback){ 
-			Marker.find(callback);
-		},
-		sensor: function(callback){ 
-			Sensor.find(callback);
-		},
-	}, function(err, results){
-		if (err) { return next(err); }
-        res.render('sensor_form', { title: 'Create a New Sensor', 
-        	channel_list: results.channels, mark_list: results.sensor, marker_list: results.marker, errors: err });
-
-	});
+		console.log(sens_type);
+		res.render('sensor_form', { title: 'Create a New Sensor', sensor_type: sens_type} );
 };
 
-
-// Display list of device
-exports.new_glyph_create_get = function(req, res, next) {
-		async.parallel({
-		channels: function(callback){
-			Channel.find(callback);
-		},
-		glyphs: function(callback){ 
-			Glyph.find(callback);
-		},
-		marker: function(callback){ 
-			Marker.find(callback);
-		},
-		sensor: function(callback){ 
-			Sensor.find(callback);
-		},
-	}, function(err, results){
-		if (err) { return next(err); }
-        res.render('new_glyph_form', { title: 'Create a New Glyph', 
-        	channel_list: results.channels, mark_list: results.sensor, marker_list: results.marker, errors: err });
-
-	});
-};
-
-exports.new_chart_create_get = function(req, res, next) {
-		async.parallel({
-		channels: function(callback){
-			Channel.find(callback);
-		},
-		glyphs: function(callback){ 
-			Glyph.find(callback);
-		},
-		marker: function(callback){ 
-			Marker.find(callback);
-		},
-		sensor: function(callback){ 
-			Sensor.find(callback);
-		},
-	}, function(err, results){
-		if (err) { return next(err); }
-        res.render('new_chart_form', { title: 'Create a New Chart', 
-        	channel_list: results.channels, mark_list: results.sensor, marker_list: results.marker, errors: err });
-
-	});
-};
-
-
-exports.new_scatter_create_get = function(req, res, next) {
-		async.parallel({
-		channels: function(callback){
-			Channel.find(callback);
-		},
-		glyphs: function(callback){ 
-			Glyph.find(callback);
-		},
-		marker: function(callback){ 
-			Marker.find(callback);
-		},
-		sensor: function(callback){ 
-			Sensor.find(callback);
-		},
-	}, function(err, results){
-		if (err) { return next(err); }
-        res.render('new_scatter_plot', { title: 'Create a New Scatter Plot', 
-        	channel_list: results.channels, mark_list: results.sensor, marker_list: results.marker, errors: err });
-
-	});
-};
 
 // Display list of device
 exports.sensor_create_post = [
 	
 	body('sensor_name', 'Sensor name must not be empty.').isLength({ min: 1 }).trim(),
+
 	sanitizeBody('sensor_name').trim().escape(),
 	(req, res, next) => {
 
@@ -155,35 +80,17 @@ exports.sensor_create_post = [
 		var sensor = new Sensor(
 	          { 
 	          	device: req.params.id,
-	          	sensor_name: req.body.sensor_name, 
-	          	glyph: req.body.glyph,
-	          	channel: req.body.channel,
-	          	max_val: req.body.max_val,
-	          	min_val: req.body.min_val,
-	          	calculation: req.body.calculation,
-	          	data_range_minute: req.body.range,
-	          	max_color: req.body.max_col_val,
-	          	min_color: req.body.min_col_val
+	          	sensor_name: req.body.sensor_name,
+	          	sensor_type: req.body.type,
+	          	data_range_minute: req.body.range
 	          }
 	        );
 		console.log("SENSOR LIST " + req.body.range);
 		
 		if (!errors.isEmpty()) {
 
-				async.parallel({
-					channels: function(callback){
-						Channel.find(callback);
-					},
-					glyphs: function(callback){ 
-						Glyph.find(callback);
-					},
-				}, function(err, results){
-					if (err) { return next(err); }
-			        res.render('sensor_form', { title: 'Add a New Sensor', 
-			        	channel_list: results.channels, mark_list: results.glyphs, errors: err });
-
-				});
-			return;
+			console.log(sens_type);
+			res.render('sensor_form', { title: 'Create a New Sensor', sensor_type: sens_type} );
 
 		}else
 		{
@@ -227,7 +134,7 @@ exports.sensor_delete_get = function(req, res, next) {
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.sensor==null) { // No results.
-            res.redirect('/detail/devices');
+            res.redirect('/');
         }
         // Successful, so render.
         res.render('sensor_delete', { title: 'Delete sensor', sensor: results.sensor } );
@@ -253,7 +160,7 @@ exports.sensor_delete_post = function(req, res, next) {
 			  Sensor.findByIdAndRemove(results.sensor._id, function deleteChannel(err) {
                 if (err) { return next(err); }
                 // Success - go to genres list.
-                res.redirect('/detail/device/'+results.sensor.device);
+                res.redirect('/');
             });
 
     });
@@ -263,15 +170,8 @@ exports.sensor_delete_post = function(req, res, next) {
 exports.sensor_update_get = function(req, res, next) {
 	
 	async.parallel({
-		glyphs: function(callback){
-			Glyph.find(callback);
-		},
-		channel: function(callback){ 
-			Channel.find(callback);
-		},
 		sensor: function(callback){ 
 			Sensor.findById(req.params.id)
-			.populate('data')
 			.exec(callback);
 		},
 	},
@@ -286,10 +186,9 @@ exports.sensor_update_get = function(req, res, next) {
 
 
         //console.log(" SENSOR DATA "+sensor.sensor.data.length);
-        console.log(" SENSOR DATA "+sensor.sensor);
-        res.render('sensor_form', { title: 'Costumize AR Visualisation', 
-        	sensor: sensor.sensor, mark_list: sensor.glyphs, 
-        	channel_list: sensor.channel, errors: err });
+        //console.log(" SENSOR DATA "+sensor.sensor);
+        res.render('sensor_form', { title: 'Edit Sensor Data', 
+        	sensor: sensor.sensor, sensor_type: sens_type, errors: err });
     });
 };
 
@@ -323,34 +222,50 @@ exports.sensor_update_post = [
         	var sensor = new Sensor(
 	          { 
 	          	_id: req.params.id,
-	          	sensor_name: req.body.sensor_name, 
-	          	glyph: req.body.glyph,
-	          	channel: req.body.channel,
-	          	max_val: req.body.max_val,
-	          	min_val: req.body.min_val,
-	          	calculation: req.body.calculation,
-	          	data_range_minute: req.body.range,
-	          	max_color: req.body.max_col_val,
-	          	min_color: req.body.min_col_val,
-	          	data: req.body.data,
-	          	opacity: opacity,
-	          	def_color: req.body.default_color,
-	          	set_size:set_size
+	          	sensor_name: req.body.sensor_name,
+	          	sensor_type: req.body.type,
+	          	data_range_minute: req.body.range
 	          }
 	        );
 
-	        console.log("AMOUNTSIZE " + req.body.amountsize);
+        	console.log("COnsole " + req.body.sensor_name);
+	        //console.log("AMOUNTSIZE " + req.body.amountsize);
 	        //console.log("DEFAULT COLOR " + req.body.default_color);
 
         if (!errors.isEmpty()) {
             // There are errors. Render the form again with sanitized values and error messages.
-        	res.render('sensor_form', { title: 'Update Sensor', 
-        	sensor: sensor.sensor, mark_list: sensor.glyphs, 
-        	channel_list: sensor.channel, errors: err });
-        return;
+
+        	async.parallel({
+		sensor: function(callback){ 
+			Sensor.findById(req.params.id)
+			.exec(callback);
+		},
+	},
+		function(err, sensor) {
+        if (err) { return next(err); }
+        if (sensor==null) { // No results.
+            var err = new Error('Sensor not found');
+            err.status = 404;
+            return next(err);
+        }
+        // Success.
+
+
+        //console.log(" SENSOR DATA "+sensor.sensor.data.length);
+        console.log(" SENSOR DATA "+sensor.sensor);
+        res.render('sensor_form', { title: 'Edit Sensor Data', 
+        	sensor: sensor.sensor, sensor_type: sens_type, errors: err });
+    		});
+
+
         }
         else {
-            res.redirect('/');
+        		console.log("SENSOR TYPEE"+sensor.sensor_name);
+                Sensor.findByIdAndUpdate(req.params.id, sensor, {}, function (err,thechannel) {
+                if (err) { return next(err); }
+                   // Successful - redirect to channel detail page.
+                   res.redirect('/');
+                });
         }
     }
 ];

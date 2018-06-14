@@ -3,35 +3,34 @@ extends layout
 block content
   h3=title
 
-  form(method='POST' action='')
-    div.form-group
-      label(for='sensor_name') Sensor Name:
-      input#sensor_name.form-control(type='text' placeholder='Set sensor name' name='sensor_name' required='true' value=(undefined===sensor ? '' : sensor.sensor_name))
+  div(style='border-bottom: 2px solid red; background-color: #F5F5F5;')
+    div(style='margin:15px')
+      br
+      form(method='POST' action='')
+        div.form-group
+          label(for='sensor_name') Sensor Name:
+          input#sensor_name.form-control(type='text' style="width:200px" placeholder='Set sensor name' name='sensor_name' required='true' value=(undefined===sensor ? '' : sensor.sensor_name))
 
-    br
-    .contentBox
-        .block
-          .row
-            .col-sm-6
-              div.form-group
-                label(for='glyph') Sensor Type:
-                select#glyph.form-control(type='select' placeholder='Set maximum value of your data, 10, 13, 300, etc' name='glyph' required='true')
-                  for glyph in mark_list
-                    if sensor
-                      option(value=glyph.glyph_name selected=(sensor.glyph==glyph.glyph_name ? 'selected' : false)) #{glyph.glyph_name}
-                    else
-                      option(value=glyph.glyph_name) #{glyph.glyph_name}
-
-            .col-sm-6
-              div.form-group
-                label(for='range') Data timespan:
-                .input-group
-                  input#range.form-control(type='text' placeholder='Set maximum value of your data, 10, 13, 300, etc'  name='range' required='true' value=(undefined===sensor ? '' : sensor.data_range_minute) aria-describedby="basic-addon2")
-                  span.input-group-addon#basic-addon2 minutes
-
-            div.form-group
+        div.form-group(style="width:200px")
+          label(for='type') Sensor Type:
+          select#type.form-control(type='select' placeholder='Set maximum value of your data, 10, 13, 300, etc' name='type' required='true')
+            for type in sensor_type
               if sensor
-                input#data.form-control(type='hidden' name='data' value=sensor.data)
+                option(value=type.sensor_type selected=(sensor.sensor_type==type.sensor_type ? 'selected' : false)) #{type.sensor_type}
+              else
+                option(value=type.sensor_type) #{type.sensor_type}
+
+        div.form-group(style="width:200px;")
+          label(for='range') Data timespan:
+          .input-group
+            input#range.form-control(type='text' placeholder='data timespan, default 1 day'  required='true' name='range' value=(undefined===sensor ? '' : sensor.data_range_minute) aria-describedby="basic-addon2")
+            span.input-group-addon#basic-addon2 minutes
+
+        div.form-group
+          if sensor
+            input#data.form-control(type='hidden' name='data' value=sensor.data)
 
 
-    button.btn.btn-primary(type='submit') Submit
+        button.btn.btn-primary(type='submit') Submit
+  br
+  br

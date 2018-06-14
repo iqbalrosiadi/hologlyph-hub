@@ -39,8 +39,10 @@ exports.index = function(req, res, next) {
 			for(j=0; j<list_devices[i].sensor.length; j++)
 			{
 				var k;
+				console.log(list_devices[i].sensor[j].sensor_name);
 				obj=obj+"{";
 				obj=obj+'"sensor_name":"'+list_devices[i].sensor[j].sensor_name+'",';
+				obj=obj+'"sensor_type":"'+list_devices[i].sensor[j].sensor_type+'",';
 				obj=obj+'"_id":"'+list_devices[i].sensor[j]._id+'",';
 				obj=obj+'"data":[';
 				for(k=0; k<list_devices[i].sensor[j].data.length; k++)
@@ -70,7 +72,7 @@ exports.index = function(req, res, next) {
 		//console.log(list_devices[0].sensor[1].dataset);
 		obj= obj+"]";
 		var dataset = JSON.parse(obj);
-		//console.log(blabla[0].sensor[0].data);
+		console.log(obj);
 		//JSON.stringify( blabla, undefined, 4 )
 		res.render('visualized', { title: 'Registered Device', list_devices: dataset});
 	});
@@ -104,21 +106,7 @@ exports.device_detail = function(req, res, next) {
 
 // Display list of device
 exports.device_create_get = function(req, res, next) {
-	//res.render('device_form', { title: 'Register a New Device' });
-
-	async.parallel({
-		glyphs: function(callback){
-			Glyph.find(callback);
-		},
-		markers: function(callback){ 
-			Marker.find(callback);
-		},
-	}, function(err, results){
-		if (err) { return next(err); }
-        res.render('device_form', { title: 'Register a New Device', 
-        	glyph_list: results.glyphs, marker_list: results.markers, errors: err });
-
-	});
+	res.render('device_form', { title: 'Register a New Microcontroller' });
 	
 };
 
@@ -133,29 +121,13 @@ exports.device_create_post = [
 
 		var device = new Device(
 	          { 
-	          	device_name: req.body.device_name, 
-	          	glyph: req.body.glyph,
-	          	marker: req.body.marker,
-	          	as_one_glyph: req.body.one_glyph
+	          	device_name: req.body.device_name
 	          }
 	        );
 
 		if (!errors.isEmpty()) {
 
-			async.parallel({
-					glyphs: function(callback){
-						Glyph.find(callback);
-					},
-					markers: function(callback){ 
-						Marker.find(callback);
-					},
-				}, function(err, results){
-					if (err) { return next(err); }
-			        res.render('device_form', { title: 'Register a New Device', 
-			        	glyph_list: results.glyphs, marker_list: results.markers, errors: errors.array() });
-
-				});
-			return;
+			res.render('device_form', { title: 'Register a New Microcontroller' });
 
 		}else
 		{
@@ -188,7 +160,7 @@ exports.device_delete_get = function(req, res, next) {
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.device==null) { // No results.
-            res.redirect('/detail/devices');
+            res.redirect('/');
         }
         // Successful, so render.
         res.render('device_delete', { title: 'Delete Device', device: results.device } );
@@ -220,7 +192,7 @@ exports.device_delete_post = function(req, res, next) {
 			  Device.findByIdAndRemove(results.device._id, function deleteChannel(err) {
                 if (err) { return next(err); }
                 // Success - go to genres list.
-                res.redirect('/detail/devices');
+                res.redirect('/');
             });
 
     });

@@ -1,10 +1,31 @@
 var async = require('async');
 
+var Sensor = require('../models/sensor.model.js');
+var Device = require('../models/device.model.js');
+var Glyph = require('../models/glyph.model.js');
+var Visual = require('../models/visual.model.js');
+var Channel = require('../models/channel.model.js');
+var Marker = require('../models/marker.model.js');
+var Data = require('../models/data.model.js');
 
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
-var Glyph = require('../models/glyph.model.js');
+
+
+var glyph_model_list='[';
+glyph_model_list=glyph_model_list+'{"glyph_type":"Sphere"},';
+glyph_model_list=glyph_model_list+'{"glyph_type":"Sun"},';
+glyph_model_list=glyph_model_list+'{"glyph_type":"Fire"}';
+glyph_model_list=glyph_model_list+']';
+var glyph_type = JSON.parse(glyph_model_list);
+
+var bar_type_list='[';
+bar_type_list=bar_type_list+'{"bar_type":"Line Chart"},';
+bar_type_list=bar_type_list+'{"bar_type":"Bar Chart"}';
+bar_type_list=bar_type_list+']';
+var bar_type = JSON.parse(bar_type_list);
+
 
 // Display list of device
 exports.glyph_list = function(req, res, next)  {
@@ -50,6 +71,146 @@ exports.glyph_detail = function(req, res, next) {
 // Display list of device
 exports.glyph_create_get = function(req, res) {
 	res.render('glyph_form', { title: 'Create Mark' });
+};
+
+
+
+// Display list of device
+exports.new_glyph_create_get = function(req, res, next) {
+        async.parallel({
+        channels: function(callback){
+            Channel.find(callback);
+        },
+        marker: function(callback){ 
+            Marker.find(callback);
+        },
+        sensor: function(callback){ 
+            Sensor.find(callback);
+        },
+    }, function(err, results){
+        if (err) { return next(err); }
+        res.render('new_glyph_form', { title: 'Create a New Glyph', 
+            channel_list: results.channels, mark_list: results.sensor, visual: results.sensor,  
+            sensor: results.sensor, marker_list: results.marker, glyph_type: glyph_type, errors: err });
+
+    });
+};
+
+
+// Display list of device
+exports.new_glyph_create_post =  [
+        
+       // body('glyph_name', 'Mark name required').isLength({ min: 1 }).trim(),
+
+        sanitizeBody('glyph_name').trim().escape(),
+
+        (req, res, next) => {
+            const errors = validationResult(req);
+            
+            console.log("name of the glyph before " + req.body.glyph_name);
+            var visual = new Visual(
+              { glyph_name: req.body.glyph_name,
+                glyph_type: req.body.glyph_type
+              }
+            );
+            console.log("name of the glyph after " + visual.glyph_name);
+
+            if (!errors.isEmpty()) {
+                        async.parallel({
+                            channels: function(callback){
+                                Channel.find(callback);
+                            },
+                            marker: function(callback){ 
+                                Marker.find(callback);
+                            },
+                            sensor: function(callback){ 
+                                Sensor.find(callback);
+                            },
+                        }, function(err, results){
+                            if (err) { return next(err); }
+                            res.render('new_glyph_form', { title: 'Create a New Glyph', 
+                                channel_list: results.channels, mark_list: results.sensor, visual: results.sensor,  
+                                sensor: results.sensor, marker_list: results.marker, glyph_type: glyph_type, errors: err });
+
+                        });
+                //res.render('new_glyph_form', { title: 'Create a New Glyph', glyph: glyph, errors: errors.array()});
+            return;
+            }
+            else {
+                
+                Visual.findOne({ 'glyph_name': req.body.glyph_name })
+                    .exec( function(err, found_glyph){
+                        if (err){ return next(err); }
+
+                        if (found_glyph) {
+                            res.redirect(found_glyph.url);
+
+                        }
+                        else {
+                            console.log("Value _id "+ visual._id);
+                            visual.save(function (err){
+                                if (err) { return next(err); }
+                                // Genre saved. Redirect to genre detail page.
+                               // console.log("name of the glyph " + glyph.glyph_name);
+                                //console.log("THIS ERROR");
+                                res.redirect('/');
+
+                            });
+
+                        }
+
+
+                    });
+
+            }
+
+        }
+
+];
+
+exports.new_chart_create_get = function(req, res, next) {
+        async.parallel({
+        channels: function(callback){
+            Channel.find(callback);
+        },
+        glyphs: function(callback){ 
+            Glyph.find(callback);
+        },
+        marker: function(callback){ 
+            Marker.find(callback);
+        },
+        sensor: function(callback){ 
+            Sensor.find(callback);
+        },
+    }, function(err, results){
+        if (err) { return next(err); }
+        res.render('new_chart_form', { title: 'Create a New Chart', 
+            channel_list: results.channels, mark_list: results.sensor, marker_list: results.marker, bar_type: bar_type, errors: err });
+
+    });
+};
+
+
+exports.new_scatter_create_get = function(req, res, next) {
+        async.parallel({
+        channels: function(callback){
+            Channel.find(callback);
+        },
+        glyphs: function(callback){ 
+            Glyph.find(callback);
+        },
+        marker: function(callback){ 
+            Marker.find(callback);
+        },
+        sensor: function(callback){ 
+            Sensor.find(callback);
+        },
+    }, function(err, results){
+        if (err) { return next(err); }
+        res.render('new_scatter_plot', { title: 'Create a New Scatter Plot', 
+            channel_list: results.channels, mark_list: results.sensor, marker_list: results.marker, errors: err });
+
+    });
 };
 
 // Display list of device

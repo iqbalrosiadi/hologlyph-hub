@@ -44,15 +44,6 @@ router.get('/devices', device_controller.device_list);
 // GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
 router.get('/device/:id/addsensor', sensor_controller.sensor_create_get);
 
-// GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
-router.get('/glyph/create', sensor_controller.new_glyph_create_get);
-
-// GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
-router.get('/chart/create', sensor_controller.new_chart_create_get);
-
-// GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
-router.get('/scatterplot/create', sensor_controller.new_scatter_create_get);
-
 // POST request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
 router.post('/device/:id/addsensor', sensor_controller.sensor_create_post);
 
@@ -159,11 +150,9 @@ router.get('/datas', data_controller.data_list);
 
 /// glyph ROUTES ///
 
-// GET request for creating a glyph. NOTE This must come before routes that display glyph (uses id).
-router.get('/glyph/create', glyph_controller.glyph_create_get);
 
-// POST request for creating glyph.
-router.post('/glyph/create', glyph_controller.glyph_create_post);
+
+
 
 // GET request to delete glyph.
 router.get('/glyph/:id/delete', glyph_controller.glyph_delete_get);
@@ -181,7 +170,22 @@ router.post('/glyph/:id/update', glyph_controller.glyph_update_post);
 router.get('/glyph/:id', glyph_controller.glyph_detail);
 
 // GET request for list of all glyph items.
-router.get('/glyphs', glyph_controller.glyph_list);
+router.get('/glyph/', glyph_controller.glyph_list);
+
+// POST request for creating glyph.
+router.post('/glyphs/create', glyph_controller.new_glyph_create_post);
+
+// GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
+router.get('/glyphs/create', glyph_controller.new_glyph_create_get);
+
+// GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
+router.get('/chart/create', glyph_controller.new_chart_create_get);
+
+// GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
+router.get('/scatterplot/create', glyph_controller.new_scatter_create_get);
+
+
+
 
 module.exports = router;
 

@@ -3,8 +3,9 @@ extends layout
 block content
     each val, idx in list_devices
         div(style="margin:20px")
-            h3 #{val.device_name} 
-                a(href='detail/device/'+val._id+'/addsensor')(style='margin-right:10px; font-size:10px') (+) add sensor
+            h3 Microcontroller: #{val.device_name} 
+                a(href='detail/device/'+val._id+'/addsensor')(style='margin-right:10px; font-size:10px') (+) add sensor |
+                a(href='detail/device/'+val._id+'/delete')(style='margin-right:10px; font-size:10px; color:red') delete microcontroller
             div(class="box" style=" display: flex; align-items: stretch; flex-wrap: wrap; border-bottom: 2px solid red; background-color: #F5F5F5;")
                 each sensor, index in val.sensor
                     div(style="position: relative; border: 1px solid #C0C0C0; border-radius:2px; margin:5px; margin-bottom:15px; background-color: white;")
@@ -16,9 +17,9 @@ block content
                         h6(style="margin:5px; margin-top:0px; font-size:8px;") last data update: #{sensor.last_input_date}
                         div(style="margin:5px; text-align: right")
                             p
-                                a(href='detail/device/'+sensor._id+'/edit')(style='font-size:10px') Edit |  
+                                a(href='detail/sensor/'+sensor._id+'/update')(style='font-size:10px') Edit |  
                                 |
-                                a(href='detail/device/'+sensor._id+'/delete')(style='font-size:10px; color:red') Delete    
+                                a(href='detail/sensor/'+sensor._id+'/delete')(style='font-size:10px; color:red') Delete    
 
                         script(type="text/javascript"). 
                             var ctx = document.getElementById("#{sensor._id}").getContext('2d');
@@ -65,6 +66,6 @@ block content
                                 }
                             });
     div(style="margin:10px; text-align: right;")
-        a(href='device/addsensor')
+        a(href='detail/device/create')
             button.btn.btn-success (+) Add New Microcontroller
     br
