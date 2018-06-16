@@ -1,0 +1,455 @@
+
+@MISC{noauthor_undated-ew,
+  title        = "Dashboard",
+  booktitle    = "Tinkercad",
+  howpublished = "\url{https://www.tinkercad.com/#/}",
+  note         = "Accessed: 2018-4-20"
+}
+
+
+
+@MISC{noauthor_undated-qq,
+  title        = "Manifesto for Agile Software Development",
+  abstract     = "We are uncovering better ways of developing software by doing
+                  it and helping others do it. These are our values and
+                  principles.",
+  howpublished = "\url{http://agilemanifesto.org/}",
+  note         = "Accessed: 2018-4-20"
+}
+
+
+
+	
+@MISC{noauthor_undated-zg,
+  title        = "Arduino - {ArduinoWiFiShield}",
+  howpublished = "\url{https://www.arduino.cc/en/pmwiki.php?n=Main/ArduinoWiFiShield}",
+  note         = "Accessed: 2018-4-14"
+}
+
+@MISC{noauthor_undated-ba,
+  title        = "Arduino - {ArduinoBoardLeonardo}",
+  howpublished = "\url{https://www.arduino.cc/en/Main/Arduino_BoardLeonardo}",
+  note         = "Accessed: 2018-4-14"
+}
+
+
+@INPROCEEDINGS{Bach2017-fg,
+  title     = "Drawing into the {AR-CANVAS}: Designing Embedded Visualizations
+               for Augmented Reality",
+  booktitle = "Workshop on Immersive Analytics, {IEEE} Vis",
+  author    = "Bach, Benjamin and Sicat, Ronell and Pfister, Hanspeter and
+               Quigley, Aaron",
+  year      =  2017
+}
+
+
+
+@ARTICLE{Azuma1997-pd,
+  title     = "A Survey of Augmented Reality",
+  author    = "Azuma, Ronald T",
+  abstract  = "This paper surveys the field of augmented reality (AR), in which
+               3D virtual objects are integrated into a 3D real environment in
+               real time. It describes the medical, manufacturing,
+               visualization, path planning, entertainment, and military
+               applications that have been explored. This paper describes the
+               characteristics of augmented reality systems, including a
+               detailed discussion of the tradeoffs between optical and video
+               blending approaches. Registration and sensing errors are two of
+               the biggest problems in building effective augmented reality
+               systems, so this paper summarizes current efforts to overcome
+               these problems. Future directions and areas requiring further
+               research are discussed. This survey provides a starting point
+               for anyone interested in researching or using augmented reality.",
+  journal   = "Presence: Teleoperators and Virtual Environments",
+  publisher = "MIT Press",
+  volume    =  6,
+  number    =  4,
+  pages     = "355--385",
+  month     =  aug,
+  year      =  1997
+}
+
+
+
+
+@INPROCEEDINGS{Borgo2013-on,
+  title     = "Glyph-based Visualization: Foundations, Design Guidelines,
+               Techniques and Applications",
+  booktitle = "Eurographics ({STARs})",
+  author    = "Borgo, Rita and Kehrer, Johannes and Chung, David H S and
+               Maguire, Eamonn and Laramee, Robert S and Hauser, Helwig and
+               Ward, Matthew and Chen, Min",
+  pages     = "39--63",
+  year      =  2013
+}
+
+
+
+@ARTICLE{Cavagnaro2016-cg,
+  title    = "Soil moisture legacy effects: Impacts on soil nutrients, plants
+              and mycorrhizal responsiveness",
+  author   = "Cavagnaro, Timothy R",
+  abstract = "Abstract Although most land-plants form associations with
+              arbuscular mycorrhizal fungi (AMF) as a means of optimising
+              nutrient capture, legacy effects of altered soil moisture regimes
+              on plant responses to arbuscular mycorrhizas (AM) have not been
+              studied. As rainfall patters change with climate change, soil
+              moisture legacy effects, and their impact on plants, soil and
+              microbes may become increasingly important. Results of an
+              experiment are presented in which soil was subjected to a range
+              of different soil moisture regimes prior to planting a
+              mycorrhiza-defective tomato mutant and its mycorrhizal wild-type
+              progenitor. There were clear legacy effects of the soil moisture
+              regime prior to planting on soil physicochemical properties,
+              plant growth and nutrition, the formation of AM and mycorrhizal
+              responsiveness. For example, in the Dry treatment the plants were
+              well colonized by AM, there was a clear benefit to the plants in
+              terms of mycorrhizal growth responses and mycorrhizal P
+              responses. In contrast, in the Intermediate treatment AM
+              colonisation was lower, there was little benefit in terms of
+              mycorrhizal responses. Finally, in the Wet and Wet/Dry treatments
+              AM colonization levels were similar (albeit lower) to those in
+              the Dry treatment, but mycorrhizal growth responses were lower
+              and more variable. Together, these results clearly indicate that
+              soil nutrients, plant growth and nutrition and mycorrhizal
+              responsiveness are affected by soil moisture legacy effect.
+              Consequently, as we move into a period where more variable and
+              intense rainfall amounts and patterns have been projected, we
+              need to consider soil moisture legacy effects.",
+  journal  = "Soil Biol. Biochem.",
+  volume   =  95,
+  pages    = "173--179",
+  year     =  2016,
+  keywords = "Climate change; Drought; Field capacity; Soil ecology; Legacy
+              effect"
+}
+
+
+
+@MISC{Foundation_undated-ia,
+  title        = "Node.js",
+  booktitle    = "Node.js",
+  author       = "Foundation, Node js",
+  howpublished = "\url{https://nodejs.org/en/}",
+  note         = "Accessed: 2018-4-16"
+}
+
+
+
+
+@ARTICLE{Gyorodi2016-pd,
+  title   = "A Comparative Study Between the Capabilities of {MySQl} Vs.
+             {MongoDB} as a {Back-End} for an Online Platform",
+  author  = "Gyor{\"o}di, Cornelia and Gyor{\"o}di, Robert and Andrada, Ioana
+             and Bandici, Livia",
+  journal = "ijacsa",
+  volume  =  7,
+  number  =  11,
+  year    =  2016
+}
+
+
+
+@MISC{noauthor_undated-md,
+  title        = "{GPS.gov}: {GPS} Accuracy",
+  abstract     = "Information about GPS accuracy",
+  howpublished = "\url{https://www.gps.gov/systems/gps/performance/accuracy/}",
+  note         = "Accessed: 2018-4-11"
+}
+
+
+
+@MISC{noauthor_undated-id,
+  title        = "imrsv.data User Guide",
+  howpublished = "\url{https://lucasvaltl.github.io/imrsv-data-user-guide/#/}",
+  note         = "Accessed: 2018-4-20"
+}
+
+
+
+@BOOK{Kirk2016-yg,
+  title     = "Data Visualisation: A Handbook for Data Driven Design",
+  author    = "Kirk, Andy",
+  abstract  = "Voted one of the ``six best books for data geeks'' by The
+               Financial Times. Read the review here. Lecturers, request your
+               electronic inspection copy. Never has it been more essential to
+               work in the world of data. Scholars and students need to be able
+               to analyze, design, and curate information into useful tools of
+               communication, insight, and understanding. This book is the
+               starting point in learning the process and skills of data
+               visualization, teaching the concepts and skills of how to
+               present data, and inspiring effective visual design. Benefits of
+               this book: A flexible step-by-step journey that equips you to
+               achieve great data visualization A curated collection of classic
+               and contemporary examples, giving illustrations of good and bad
+               practice Examples on every page to give creative inspiration
+               Illustrations of good and bad practice show you how to
+               critically evaluate and improve your own work Advice and
+               experience from the best designers in the field Loads of online
+               practical help, checklists, case studies and exercises make this
+               the most comprehensive text available",
+  publisher = "SAGE",
+  month     =  jun,
+  year      =  2016,
+  language  = "en"
+}
+
+
+
+@ARTICLE{Larsson_Scholin2017-ho,
+  title    = "Development of a truss mount with focus on ease of installation",
+  author   = "Larsson Sch{\"o}lin, Mattias and Ingemansson, Niklas",
+  abstract = "Products of Axis Communications, mostly premium class cameras and
+              wall mounts, have previously been installed on trusses. However,
+              Axis has not provided any means of installation so it has been up
+              to the installers to create their own solutions. This report
+              describes the research and development of Axis first truss mount.
+              The aim of the master thesis was to both study the environment of
+              the product and the intended user to make it a good fit for both
+              the trusses and the users. The goal was to provide Axis with a
+              concept solution prototype of both a product and a process of
+              installation. To solve this, the authors applied Human-centered
+              design in combination with the Double Diamond method. The whole
+              method was iterated twice to provide the team with many
+              opportunities to receive feedback. The first cycle focused on
+              researching and the insights gained laid the foundation for the
+              direction of development. Many concepts were developed and the
+              cycle ended with choosing one solution and further developing it
+              into a testable prototype. The prototype then acted as reference
+              for the second round of research. Tests were conducted to see if
+              the users used the product the intended way and if the team had
+              understood the problem correctly. The final concept has made the
+              process of installation easier through the possibility to,
+              without tools, swiftly clamp the product in place to make it
+              securely fastened for its own weight. This allows for the
+              installation to be made in multiple steps that affords pausing in
+              between. The concept has received good reviews from both users as
+              well as employees at Axis.",
+  year     =  2017,
+  language = "en"
+}
+
+
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@ARTICLE{Looker2015-cr,
+  title     = "Reaching for Holograms: Assessing The Ergonomics of The
+               Microsoft™ {HoloLens™} {3D} Gesture Known as The {``AIR} {TAP''}",
+  author    = "Looker, J and Garvey, T",
+  abstract  = "ABSTRACT This paper assesses the ergonomics of the air tap, a 3D
+               gesture used to interact with the Hololens™, a head-mounted
+               optical see-through display being developed by Microsoft™. After
+               reviewing ergonomics literature we found the air tap appeared to
+               be",
+  journal   = "International Design Congress, Gwangju",
+  publisher = "academia.edu",
+  year      =  2015
+}
+
+
+
+@ARTICLE{Lund2001-hw,
+  title   = "Measuring usability with the use questionnaire12",
+  author  = "Lund, Arnold M",
+  journal = "Usability interface",
+  volume  =  8,
+  number  =  2,
+  pages   = "3--6",
+  year    =  2001
+}
+
+
+@MISC{noauthor_undated-wv,
+  title        = "What Is {MongoDB}?",
+  booktitle    = "{MongoDB}",
+  abstract     = "MongoDB is a document database with the scalability and
+                  flexibility that you want with the querying and indexing that
+                  you need.",
+  howpublished = "\url{https://www.mongodb.com/what-is-mongodb}",
+  note         = "Accessed: 2018-4-17"
+}
+
+
+
+@ARTICLE{Santo2016-vp,
+  title   = "Vacant Lots to Vibrant Plots: A review of the benefits and
+             limitations of urban agriculture",
+  author  = "Santo, Raychel and Palmer, Anne and Kim, Brent",
+  journal = "Center for a Livable Future, John Hopkins University",
+  year    =  2016
+}
+
+
+
+@INPROCEEDINGS{Seyed2015-ll,
+  title     = "{SoD-Toolkit}: A Toolkit for Interactively Prototyping and
+               Developing {Multi-Sensor}, {Multi-Device} Environments",
+  booktitle = "Proceedings of the 2015 International Conference on Interactive
+               Tabletops \& Surfaces",
+  author    = "Seyed, Teddy and Azazi, Alaa and Chan, Edwin and Wang, Yuxi and
+               Maurer, Frank",
+  publisher = "ACM",
+  pages     = "171--180",
+  series    = "ITS '15",
+  year      =  2015,
+  address   = "New York, NY, USA",
+  keywords  = "cross-device interactions, gestural interaction, kinect,
+               multi-surface, prototyping, sensors, toolkit"
+}
+
+
+
+@ARTICLE{Sparapani2017-ki,
+  title    = "How Big Data And Tech Will Improve Agriculture, From Farm To
+              Table",
+  author   = "Sparapani, Tim",
+  abstract = "Congress can transform farming and food distribution with wise
+              data policies.",
+  journal  = "Forbes Magazine",
+  month    =  mar,
+  year     =  2017
+}
+
+
+
+@MISC{Stimulant_undated-lw,
+  title        = "{HoloLens} Prototypes from the Stimulab",
+  author       = "Stimulant, \copyright{}",
+  abstract     = "Stimulant is an innovation studio that brings spaces to life
+                  by transforming them into pioneering, any-scale interactive
+                  environments.",
+  howpublished = "\url{https://stimulant.com/hololens-stimulab/}",
+  note         = "Accessed: 2018-4-11"
+}
+
+
+
+@INPROCEEDINGS{Selfa2006-zb,
+  title     = "A Database and Web Application Based on {MVC} Architecture",
+  booktitle = "16th International Conference on Electronics, Communications and
+               Computers ({CONIELECOMP'06})",
+  author    = "Selfa, D M and Carrillo, M and Boone, M Del Rocio",
+  abstract  = "MVC architecture has had wide acceptance for corporation
+               software development. It plans to divide the system in three
+               different layers that are in charge of interface control logic
+               and data access, this facilitates the maintenance and evolution
+               of systems according to the independence of the present classes
+               in each layer. With the purpose of illustrating a successful
+               application built under MVC, in this work we introduce different
+               phases of analysis, design and implementation of a database and
+               web application using UML. As central component of the
+               application, it has a database made up by fifteen relations and
+               a user interface supported by seventeen web pages.",
+  pages     = "48--48",
+  month     =  feb,
+  year      =  2006,
+  keywords  = "MVC architecture;analysis and system design.;database
+               systems;Application software;Computer architecture;Control
+               systems;Databases;Independent component
+               analysis;Logic;Programming;Service oriented architecture;Unified
+               modeling language;User interfaces;MVC architecture;analysis and
+               system design.;database systems"
+}
+
+
+
+@INCOLLECTION{Ward2008-aa,
+  title     = "Multivariate Data Glyphs: Principles and Practice",
+  booktitle = "Handbook of Data Visualization",
+  author    = "Ward, Matthew O",
+  abstract  = "In the context of data visualization, a glyph is a visual
+               representation of a piece of data where the attributes of a
+               graphical entity are dictated by one or more attributes of a
+               data record. For example, the width and height of a box could be
+               determined by a student's score on the midterm and final exam
+               for a course, while the box's color might indicate the genderof
+               the student.Thedefinitionabove is ratherbroad, as it can cover
+               such visual elements as the markers in a scatterplot, the bars
+               of a histogram, or even an entire line plot. However, a narrower
+               definition would not be sufficient to capture the wide range of
+               data visualization techniques that have been developed over the
+               centuries that are termed glyphs.",
+  publisher = "Springer, Berlin, Heidelberg",
+  pages     = "179--198",
+  series    = "Springer Handbooks Comp.Statistics",
+  year      =  2008,
+  language  = "en"
+}
+
+
+
+@MISC{noauthor_undated-ok,
+  title        = "Showcases - Wikitude",
+  booktitle    = "Wikitude",
+  howpublished = "\url{https://www.wikitude.com/showcase/}",
+  note         = "Accessed: 2018-4-17"
+}
+
+
+
+@ARTICLE{Willett2017-ag,
+  title    = "Embedded Data Representations",
+  author   = "Willett, W and Jansen, Y and Dragicevic, P",
+  abstract = "We introduce embedded data representations, the use of visual and
+              physical representations of data that are deeply integrated with
+              the physical spaces, objects, and entities to which the data
+              refers. Technologies like lightweight wireless displays, mixed
+              reality hardware, and autonomous vehicles are making it
+              increasingly easier to display data in-context. While researchers
+              and artists have already begun to create embedded data
+              representations, the benefits, trade-offs, and even the language
+              necessary to describe and compare these approaches remain
+              unexplored. In this paper, we formalize the notion of physical
+              data referents - the real-world entities and spaces to which data
+              corresponds - and examine the relationship between referents and
+              the visual and physical representations of their data. We
+              differentiate situated representations, which display data in
+              proximity to data referents, and embedded representations, which
+              display data so that it spatially coincides with data referents.
+              Drawing on examples from visualization, ubiquitous computing, and
+              art, we explore the role of spatial indirection, scale, and
+              interaction for embedded representations. We also examine the
+              tradeoffs between non-situated, situated, and embedded data
+              displays, including both visualizations and physicalizations.
+              Based on our observations, we identify a variety of design
+              challenges for embedded data representation, and suggest
+              opportunities for future research and applications.",
+  journal  = "IEEE Trans. Vis. Comput. Graph.",
+  volume   =  23,
+  number   =  1,
+  pages    = "461--470",
+  month    =  jan,
+  year     =  2017,
+  keywords = "data structures;data visualisation;ubiquitous
+              computing;autonomous vehicles;embedded data displays;embedded
+              data representations;lightweight wireless displays;mixed reality
+              hardware;physical data reference;physical data
+              representations;physical spaces;ubiquitous computing;visual data
+              representations;Augmented reality;Context;Data
+              visualization;Instruments;Pipelines;Ubiquitous
+              computing;Visualization;Information visualization;ambient
+              displays;augmented reality;data physicalization;ubiquitous
+              computing"
+}
+
+
+@MISC{noauthor_undated-tf,
+  title        = "Vuforia | Augmented Reality",
+  howpublished = "\url{https://www.vuforia.com/}",
+  note         = "Accessed: 2018-4-17"
+}
+
+
+
+@MISC{noauthor_undated-fy,
+  title        = "Unity",
+  booktitle    = "Unity",
+  abstract     = "Unity is the ultimate game development platform. Use Unity to
+                  build high-quality 3D and 2D games, deploy them across
+                  mobile, desktop, VR/AR, consoles or the Web, and connect with
+                  loyal and enthusiastic players and customers.",
+  howpublished = "\url{https://unity3d.com/}",
+  note         = "Accessed: 2018-4-15"
+}
+
