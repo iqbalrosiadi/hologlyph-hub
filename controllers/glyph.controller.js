@@ -87,10 +87,13 @@ exports.new_glyph_create_get = function(req, res, next) {
         sensor: function(callback){ 
             Sensor.find(callback);
         },
+        visual: function(callback){ 
+        Visual.find(callback);
+        },
     }, function(err, results){
         if (err) { return next(err); }
         res.render('new_glyph_form', { title: 'Create a New Glyph', 
-            channel_list: results.channels, mark_list: results.sensor, visual: results.sensor,  
+            channel_list: results.channels, mark_list: results.sensor, visual: results.visual,  
             sensor: results.sensor, marker_list: results.marker, glyph_type: glyph_type, errors: err });
 
     });
@@ -106,14 +109,6 @@ exports.new_glyph_create_post =  [
 
         (req, res, next) => {
             const errors = validationResult(req);
-            
-            console.log("name of the glyph before " + req.body.glyph_name);
-            var visual = new Visual(
-              { glyph_name: req.body.glyph_name,
-                glyph_type: req.body.glyph_type
-              }
-            );
-            console.log("name of the glyph after " + visual.glyph_name);
 
             if (!errors.isEmpty()) {
                         async.parallel({
@@ -137,7 +132,77 @@ exports.new_glyph_create_post =  [
             return;
             }
             else {
-                
+            
+            console.log("name of the glyph before " + req.body.glyph_name);
+            var visual = new Visual(
+              { glyph_name: req.body.glyph_name,
+                glyph_type: req.body.glyph_type,
+                visual_type: 'glyph',
+                default_color:req.body.default_color,
+                marker: req.body.Marker,
+                x_pos: req.body.x_axis,
+                y_pos: req.body.y_axis,
+                z_pos: req.body.z_axis,
+                x_rot: req.body.x_rot,
+                y_rot: req.body.y_rot,
+                z_rot: req.body.z_rot
+              }
+            );
+
+            if (req.body.opacity_data!='nothing')
+            {
+                var glyph_opacity = new Glyph(
+                  { 
+                    visual: visual._id,
+                    channel: 'opacity',
+                    sensor: req.body.opacity_data, //substr(req.body.opacity_data, 0, 0),
+                    min_val: req.body.opacity_min_val,
+                    max_val: req.body.opacity_max_val,
+                    min_range: req.body.opacity_min_range,
+                    max_range: req.body.opacity_max_range
+
+                  }
+                );
+
+                visual.glyph.push(glyph_opacity._id);
+            };
+
+            if (req.body.color_data!='nothing')
+            {
+                var glyph_color = new Glyph(
+                  { 
+                    visual: visual._id,
+                    channel: 'color',
+                    sensor: req.body.color_data, //substr(req.body.opacity_data, 0, 0),
+                    min_val: req.body.color_min_val,
+                    max_val: req.body.color_max_val,
+                    color_min_range: req.body.color_min_range,
+                    color_max_range: req.body.color_max_range
+
+                  }
+                );
+
+                visual.glyph.push(glyph_color._id);
+            };
+
+            if (req.body.size_data!='nothing')
+            {
+                var glyph_size = new Glyph(
+                  { 
+                    visual: visual._id,
+                    channel: 'size',
+                    sensor: req.body.size_data, //substr(req.body.opacity_data, 0, 0),
+                    min_val: req.body.size_min_val,
+                    max_val: req.body.size_max_val,
+                    min_range: req.body.size_min_range,
+                    max_range: req.body.size_max_range
+
+                  }
+                );
+
+                visual.glyph.push(glyph_size._id);
+            };
+
                 Visual.findOne({ 'glyph_name': req.body.glyph_name })
                     .exec( function(err, found_glyph){
                         if (err){ return next(err); }
@@ -150,9 +215,30 @@ exports.new_glyph_create_post =  [
                             console.log("Value _id "+ visual._id);
                             visual.save(function (err){
                                 if (err) { return next(err); }
-                                // Genre saved. Redirect to genre detail page.
-                               // console.log("name of the glyph " + glyph.glyph_name);
-                                //console.log("THIS ERROR");
+
+                                if (req.body.size_data!='nothing')
+                                {
+                                    glyph_size.save(function (err){
+                                    if (err) { return next(err); }
+                                    });
+                                }
+
+                                if (req.body.opcity_data!='nothing')
+                                {
+                                    glyph_opacity.save(function (err){
+                                    if (err) { return next(err); }
+                                    });
+                                }
+
+                                if (req.body.color_data!='nothing')
+                                {
+                                    glyph_color.save(function (err){
+                                    if (err) { return next(err); }
+                                    });
+                                }
+
+
+
                                 res.redirect('/');
 
                             });
@@ -170,9 +256,6 @@ exports.new_glyph_create_post =  [
 
 exports.new_chart_create_get = function(req, res, next) {
         async.parallel({
-        channels: function(callback){
-            Channel.find(callback);
-        },
         glyphs: function(callback){ 
             Glyph.find(callback);
         },
@@ -185,10 +268,108 @@ exports.new_chart_create_get = function(req, res, next) {
     }, function(err, results){
         if (err) { return next(err); }
         res.render('new_chart_form', { title: 'Create a New Chart', 
-            channel_list: results.channels, mark_list: results.sensor, marker_list: results.marker, bar_type: bar_type, errors: err });
+            mark_list: results.sensor, visual: results.sensor,  
+            sensor: results.sensor, marker_list: results.marker, bar_type: bar_type, errors: err });
 
     });
 };
+
+
+
+// Display list of device
+exports.new_chart_create_post =  [
+        
+       // body('glyph_name', 'Mark name required').isLength({ min: 1 }).trim(),
+
+        sanitizeBody('glyph_name').trim().escape(),
+
+        (req, res, next) => {
+            const errors = validationResult(req);
+
+            if (!errors.isEmpty()) {
+                        async.parallel({
+                            channels: function(callback){
+                                Channel.find(callback);
+                            },
+                            marker: function(callback){ 
+                                Marker.find(callback);
+                            },
+                            sensor: function(callback){ 
+                                Sensor.find(callback);
+                            },
+                        }, function(err, results){
+                            if (err) { return next(err); }
+                            res.render('new_glyph_form', { title: 'Create a New Glyph', 
+                                channel_list: results.channels, mark_list: results.sensor, visual: results.sensor,  
+                                sensor: results.sensor, marker_list: results.marker, glyph_type: glyph_type, errors: err });
+
+                        });
+                //res.render('new_glyph_form', { title: 'Create a New Glyph', glyph: glyph, errors: errors.array()});
+            return;
+            }
+            else {
+            
+            console.log("name of the glyph before " + req.body.glyph_name);
+            var visual = new Visual(
+              { glyph_name: req.body.glyph_name,
+                glyph_type: req.body.glyph_type,
+                visual_type: 'bar_line',
+                default_color:req.body.default_color,
+                marker: req.body.Marker,
+                x_pos: req.body.x_axis,
+                y_pos: req.body.y_axis,
+                z_pos: req.body.z_axis,
+                x_rot: req.body.x_rot,
+                y_rot: req.body.y_rot,
+                z_rot: req.body.z_rot
+              }
+            );
+
+            if (req.body.opacity_data!='nothing')
+            {
+                var glyph_opacity = new Glyph(
+                  { 
+                    visual: visual._id,
+                    channel: 'opacity',
+                    sensor: req.body.opacity_data, //substr(req.body.opacity_data, 0, 0),
+                    min_val: req.body.opacity_min_val,
+                    max_val: req.body.opacity_max_val
+
+                  }
+                );
+
+                visual.glyph.push(glyph_opacity._id);
+            };
+
+
+                Visual.findOne({ 'glyph_name': req.body.glyph_name })
+                    .exec( function(err, found_glyph){
+                        if (err){ return next(err); }
+
+                        if (found_glyph) {
+                            res.redirect(found_glyph.url);
+
+                        }
+                        else {
+                            console.log("Value _id "+ visual._id);
+                            visual.save(function (err){
+                                if (err) { return next(err); }
+
+                                res.redirect('/');
+
+                            });
+
+                        }
+
+
+                    });
+
+            }
+
+        }
+
+];
+
 
 
 exports.new_scatter_create_get = function(req, res, next) {

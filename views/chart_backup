@@ -108,30 +108,36 @@ block content
               block content
                 br
                 br
-                .row(id='readroot' style='display: none; margin:10px; -webkit-column-count: 6;  -moz-column-count: 6; column-count: 6; -webkit-column-gap: 30px; /* Chrome, Safari, Opera */ -moz-column-gap: 30px; /* Firefox */ column-gap: 30px; ')
-                  label(for='glyph') Sensor :
-                  select#glyph.form-control(type='select'  placeholder='Select status' name='glyph' required='false' style="width:120px;")
-                    option(value='nothing') Not Assigned
-                    for glyph in mark_list
-                      if sensor
-                        option(value=glyph._id selected=(sensor.glyph==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
-                      else
-                        option(value=glyph._id) #{glyph.sensor_name}
-
-                  label(for='min_val') Min. Value:
-                  input#min_val_.form-control(type='text' style=" width:70px; " placeholder='0'  name='min_val_'  value=(undefined===visual ? '' : visual.min_val_))
-
-                  label(for='max_val') Max. Value:
-                  input#max_val_.form-control(type='text' style=" width:70px;" placeholder='0'  name='max_val_'  value=(undefined===visual ? '' : visual.max_val_))
-
-                  label(for='def_color') Bar/Chart Color:
-                  input#def_color_.form-control(type='text' style="width:70px;" placeholder='0'  name='def_color_' value=(undefined===visual ? '' : visual.def_color_))
-                  
-                  input(type='button' value="X" name='blabla' style='border-radius: 5px; margin:15px; width:40px; height:40px; background:#F88379; color:white' onclick="this.parentNode.parentNode.removeChild(this.parentNode);")
+                div(id='readroot' style='display: none;')
+                  .row
+                    .col-sm-2(style="margin-right:50px")
+                      div.form-group
+                        label(for='glyph') Sensor :
+                        select#glyph.form-control(type='select'  placeholder='Select status' name='glyph' required='false' style="width:150px;")
+                          option(value='nothing') Not Assigned
+                          for glyph in mark_list
+                            if sensor
+                              option(value=glyph._id selected=(sensor.glyph==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
+                            else
+                              option(value=glyph._id) #{glyph.sensor_name}
+                    .col-sm-2(name='min_val_')
+                      div.form-group(style='width:100px')
+                        label(for='min_val_') Min. Value:
+                        input#min_val_.form-control(type='text' style=" width:70px;" placeholder='0'  name='min_val_'  value=(undefined===visual ? '' : visual.min_val_))
+                    .col-sm-2(name='max_val_')
+                      div.form-group(style='width:100px')
+                        label(for='max_val_') Max. Value:
+                        input#max_val_.form-control(type='text' style=" width:70px;" placeholder='0'  name='max_val_'  value=(undefined===visual ? '' : visual.max_val_))
+                    .col-sm-2(name='def_color_')
+                      div.form-group(style='width:120px')
+                        label(for='def_color_' ) Bar/Chart Color:
+                        input#def_color_.form-control(type='text' style="width:70px;" placeholder='0'  name='def_color_' value=(undefined===visual ? '' : visual.def_color_))
+                    
+                    input(type='button' value="X" style='border-radius: 5px; margin:15px; width:40px; height:40px; background:#F88379; color:white' onclick="this.parentNode.parentNode.removeChild(this.parentNode);")
                 
                 span(id='writeroot')
                 br
-                input(type='button'  onclick="moreFields()" value=' Add Fields ' style='border-radius: 5px; background:#568203; color:white; height:40px;')
+                input(type='button' onclick="moreFields()" value=' Add Fields ' style='border-radius: 5px; background:#568203; color:white; height:40px;')
 
         hr
         button.btn.btn-primary() Submit
@@ -145,8 +151,7 @@ block content
       newFields.style.display = 'block';
       var newField = newFields.childNodes;
       for (var i=0;i<newField.length;i++) {
-        var theName = newField[i].name;
-        console.log('name of field '+newField[i].name);
+        var theName = newField[i].name
         if (theName)
           newField[i].name = theName + counter;
       }

@@ -30,63 +30,71 @@ block content
         
         .tab-content.u-pd-15#myTabContent
             .tab-pane.fade#profile1(role="tabpanel", aria-labelledby="profile-tab")
-              h3 Glyph Properties
-              div.form-group(style="width:200px")
-                label(for='glyph_type') Glyph Type:
-                select#glyph_type.form-control(type='select' placeholder='select' name='glyph_type' required='false')
-                  for type in glyph_type
-                    if visual
-                      option(value=type.glyph_type selected=(visual.glyph_type==type.glyph_type ? 'selected' : false)) #{type.glyph_type}
-                    else
-                      option(value=type.glyph_type) "#{type.glyph_type}"
-        
-              div.form-group(style="width:350px")
-                label(for='default_color') Default Color :
-                .input-group(class='colorpicker-component' id='default_color')
-                  input#default_color.form-control(type='text' class='input-lg' style="height:35px;" name='default_color' required='false' value=(undefined===visual ? '#9eebcd' : sensor.def_color))
-                  span.input-group-addon#basic-addon2 Choose Colour 
-                    i 
-                script(type="text/javascript") $(function (){ $('#default_color').colorpicker() });
+              br
+              .row
+                .col-sm-2
+                  div.form-group(style="width:200px")
+                    label(for='glyph_type') Glyph Type:
+                    select#glyph_type.form-control(type='select' placeholder='select' name='glyph_type' required='false')
+                      for type in glyph_type
+                        if visual
+                          option(value=type.glyph_type selected=(visual.glyph_type==type.glyph_type ? 'selected' : false)) #{type.glyph_type}
+                        else
+                          option(value='type.glyph_type') "#{type.glyph_type}"
+                
+                .col-sm-2
+                  div.form-group(style="width:350px; margin-left:100px")
+                    label(for='default_color') Default Color :
+                    .input-group(class='colorpicker-component' id='default_color')
+                      input#default_color.form-control(type='text' class='input-lg' style="height:35px;" name='default_color' required='false' value=(undefined===visual ? '#9eebcd' : visual.default_color))
+                      span.input-group-addon#basic-addon2 Choose Colour 
+                        i 
+                    script(type="text/javascript") $(function (){ $('#default_color').colorpicker() });
 
               .row
-                div
-                  .col-sm-2
-                    div
-                      h4 Glyph Position
-                  .col-sm-2
-                    div.form-group
-                      label(for='glyph') X Axis:
-                      input#min_val.form-control(type='text' style=" width:70px;" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                .div(style=" float: left; margin:15px")
+                    .image-block
+                      img.image(src='/direction.png' width="225" height="225" alt="Marker")
+                .div(style=" float: left; margin-left:50px")
+                  .row
+                    h4 Glyph Position
+                  .row
+                    .div
+                      .col-sm-2
+                        div.form-group
+                          label(for='x_axis') X Axis:
+                          input#x_axis.form-control(type='text' style=" width:70px;" placeholder='0'  name='x_axis' required='false' value=(undefined===visual ? '' : visual.x_axis))
 
-                  .col-sm-2
-                    div.form-group
-                      label(for='glyph') Y Axis:
-                      input#min_val.form-control(type='text' style=" width:70px;" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                      .col-sm-2(style="margin-left:20px")
+                        div.form-group
+                          label(for='y_axis') Y Axis:
+                          input#y_axis.form-control(type='text' style=" width:70px;" placeholder='0'  name='y_axis' required='false' value=(undefined===visual ? '' : visual.y_axis))
 
-                  .col-sm-2
-                    div.form-group
-                      label(for='glyph') Z Axis:
-                      input#min_val.form-control(type='text' style="width:70px;" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                      .col-sm-2(style="margin-left:20px")
+                        div.form-group
+                          label(for='z_axis') Z Axis:
+                          input#z_axis.form-control(type='text' style="width:70px;" placeholder='0'  name='z_axis' required='false' value=(undefined===visual ? '' : visual.z_axis))
 
-              .row
-                div
-                  .col-sm-2
-                    div
-                      h4 Glyph Rotation
-                  .col-sm-2
-                    div.form-group
-                      label(for='glyph') X Axis:
-                      input#min_val.form-control(type='text' style="height:35px; width:70px;" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                  .row
+                    h4 Glyph Rotation
+                  .row
+                    .div
+                      .col-sm-2
+                        div.form-group
+                          label(for='x_rot') X Rotation:
+                          input#x_rot.form-control(type='text' style=" width:70px;" placeholder='0'  name='x_rot' required='false' value=(undefined===visual ? '' : visual.x_rot))
 
-                  .col-sm-2
-                    div.form-group
-                      label(for='glyph') Y Axis:
-                      input#min_val.form-control(type='text' style="height:35px; width:70px;" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                      .col-sm-2(style="margin-left:20px")
+                        div.form-group
+                          label(for='y_rot') Y Rotation:
+                          input#y_rot.form-control(type='text' style=" width:70px;" placeholder='0'  name='y_rot' required='false' value=(undefined===visual ? '' : visual.y_rot))
 
-                  .col-sm-2
-                    div.form-group
-                      label(for='glyph') Z Axis:
-                      input#min_val.form-control(type='text' style="height:35px; width:70px;" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                      .col-sm-2(style="margin-left:20px")
+                        div.form-group
+                          label(for='z_rot') Z Rotation:
+                          input#z_rot.form-control(type='text' style="width:70px;" placeholder='0'  name='z_rot' required='false' value=(undefined===visual ? '' : visual.z_rot))
+
+
 
             .tab-pane.fade#profile(role="tabpanel", aria-labelledby="profile-tab")
               block content
@@ -99,29 +107,30 @@ block content
                         h4 Size
                     .col-sm-2
                       div.form-group
-                        label(for='glyph') Sensor:
-                        select#glyph.form-control(type='select'  style="width:120px;"  placeholder='Select status' name='glyph' required='false')
+                        label(for='size_data') Sensor:
+                        select#size_data.form-control(type='select'  style="width:120px;"  placeholder='Select status' name='size_data' required='false')
+                          option(value="nothing") Not Assigned
                           for glyph in mark_list
-                            if sensor
-                              option(value=glyph.sensor_name selected=(sensor.glyph==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
+                            if sensor_size
+                              option(value=glyph._id selected=(sensor_size.sensor==glyph._id ? 'selected' : false)) #{glyph.sensor_name}
                             else
-                              option(value=glyph.sensor_name) #{glyph.sensor_name}
+                              option(value=glyph._id) #{glyph.sensor_name}
                     .col-sm-2
                       div.form-group
-                        label(for='min_val') Min Value
-                        input#min_val.form-control(type='text' style="width:50px; margin-left:10px" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                        label(for='size_min_val') Min Domain
+                        input#size_min_val.form-control(type='text' style="width:50px; margin-left:10px" placeholder='0'  name='size_min_val' required='false' value=(undefined===sensor_size ? '' : sensor_size.min_val))
                     .col-sm-2
                       div.form-group
-                        label(for='min_val'  style="margin-left:-60px")  Max Value
-                        input#min_val.form-control(type='text' style=" width:50px; margin-left:-55px" placeholder='100'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                        label(for='size_max_val'  style="margin-left:-60px")  Max Domain
+                        input#size_max_val.form-control(type='text' style=" width:50px; margin-left:-55px" placeholder='100'  name='size_max_val' required='false' value=(undefined===sensor_size ? '' : sensor_size.max_val))
                     .col-sm-2
                       div.form-group(style="margin-left:-100px")
-                        label(for='min_val') Min Range
-                        input#min_val.form-control(type='text' style="width:90px;" placeholder='#ff0707'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                        label(for='size_min_range') Min Range
+                        input#size_min_range.form-control(type='text' style="width:90px;" placeholder='0'  name='size_min_range' required='false' value=(undefined===sensor_size ? '' : sensor_size.min_range))
                     .col-sm-2
                       div.form-group(style="margin-left:-110px")
-                        label(for='min_val') Max Range
-                        input#min_val.form-control(type='text' style="width:90px;" placeholder='#ff0707'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                        label(for='size_max_range') Max Range
+                        input#size_max_range.form-control(type='text' style="width:90px;" placeholder='100  '  name='size_max_range' required='false' value=(undefined===sensor_size ? '' : sensor_size.max_range))
 
                 .row
                   div(style="margin-top: -20px")
@@ -130,21 +139,30 @@ block content
                         h4 Opacity
                     .col-sm-2
                       div.form-group
-                        label(for='glyph') 
-                        select#glyph.form-control(type='select'  style="width:120px;"  placeholder='Select status' name='glyph' required='false')
+                        label(for='opacity_data') 
+                        select#opacity_data.form-control(type='select'  style="width:120px;"  placeholder='Select status' name='opacity_data' required='false')
+                          option(value="nothing") Not Assigned
                           for glyph in mark_list
-                            if sensor
-                              option(value=glyph.sensor_name selected=(sensor.glyph==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
+                            if sensor_opacity
+                              option(value=glyph._id selected=(sensor_opacity.sensor==glyph._id ? 'selected' : false)) #{glyph.sensor_name}
                             else
-                              option(value=glyph.sensor_name) '#{glyph.sensor_name}'
+                              option(value=glyph._id) #{glyph.sensor_name}
                     .col-sm-2
                       div.form-group
-                        label(for='min_val')
-                        input#min_val.form-control(type='text' style="width:50px; margin-left:10px" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                        label(for='opacity_min_val') 
+                        input#opacity_min_val.form-control(type='text' style="width:50px; margin-left:10px" placeholder='0'  name='opacity_min_val' required='false' value=(undefined===sensor_opacity ? '' : sensor_opacity.min_val))
                     .col-sm-2
                       div.form-group
-                        label(for='min_val'  style="margin-left:-60px") 
-                        input#min_val.form-control(type='text' style="width:50px; margin-left:-55px" placeholder='100'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                        label(for='opacity_max_val'  style="margin-left:-60px") 
+                        input#opacity_max_val.form-control(type='text' style=" width:50px; margin-left:-55px" placeholder='100'  name='opacity_max_val' required='false' value=(undefined===sensor_opacity ? '' : sensor_opacity.max_val))
+                    .col-sm-2
+                      div.form-group(style="margin-left:-100px")
+                        label(for='opacity_min_range') 
+                        input#opacity_min_range.form-control(type='text' style="width:90px;" placeholder='0'  name='opacity_min_range' required='false' value=(undefined===sensor_opacity ? '' : sensor_opacity.min_range))
+                    .col-sm-2
+                      div.form-group(style="margin-left:-110px")
+                        label(for='size_max_range')
+                        input#opacity_max_range.form-control(type='text' style="width:90px;" placeholder='100'  name='opacity_max_range' required='false' value=(undefined===sensor_opacity ? '' : sensor_opacity.max_range))
 
                 .row
                   div
@@ -152,29 +170,30 @@ block content
                         h4 Colour
                     .col-sm-2
                       div.form-group
-                        label(for='glyph') Sensor:
-                        select#glyph.form-control(type='select'  style="width:120px;"  placeholder='Select status' name='glyph' required='false')
+                        label(for='color_data') Sensor:
+                        select#color_data.form-control(type='select'  style="width:120px;"  placeholder='Select status' name='color_data' required='false')
+                          option(value="nothing") Not Assigned
                           for glyph in mark_list
-                            if sensor
-                              option(value=glyph.sensor_name selected=(sensor.glyph==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
+                            if sensor_color
+                              option(value=glyph._id selected=(sensor_color.glyph==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
                             else
-                              option(value=glyph.sensor_name) #{glyph.sensor_name}
+                              option(value=glyph._id) #{glyph.sensor_name}
                     .col-sm-2
                       div.form-group
-                        label(for='min_val') Min Value
-                        input#min_val.form-control(type='text' style="width:50px; margin-left:10px" placeholder='0'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                        label(for='color_min_val') Min Value
+                        input#color_min_val.form-control(type='text' style="width:50px; margin-left:10px" placeholder='0'  name='color_min_val' required='false' value=(undefined===sensor_color ? '' : sensor_color.min_val))
                     .col-sm-2
                       div.form-group(style="margin-left:-55px")
-                        label(for='min_val') Max Value
-                        input#min_val.form-control(type='text' style="width:50px;" placeholder='100'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                        label(for='color_max_val') Max Value
+                        input#color_max_val.form-control(type='text' style="width:50px;" placeholder='100'  name='color_max_val' required='false' value=(undefined===sensor_color ? '' : sensor_color.max_val))
                     .col-sm-2
                       div.form-group(style="margin-left:-100px")
-                        label(for='min_val') Min Range Color
-                        input#min_val.form-control(type='text' style="width:90px;" placeholder='#ff0707'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                        label(for='color_min_range') Min Range Color
+                        input#color_min_range.form-control(type='text' style="width:90px;" placeholder='#ff0707'  name='color_min_range' required='false' value=(undefined===sensor_color ? '' : sensor_color.max_val))
                     .col-sm-2
                       div.form-group(style="margin-left:-110px")
-                        label(for='min_val') Max Range Color
-                        input#min_val.form-control(type='text' style="width:90px;" placeholder='#ff0707'  name='min_val' required='false' value=(undefined===sensor ? '' : sensor.min_val))
+                        label(for='color_max_range') Max Range Color
+                        input#color_max_range.form-control(type='text' style="width:90px;" placeholder='#ff0707'  name='color_max_range' required='false' value=(undefined===sensor_color ? '' : sensor_color.max_range))
 
         hr
         button.btn.btn-primary() Submit

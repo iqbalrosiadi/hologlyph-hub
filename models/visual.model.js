@@ -5,9 +5,14 @@ var Schema = mongoose.Schema;
 var VisualSchema = new Schema(
 		{
 			glyph_name: {type: String},
+			visual_type: {type: String},
 			glyph_type: {type: String, default:'Sphere'},
 			marker: {type: String},
+			default_color: {type: String, default:'#000000'},
 			glyph: [{type: Schema.ObjectId, ref: 'Glyph'}],
+			x_pos: {type: String},
+			x_pos: {type: String},
+			x_pos: {type: String},			
 			x_pos: {type: String},
 			y_pos: {type: String},
 			z_pos: {type: String},
