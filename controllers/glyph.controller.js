@@ -149,7 +149,7 @@ exports.new_glyph_create_post =  [
               }
             );
 
-            if (req.body.opacity_data!='nothing')
+            if ((req.body.opcity_data!='nothing') && (typeof req.body.opcity_data != 'undefined'))
             {
                 var glyph_opacity = new Glyph(
                   { 
@@ -167,7 +167,7 @@ exports.new_glyph_create_post =  [
                 visual.glyph.push(glyph_opacity._id);
             };
 
-            if (req.body.color_data!='nothing')
+            if ((req.body.color_data!='nothing') && (typeof req.body.color_data != 'undefined'))
             {
                 var glyph_color = new Glyph(
                   { 
@@ -185,7 +185,7 @@ exports.new_glyph_create_post =  [
                 visual.glyph.push(glyph_color._id);
             };
 
-            if (req.body.size_data!='nothing')
+            if ((req.body.size_data!='nothing') && (typeof req.body.size_data != 'undefined'))
             {
                 var glyph_size = new Glyph(
                   { 
@@ -355,19 +355,6 @@ exports.new_chart_create_post =  [
 
             }
 
-
-            console.log('VISUAL');
-            console.log(visual);
-            console.log("xoxoxoxoxoxoxoxoxoxoxoxoxoxo");
-            console.log(vars);
-            console.log("xoxoxoxoxoxoxoxoxoxoxoxoxoxo");
-            console.log(vars.length);
-            console.log("xoxoxoxoxoxoxoxoxoxoxoxoxoxo");
-            for(var i=2; i<=vars.length; i++)
-            {
-                console.log(vars[i]);
-            }
-
                 Visual.findOne({ 'glyph_name': req.body.glyph_name })
                     .exec( function(err, found_glyph){
                         if (err){ return next(err); }
@@ -412,9 +399,6 @@ exports.new_chart_create_post =  [
 
 exports.new_scatter_create_get = function(req, res, next) {
         async.parallel({
-        channels: function(callback){
-            Channel.find(callback);
-        },
         glyphs: function(callback){ 
             Glyph.find(callback);
         },
@@ -427,10 +411,142 @@ exports.new_scatter_create_get = function(req, res, next) {
     }, function(err, results){
         if (err) { return next(err); }
         res.render('new_scatter_plot', { title: 'Create a New Scatter Plot', 
-            channel_list: results.channels, mark_list: results.sensor, marker_list: results.marker, errors: err });
+            mark_list: results.sensor, visual: results.sensor,  
+            sensor: results.sensor, marker_list: results.marker, bar_type: bar_type, errors: err });
 
     });
 };
+
+
+
+// Display list of device
+exports.new_scatter_create_post =  [
+        
+       // body('glyph_name', 'Mark name required').isLength({ min: 1 }).trim(),
+
+        sanitizeBody('glyph_name').trim().escape(),
+
+        (req, res, next) => {
+            const errors = validationResult(req);
+
+            if (!errors.isEmpty()) {
+                        
+                async.parallel({
+                glyphs: function(callback){ 
+                    Glyph.find(callback);
+                },
+                marker: function(callback){ 
+                    Marker.find(callback);
+                },
+                sensor: function(callback){ 
+                    Sensor.find(callback);
+                },
+            }, function(err, results){
+                if (err) { return next(err); }
+                res.render('new_scatter_plot', { title: 'Create a New Scatter Plot', 
+                    mark_list: results.sensor, visual: results.sensor,  
+                    sensor: results.sensor, marker_list: results.marker, bar_type: bar_type, errors: err });
+
+            });
+                //res.render('new_glyph_form', { title: 'Create a New Glyph', glyph: glyph, errors: errors.array()});
+            return;
+            }
+            else {
+            
+            console.log("name of the glyph before " + req.body.glyph_name);
+            var visual = new Visual(
+              { glyph_name: req.body.glyph_name,
+                glyph_type: 'scatter',
+                visual_type: 'scatter',
+                default_color:req.body.default_color,
+                marker: req.body.Marker,
+                x_pos: req.body.x_axis,
+                y_pos: req.body.y_axis,
+                z_pos: req.body.z_axis,
+                x_rot: req.body.x_rot,
+                y_rot: req.body.y_rot,
+                z_rot: req.body.z_rot
+              }
+            );
+
+            if (req.body.scat_x_axis!='nothing')
+            {
+                var glyph_x = new Glyph(
+                  { 
+                    visual: visual._id,
+                    channel: 'x_axis',
+                    sensor: req.body.scat_x_axis, //substr(req.body.opacity_data, 0, 0),
+                    min_val: req.body.min_val_x,
+                    max_val: req.body.max_val_x,
+                    color: req.body.def_color_x
+
+                  }
+                );
+
+                visual.glyph.push(glyph_x._id);
+            };
+
+
+            if (req.body.scat_y_axis!='nothing')
+            {
+                var glyph_y = new Glyph(
+                  { 
+                    visual: visual._id,
+                    channel: 'y_axis',
+                    sensor: req.body.scat_y_axis, //substr(req.body.opacity_data, 0, 0),
+                    min_val: req.body.min_val_y,
+                    max_val: req.body.max_val_y,
+                    color: req.body.def_color_y
+
+                  }
+                );
+
+                visual.glyph.push(glyph_y._id);
+            };
+
+
+                Visual.findOne({ 'glyph_name': req.body.glyph_name })
+                    .exec( function(err, found_glyph){
+                        if (err){ return next(err); }
+
+                        if (found_glyph) {
+                            res.redirect(found_glyph.url);
+
+                        }
+                        else {
+                            console.log("Value _id "+ visual._id);
+                            visual.save(function (err){
+                                if (err) { return next(err); }
+
+                                if ((req.body.scat_y_axis!='nothing') && (typeof req.body.scat_y_axis != 'undefined'))
+                                {
+                                    glyph_y.save(function (err){
+                                    if (err) { return next(err); }
+                                    });
+                                }
+
+                                if ((req.body.scat_x_axis!='nothing') && (typeof req.body.scat_x_axis != 'undefined'))
+                                {
+                                    glyph_x.save(function (err){
+                                    if (err) { return next(err); }
+                                    });
+                                }
+
+                                res.redirect('/');
+
+                            });
+
+                        }
+
+
+                    });
+
+            }
+
+        }
+
+];
+
 
 // Display list of device
 exports.glyph_create_post =  [
