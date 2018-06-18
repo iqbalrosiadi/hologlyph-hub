@@ -216,21 +216,21 @@ exports.new_glyph_create_post =  [
                             visual.save(function (err){
                                 if (err) { return next(err); }
 
-                                if (req.body.size_data!='nothing')
+                                if ((req.body.size_data!='nothing') && (typeof req.body.size_data != 'undefined'))
                                 {
                                     glyph_size.save(function (err){
                                     if (err) { return next(err); }
                                     });
                                 }
 
-                                if (req.body.opcity_data!='nothing')
+                                if ((req.body.opcity_data!='nothing') && (typeof req.body.opcity_data != 'undefined'))
                                 {
                                     glyph_opacity.save(function (err){
                                     if (err) { return next(err); }
                                     });
                                 }
 
-                                if (req.body.color_data!='nothing')
+                                if ((req.body.color_data!='nothing') && (typeof req.body.color_data != 'undefined'))
                                 {
                                     glyph_color.save(function (err){
                                     if (err) { return next(err); }
@@ -309,12 +309,15 @@ exports.new_chart_create_post =  [
             }
             else {
             
-            console.log("name of the glyph before " + req.body.glyph_name);
+            //console.log("name of the glyph before " + req.body.glyph_name);
             var visual = new Visual(
               { glyph_name: req.body.glyph_name,
-                glyph_type: req.body.glyph_type,
+                glyph_type: req.body.type,
                 visual_type: 'bar_line',
                 default_color:req.body.default_color,
+                max_batch:req.body.max_batch,
+                height:req.body.height,
+                width:req.body.width,
                 marker: req.body.Marker,
                 x_pos: req.body.x_axis,
                 y_pos: req.body.y_axis,
@@ -325,22 +328,45 @@ exports.new_chart_create_post =  [
               }
             );
 
-            if (req.body.opacity_data!='nothing')
+            var vars = [];
+
+            for(var i=2; i<=parseInt(req.body.counter); i++)
             {
-                var glyph_opacity = new Glyph(
-                  { 
-                    visual: visual._id,
-                    channel: 'opacity',
-                    sensor: req.body.opacity_data, //substr(req.body.opacity_data, 0, 0),
-                    min_val: req.body.opacity_min_val,
-                    max_val: req.body.opacity_max_val
+                console.log(req.body['glyph'+i]);
+                if ((req.body['glyph'+i]!='nothing') && (typeof req.body['glyph'+i] != 'undefined'))
+                {
+                    var glyph_chart = new Glyph(
+                      { 
+                        visual: visual._id,
+                        sensor: req.body['glyph'+i], 
+                        min_val: req.body['min_val'+i],
+                        max_val: req.body['max_val'+i],
+                        color: req.body['def_color'+i]
 
-                  }
-                );
+                      }
+                    );
 
-                visual.glyph.push(glyph_opacity._id);
-            };
+                    visual.glyph.push(glyph_chart._id);
+                    vars[i] = glyph_chart;
+                    console.log(vars[i]);
+                };
 
+                
+
+            }
+
+
+            console.log('VISUAL');
+            console.log(visual);
+            console.log("xoxoxoxoxoxoxoxoxoxoxoxoxoxo");
+            console.log(vars);
+            console.log("xoxoxoxoxoxoxoxoxoxoxoxoxoxo");
+            console.log(vars.length);
+            console.log("xoxoxoxoxoxoxoxoxoxoxoxoxoxo");
+            for(var i=2; i<=vars.length; i++)
+            {
+                console.log(vars[i]);
+            }
 
                 Visual.findOne({ 'glyph_name': req.body.glyph_name })
                     .exec( function(err, found_glyph){
@@ -353,7 +379,19 @@ exports.new_chart_create_post =  [
                         else {
                             console.log("Value _id "+ visual._id);
                             visual.save(function (err){
-                                if (err) { return next(err); }
+                                if (err) { return next(err);}
+                                for(var i=2; i<=vars.length; i++)
+                                {
+                                    if ((vars[i]!='nothing') && (typeof vars[i] != 'undefined'))
+                                    {
+                                        vars[i].save(function (err){
+                                        if (err) { return next(err); }
+                                        console.log('SUCCESS '+vars[i]);
+                                        });
+                                    }
+                                        
+                                }
+
 
                                 res.redirect('/');
 

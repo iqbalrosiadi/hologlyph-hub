@@ -8,12 +8,12 @@ block content
       div(style="padding: 30px;")
         div.form-group(style="width:200px")
           label(for='glyph_name') Glyph Name:
-          input#glyph_name.form-control(type='text' placeholder='Set Glyph name' name='glyph_name' required='false' value=(undefined===visual ? '' :  visual.glyph_name))
+          input#glyph_name.form-control(type='text' placeholder='Set Glyph name' name='glyph_name'  value=(undefined===visual ? '' :  visual.glyph_name))
 
 
         div.form-group(style="width:200px")
           label(for='Marker') Marker:
-          select#Marker.form-control(type='select' placeholder='Select status' name='Marker' required='false')
+          select#Marker.form-control(type='select' placeholder='Select status' name='Marker' )
             for glyph in marker_list
               if sensor
                 option(value=glyph.marker_name selected=(sensor.glyph==glyph.marker_name ? 'selected' : false)) #{glyph.marker_name}
@@ -46,18 +46,18 @@ block content
                   
                   .col-sm-2
                     div.form-group(style="width:150px;")
-                      label(for='color_max_range') Chart Height
-                      input#color_max_range.form-control(type='text' style="width:90px;" placeholder='0.5 to 1.5'  name='color_max_range' required='false' value=(undefined===sensor_color ? '' : sensor_color.max_range))
+                      label(for='height') Chart Height
+                      input#Height.form-control(type='text' style="width:90px;" placeholder='0.5 to 1.5'  name='height'  value=(undefined===sensor_color ? '' : sensor_color.max_range))
 
                   .col-sm-2
                     div.form-group(style="width:150px;")
-                      label(for='color_max_range') Chart Width
-                      input#color_max_range.form-control(type='text' style="width:90px;" placeholder='1 to 2'  name='color_max_range' required='false' value=(undefined===sensor_color ? '' : sensor_color.max_range))
+                      label(for='width') Chart Width
+                      input#width.form-control(type='text' style="width:90px;" placeholder='1 to 2'  name='width'  value=(undefined===sensor_color ? '' : sensor_color.max_range))
 
                   .col-sm-1
                     div.form-group(style="width:150px;")
-                      label(for='color_max_range') Max Data Batches
-                      input#color_max_range.form-control(type='text' style="width:90px;" placeholder='1 to 10'  name='color_max_range' required='false' value=(undefined===sensor_color ? '' : sensor_color.max_range))
+                      label(for='max_batch') Max Data Batches
+                      input#max_batch.form-control(type='text' style="width:90px;" placeholder='1 to 10'  name='max_batch'  value=(undefined===sensor_color ? '' : sensor_color.max_range))
 
               .row
                 .div(style=" float: left; margin:15px")
@@ -71,17 +71,17 @@ block content
                       .col-sm-2
                         div.form-group
                           label(for='x_axis') X Axis:
-                          input#x_axis.form-control(type='text' style=" width:70px;" placeholder='0'  name='x_axis' required='false' value=(undefined===visual ? '' : visual.x_axis))
+                          input#x_axis.form-control(type='text' style=" width:70px;" placeholder='0'  name='x_axis'  value=(undefined===visual ? '' : visual.x_axis))
 
                       .col-sm-2(style="margin-left:20px")
                         div.form-group
                           label(for='y_axis') Y Axis:
-                          input#y_axis.form-control(type='text' style=" width:70px;" placeholder='0'  name='y_axis' required='false' value=(undefined===visual ? '' : visual.y_axis))
+                          input#y_axis.form-control(type='text' style=" width:70px;" placeholder='0'  name='y_axis'  value=(undefined===visual ? '' : visual.y_axis))
 
                       .col-sm-2(style="margin-left:20px")
                         div.form-group
                           label(for='z_axis') Z Axis:
-                          input#z_axis.form-control(type='text' style="width:70px;" placeholder='0'  name='z_axis' required='false' value=(undefined===visual ? '' : visual.z_axis))
+                          input#z_axis.form-control(type='text' style="width:70px;" placeholder='0'  name='z_axis'  value=(undefined===visual ? '' : visual.z_axis))
 
                   .row
                     h4 Glyph Rotation
@@ -90,17 +90,17 @@ block content
                       .col-sm-2
                         div.form-group
                           label(for='x_rot') X Rotation:
-                          input#x_rot.form-control(type='text' style=" width:70px;" placeholder='0'  name='x_rot' required='false' value=(undefined===visual ? '' : visual.x_rot))
+                          input#x_rot.form-control(type='text' style=" width:70px;" placeholder='0'  name='x_rot'  value=(undefined===visual ? '' : visual.x_rot))
 
                       .col-sm-2(style="margin-left:20px")
                         div.form-group
                           label(for='y_rot') Y Rotation:
-                          input#y_rot.form-control(type='text' style=" width:70px;" placeholder='0'  name='y_rot' required='false' value=(undefined===visual ? '' : visual.y_rot))
+                          input#y_rot.form-control(type='text' style=" width:70px;" placeholder='0'  name='y_rot'  value=(undefined===visual ? '' : visual.y_rot))
 
                       .col-sm-2(style="margin-left:20px")
                         div.form-group
                           label(for='z_rot') Z Rotation:
-                          input#z_rot.form-control(type='text' style="width:70px;" placeholder='0'  name='z_rot' required='false' value=(undefined===visual ? '' : visual.z_rot))
+                          input#z_rot.form-control(type='text' style="width:70px;" placeholder='0'  name='z_rot'  value=(undefined===visual ? '' : visual.z_rot))
 
 
 
@@ -110,7 +110,7 @@ block content
                 br
                 .row(id='readroot' style='display: none; margin:10px; -webkit-column-count: 6;  -moz-column-count: 6; column-count: 6; -webkit-column-gap: 30px; /* Chrome, Safari, Opera */ -moz-column-gap: 30px; /* Firefox */ column-gap: 30px; ')
                   label(for='glyph') Sensor :
-                  select#glyph.form-control(type='select'  placeholder='Select status' name='glyph' required='false' style="width:120px;")
+                  select#glyph.form-control(type='select'  placeholder='Select status' name='glyph'  style="width:120px;")
                     option(value='nothing') Not Assigned
                     for glyph in mark_list
                       if sensor
@@ -119,13 +119,13 @@ block content
                         option(value=glyph._id) #{glyph.sensor_name}
 
                   label(for='min_val') Min. Value:
-                  input#min_val_.form-control(type='text' style=" width:70px; " placeholder='0'  name='min_val_'  value=(undefined===visual ? '' : visual.min_val_))
+                  input#min_val_.form-control(type='text' style=" width:70px; " placeholder='0'  name='min_val'  value=(undefined===visual ? '' : visual.min_val_))
 
                   label(for='max_val') Max. Value:
-                  input#max_val_.form-control(type='text' style=" width:70px;" placeholder='0'  name='max_val_'  value=(undefined===visual ? '' : visual.max_val_))
+                  input#max_val_.form-control(type='text' style=" width:70px;" placeholder='0'  name='max_val'  value=(undefined===visual ? '' : visual.max_val_))
 
                   label(for='def_color') Bar/Chart Color:
-                  input#def_color_.form-control(type='text' style="width:70px;" placeholder='0'  name='def_color_' value=(undefined===visual ? '' : visual.def_color_))
+                  input#def_color_.form-control(type='text' style="width:70px;" placeholder='0'  name='def_color' value=(undefined===visual ? '' : visual.def_color_))
                   
                   input(type='button' value="X" name='blabla' style='border-radius: 5px; margin:15px; width:40px; height:40px; background:#F88379; color:white' onclick="this.parentNode.parentNode.removeChild(this.parentNode);")
                 
@@ -133,11 +133,13 @@ block content
                 br
                 input(type='button'  onclick="moreFields()" value=' Add Fields ' style='border-radius: 5px; background:#568203; color:white; height:40px;')
 
+                input(type='hidden' id='counter' name='counter' value='')
+
         hr
         button.btn.btn-primary() Submit
 
   script(type="text/javascript").
-    var counter = 0;
+    var counter = 1;
     function moreFields() {
       counter++;
       var newFields = document.getElementById('readroot').cloneNode(true);
@@ -152,5 +154,6 @@ block content
       }
       var insertHere = document.getElementById('writeroot');
       insertHere.parentNode.insertBefore(newFields,insertHere);
+      document.getElementById("counter").value = counter;
     }
     window.onload = moreFields;

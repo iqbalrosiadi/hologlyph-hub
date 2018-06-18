@@ -6,6 +6,7 @@ var GlyphSchema = new Schema(
 		{	
 			visual: {type: Schema.ObjectId, ref: 'Visual', required: true },
 			sensor: {type: Schema.ObjectId, ref: 'Sensor', required: true },
+			color: {type: String, default:'#ff0000'},
 			channel: {type: String, default:'none'},
 			max_val: {type: Number, default:100},
 			min_val: {type: Number, default:0},
