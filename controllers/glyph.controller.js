@@ -664,7 +664,7 @@ exports.new_glyph_update_get = function(req, res, next) {
 
         console.log(results.glyph_size[0]);
         
-        res.render('new_glyph_form', { title: 'Create a New Glyph', 
+        res.render('new_glyph_form', { title: 'Updating The New Glyph', 
             channel_list: results.channels, mark_list: results.sensor, visual: results.visual, glyph_type: glyph_type, 
             sensor: results.sensor, marker_list: results.marker, sensor_opacity: results.glyph_opacity[0],
             sensor_size: results.glyph_size[0], sensor_color: results.glyph_color[0], errors: err }); 
@@ -843,10 +843,6 @@ exports.new_scatter_update_get = function(req, res, next) {
         sensor: function(callback){ 
             Sensor.find(callback);
         },
-        glyph_x_axis: function(callback) {
-            Glyph.find({'visual':req.params.id, 'channel':'X Axis'})
-            .exec(callback);
-        },
         glyph_y_axis: function(callback) {
         Glyph.find({'visual':req.params.id, 'channel':'Y Axis'})
         .populate('sensor')
@@ -861,7 +857,7 @@ exports.new_scatter_update_get = function(req, res, next) {
         if (err) { return next(err); }
 
         console.log(results.glyph_y_axis[0]);
-        res.render('new_scatter_plot', { title: 'Create a New Scatter Plot', 
+        res.render('new_scatter_plot', { title: 'Updating The Scatter Plot', 
             mark_list: results.sensor, visual: results.visual,  glyph_x_axis: results.glyph_x_axis[0], glyph_y_axis: results.glyph_y_axis[0],  
             sensor: results.sensor, marker_list: results.marker, bar_type: bar_type, errors: err });
 
@@ -1005,6 +1001,35 @@ exports.new_scatter_update_post =  [
         }
 
 ];
+
+
+exports.new_chart_update_get = function(req, res, next) {
+        async.parallel({
+        visual: function(callback){ 
+                Visual.findById(req.params.id)
+                .exec(callback);
+        },
+        marker: function(callback){ 
+            Marker.find(callback);
+        },
+        sensor: function(callback){ 
+            Sensor.find(callback);
+        },
+        glyph_chart: function(callback) {
+        Glyph.find({'visual':req.params.id})
+        .populate('sensor')
+        .exec(callback);
+        },
+    }, function(err, results){
+        if (err) { return next(err); }
+
+        console.log(results.glyph_chart);
+        res.render('new_chart_form', { title: 'Updating The Chart', 
+            mark_list: results.sensor, visual: results.visual,  glyph_list: results.glyph_chart, glyph_counter: results.glyph_chart.length,  
+            sensor: results.sensor, marker_list: results.marker, bar_type: bar_type, errors: err });
+
+    });
+};
 
 
 
