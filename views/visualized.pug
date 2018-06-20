@@ -1,6 +1,8 @@
 extends layout
 
 block content
+    h2=title
+    hr
     each val, idx in list_devices
         div(style="margin:20px")
             h3 Microcontroller: #{val.device_name} 

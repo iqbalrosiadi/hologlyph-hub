@@ -101,7 +101,7 @@ exports.visual_list = function(req, res, next) {
         var dataset = JSON.parse(obj);
         //console.log(obj);
 
-        res.render('visual_list', { title: 'Registered Device', visual_list:dataset});
+        res.render('visual_list', { title: 'Visualisation List', visual_list:dataset});
     });
 
 };

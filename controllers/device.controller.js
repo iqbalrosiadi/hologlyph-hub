@@ -74,7 +74,7 @@ exports.index = function(req, res, next) {
 		var dataset = JSON.parse(obj);
 		//console.log(obj);
 		//JSON.stringify( blabla, undefined, 4 )
-		res.render('visualized', { title: 'Registered Device', list_devices: dataset});
+		res.render('visualized', { title: 'Registered Microcontroller', list_devices: dataset});
 	});
 
 };
