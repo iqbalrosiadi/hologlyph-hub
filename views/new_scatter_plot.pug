@@ -42,17 +42,17 @@ block content
                   .col-sm-3
                     div.form-group(style="width:150px;")
                       label(for='height') Chart Height
-                      input#height.form-control(type='text' style="width:90px;" placeholder='0.5 to 1.5'  name='height'  value=(undefined===visual.height ? '' : visual.height))
+                      input#height.form-control(type='text' style="width:90px;" placeholder='0.5 to 1.5'  name='height'  value=(undefined===visual ? '' : visual.height))
 
                   .col-sm-3
                     div.form-group(style="width:150px;")
                       label(for='width') Chart Width
-                      input#width.form-control(type='text' style="width:90px;" placeholder='1 to 2'  name='width'  value=(undefined===visual.width ? '' : visual.width))
+                      input#width.form-control(type='text' style="width:90px;" placeholder='1 to 2'  name='width'  value=(undefined===visual ? '' : visual.width))
 
                   .col-sm-3
                     div.form-group(style="width:150px;")
                       label(for='max_batch') Max Data Batches
-                      input#max_batch.form-control(type='text' style="width:90px;" placeholder='1 to 10'  name='max_batch'  value=(undefined===visual.max_batch ? '' : visual.max_batch))
+                      input#max_batch.form-control(type='text' style="width:90px;" placeholder='1 to 10'  name='max_batch'  value=(undefined===visual ? '' : visual.max_batch))
 
               .row
                 .div(style=" float: left; margin:15px")
@@ -107,11 +107,11 @@ block content
                     div.form-group
                       label(for='scat_x_axis') X-Axis Data:
                       select#scat_x_axis.form-control(type='select'  placeholder='Select status' name='scat_x_axis'  style="width:150px;")
+                        option(value='nothing') Not Assigned
                         for glyph in mark_list
                           if glyph_x_axis
                             option(value=glyph._id selected=(glyph_x_axis.sensor.sensor_name==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
                           else
-                            option(value='nothing') Not Assigned
                             option(value=glyph._id) #{glyph.sensor_name}
                   .col-sm-2(name='min_val_x')
                     div.form-group(style='width:100px')
@@ -121,21 +121,21 @@ block content
                     div.form-group(style='width:100px')
                       label(for='max_val_x') Max. Value:
                       input#max_val_x.form-control(type='text' style=" width:70px;" placeholder='0'  name='max_val_x'  value=(undefined===glyph_x_axis ? '' : glyph_x_axis.max_val))
-                  .col-sm-2(name='def_color_x')
-                    div.form-group(style='width:120px')
-                      label(for='def_color_x' ) Bar/Chart Color:
-                      input#def_color_x.form-control(type='text' style="width:70px;" placeholder='0'  name='def_color_x' value=(undefined===glyph_x_axis ? '' : glyph_x_axis.def_color))
+                  //.col-sm-2(name='def_color_x')
+                    //div.form-group(style='width:120px')
+                      //label(for='def_color_x' ) Bar/Chart Color:
+                      //input#def_color_x.form-control(type='text' style="width:70px;" placeholder='0'  name='def_color_x' value=(undefined===glyph_x_axis ? '' : glyph_x_axis.def_color))
                 
                 .row
                   .col-sm-2(style="margin-right:50px")
                     div.form-group
                       label(for='scat_y_axis') Y-Axis Data:
                       select#scat_y_axis.form-control(type='select'  placeholder='Select status' name='scat_y_axis' style="width:150px;")
+                        option(value='nothing') Not Assigned
                         for glyph in mark_list
                           if glyph_y_axis
                             option(value=glyph._id selected=(glyph_y_axis.sensor.sensor_name==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
                           else
-                            option(value='nothing') Not Assigned
                             option(value=glyph._id) #{glyph.sensor_name}
                   .col-sm-2(name='min_val_y')
                     div.form-group(style='width:100px')
@@ -145,10 +145,11 @@ block content
                     div.form-group(style='width:100px')
                       label(for='max_val_y') Max. Value:
                       input#max_val_y.form-control(type='text' style=" width:70px;" placeholder='0'  name='max_val_y'  value=(undefined===glyph_y_axis ? '' : glyph_y_axis.max_val))
-                  .col-sm-2(name='def_color_y')
-                    div.form-group(style='width:120px')
-                      label(for='def_color_y' ) Bar/Chart Color:
-                      input#def_color_y.form-control(type='text' style="width:70px;" placeholder='0'  name='def_color_y' value=(undefined===glyph_y_axis ? '' : glyph_y_axis.def_color))
+
+                  //.col-sm-2(name='def_color_y')
+                    //div.form-group(style='width:120px')
+                      //label(for='def_color_y' ) Bar/Chart Color:
+                      //input#def_color_y.form-control(type='text' style="width:70px;" placeholder='0'  name='def_color_y' value=(undefined===glyph_y_axis ? '' : glyph_y_axis.def_color))
 
         hr
         button.btn.btn-primary() Submit

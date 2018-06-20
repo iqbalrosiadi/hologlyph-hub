@@ -213,6 +213,12 @@ router.get('/scatterplot/:id/update', glyph_controller.new_scatter_update_get);
 router.post('/scatterplot/:id/update', glyph_controller.new_scatter_update_post);
 
 
+// GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
+router.get('/glyphs/:id/update', glyph_controller.new_glyph_update_get);
+
+// POST request for creating glyph.
+router.post('/glyphs/:id/update', glyph_controller.new_glyph_update_post);
+
 
 // GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
 router.get('/visualisation/list', glyph_controller.visual_list);
