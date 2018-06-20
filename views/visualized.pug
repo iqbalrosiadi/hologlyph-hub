@@ -13,7 +13,7 @@ block content
                             canvas(id=sensor._id)
                         h6(style="margin:5px") 
                             b #{sensor.sensor_name}
-                        h6(style="margin:5px; font-size:10px;") (id: #{sensor._id})
+                        h6(style="margin:5px; font-size:10px;" ) (id: #{sensor._id})
                         h6(style="margin:5px; margin-top:0px; font-size:8px;") last data update: #{sensor.last_input_date}
                         div(style="margin:5px; text-align: right")
                             p
@@ -68,3 +68,28 @@ block content
         a(href='detail/device/create')
             button.btn.btn-success (+) Add New Microcontroller
     br
+
+    style.
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }

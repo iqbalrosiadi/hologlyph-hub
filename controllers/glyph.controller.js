@@ -642,7 +642,6 @@ exports.new_scatter_update_get = function(req, res, next) {
         async.parallel({
         visual: function(callback){ 
                 Visual.findById(req.params.id)
-                .populate('sensor', '_id')
                 .exec(callback);
         },
         marker: function(callback){ 
@@ -651,10 +650,26 @@ exports.new_scatter_update_get = function(req, res, next) {
         sensor: function(callback){ 
             Sensor.find(callback);
         },
+        glyph_x_axis: function(callback) {
+            Glyph.find({'visual':req.params.id, 'channel':'X Axis'})
+            .exec(callback);
+        },
+        glyph_y_axis: function(callback) {
+        Glyph.find({'visual':req.params.id, 'channel':'Y Axis'})
+        .populate('sensor')
+        .exec(callback);
+        },
+        glyph_x_axis: function(callback) {
+        Glyph.find({'visual':req.params.id, 'channel':'X Axis'})
+        .populate('sensor')
+        .exec(callback);
+        },
     }, function(err, results){
         if (err) { return next(err); }
+
+        console.log(results.glyph_y_axis[0].sensor.sensor_name);
         res.render('new_scatter_plot', { title: 'Create a New Scatter Plot', 
-            mark_list: results.sensor, visual: results.sensor,  
+            mark_list: results.sensor, visual: results.visual,  glyph_x_axis: results.glyph_x_axis[0], glyph_y_axis: results.glyph_y_axis[0],  
             sensor: results.sensor, marker_list: results.marker, bar_type: bar_type, errors: err });
 
     });
@@ -662,6 +677,141 @@ exports.new_scatter_update_get = function(req, res, next) {
 
 
 
+
+
+// Display list of device
+exports.new_scatter_update_post =  [
+        
+       // body('glyph_name', 'Mark name required').isLength({ min: 1 }).trim(),
+
+        sanitizeBody('glyph_name').trim().escape(),
+
+        (req, res, next) => {
+            const errors = validationResult(req);
+
+            if (!errors.isEmpty()) {
+                        
+                    async.parallel({
+                    visual: function(callback){ 
+                            Visual.findById(req.params.id)
+                            .exec(callback);
+                    },
+                    marker: function(callback){ 
+                        Marker.find(callback);
+                    },
+                    sensor: function(callback){ 
+                        Sensor.find(callback);
+                    },
+                    glyph_x_axis: function(callback) {
+                        Glyph.find({'visual':req.params.id, 'channel':'X Axis'})
+                        .exec(callback);
+                    },
+                    glyph_y_axis: function(callback) {
+                    Glyph.find({'visual':req.params.id, 'channel':'Y Axis'})
+                    .populate('sensor')
+                    .exec(callback);
+                    },
+                    glyph_x_axis: function(callback) {
+                    Glyph.find({'visual':req.params.id, 'channel':'X Axis'})
+                    .populate('sensor')
+                    .exec(callback);
+                    },
+                }, function(err, results){
+                    if (err) { return next(err); }
+
+                    console.log(results.glyph_y_axis[0].sensor.sensor_name);
+                    res.render('new_scatter_plot', { title: 'Create a New Scatter Plot', 
+                        mark_list: results.sensor, visual: results.visual,  glyph_x_axis: results.glyph_x_axis[0], glyph_y_axis: results.glyph_y_axis[0],  
+                        sensor: results.sensor, marker_list: results.marker, bar_type: bar_type, errors: err });
+
+                });
+                //res.render('new_glyph_form', { title: 'Create a New Glyph', glyph: glyph, errors: errors.array()});
+            return;
+            }
+            else {
+            
+            console.log("name of the glyph before " + req.body.glyph_name);
+            var visual = new Visual(
+              { 
+                _id: req.body.visual_id,
+                glyph_name: req.body.glyph_name,
+                glyph_type: 'Scatter Plot',
+                visual_type: 'scatterplot',
+                default_color:req.body.default_color,
+                marker: req.body.Marker,
+                x_pos: req.body.x_axis,
+                y_pos: req.body.y_axis,
+                z_pos: req.body.z_axis,
+                x_rot: req.body.x_rot,
+                y_rot: req.body.y_rot,
+                z_rot: req.body.z_rot
+              }
+            );
+
+            if (req.body.scat_x_axis!='nothing')
+            {
+                var glyph_x = new Glyph(
+                  { 
+                    _id:req.body.glyph_x_axis_id,
+                    visual: req.body.visual_id,
+                    channel: 'X Axis',
+                    sensor: req.body.scat_x_axis, //substr(req.body.opacity_data, 0, 0),
+                    min_val: req.body.min_val_x,
+                    max_val: req.body.max_val_x,
+                    color: req.body.def_color_x
+
+                  }
+                );
+
+                visual.glyph.push(glyph_x._id);
+            };
+
+
+            if (req.body.scat_y_axis!='nothing')
+            {
+                var glyph_y = new Glyph(
+                  { 
+                    _id:req.body.glyph_y_axis_id,
+                    visual: req.body.visual_id,
+                    channel: 'Y Axis',
+                    sensor: req.body.scat_y_axis, 
+                    min_val: req.body.min_val_y,
+                    max_val: req.body.max_val_y,
+                    color: req.body.def_color_y
+
+                  }
+                );
+
+                visual.glyph.push(glyph_y._id);
+            };
+
+
+
+                console.log("Value _id "+ visual._id);
+                Visual.findByIdAndUpdate(visual._id, visual, {}, function (err){
+                    if (err) { return next(err); }
+                    if ((req.body.scat_y_axis!='nothing') && (typeof req.body.scat_y_axis != 'undefined'))
+                    {
+                        Glyph.findByIdAndUpdate(glyph_y._id, glyph_y, {}, function (err){
+                        if (err) { return next(err); }
+                        });
+                    }
+                    if ((req.body.scat_x_axis!='nothing') && (typeof req.body.scat_x_axis != 'undefined'))
+                    {
+                        Glyph.findByIdAndUpdate(glyph_x._id, glyph_x, {}, function (err){
+                        if (err) { return next(err); }
+                        });
+                    }
+                    res.redirect('/detail/visualisation/list');
+                });
+
+
+
+            }
+
+        }
+
+];
 
 
 
