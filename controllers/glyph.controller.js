@@ -27,6 +27,87 @@ bar_type_list=bar_type_list+']';
 var bar_type = JSON.parse(bar_type_list);
 
 
+exports.visual_list = function(req, res, next) {
+    Visual.find() //.select('glyph_name _id marker glyph_type visual_type')
+    .populate({
+        path: 'glyph',
+        populate: { 
+            path: 'sensor',
+            select: '_id sensor_name sensor_type'
+        },
+        select: 'channel color _id'
+    })
+    .exec(function(err, list_devices){
+        if (err) { return next(err); }
+
+                var obj = "[" ;
+        //obj.device = [];
+        var i;
+        
+        for(i=0; i<list_devices.length; i++)
+        {
+            obj=obj+"{";
+
+            var j;
+            obj=obj+'"glyph_list":[';
+            for(j=0; j<list_devices[i].glyph.length; j++)
+            {
+                
+                /* console.log(list_devices[i].glyph[j].channel);
+                console.log(list_devices[i].glyph[j].color);
+                console.log(list_devices[i].glyph[j]._id); */
+                console.log(list_devices[i].glyph_name);
+                console.log(list_devices[i].glyph[j]);
+                //console.log(list_devices[i].glyph[j].sensor);
+                //console.log(list_devices[i].glyph[j].sensor.sensor_name);
+                obj=obj+"{";
+                obj=obj+'"glyph_id":"'+list_devices[i].glyph[j]._id+'",';
+                obj=obj+'"channel":"'+list_devices[i].glyph[j].channel+'",';
+                obj=obj+'"color":"'+list_devices[i].glyph[j].color+'",';
+                obj=obj+'"sensor_id":"'+list_devices[i].glyph[j].sensor._id+'",';
+                obj=obj+'"sensor_name":"'+list_devices[i].glyph[j].sensor.sensor_name+'",';
+                obj=obj+'"sensor_type":"'+list_devices[i].glyph[j].sensor.sensor_type+'"';
+                obj=obj+"}";
+                if(j!=(list_devices[i].glyph.length-1)){obj=obj+",";}
+            } 
+            obj=obj+'],';
+            //console.log(list_devices[i].sensor[0].dataset);
+            obj=obj+'"_id":"'+list_devices[i]._id+'",';
+            
+            obj=obj+'"width":"'+list_devices[i].width+'",';
+            obj=obj+'"height":"'+list_devices[i].height+'",';
+            obj=obj+'"max_batch":"'+list_devices[i].max_batch+'",';
+            obj=obj+'"default_color":"'+list_devices[i].default_color+'",';
+            
+            obj=obj+'"x_pos":"'+list_devices[i].x_pos+'",';
+            obj=obj+'"y_pos":"'+list_devices[i].y_pos+'",';
+            obj=obj+'"z_pos":"'+list_devices[i].z_pos+'",';
+            obj=obj+'"x_rot":"'+list_devices[i].x_rot+'",';
+            obj=obj+'"y_rot":"'+list_devices[i].y_rot+'",';
+            obj=obj+'"z_rot":"'+list_devices[i].z_rot+'",';
+
+            obj=obj+'"visual_type":"'+list_devices[i].visual_type+'",';
+            obj=obj+'"marker":"'+list_devices[i].marker+'",';
+            obj=obj+'"glpyh_type":"'+list_devices[i].glyph_type+'",';
+            obj=obj+'"visual_name":"'+list_devices[i].glyph_name+'"';
+            obj=obj+"}";
+            if(i!=(list_devices.length-1)){obj=obj+",";}
+            console.log(list_devices[i]);
+
+        }
+        
+        obj= obj+"]";
+
+        var dataset = JSON.parse(obj);
+        //console.log(obj);
+
+        res.render('visual_list', { title: 'Registered Device', visual_list:dataset});
+    });
+
+};
+
+
+
 // Display list of device
 exports.glyph_list = function(req, res, next)  {
 
@@ -88,7 +169,7 @@ exports.new_glyph_create_get = function(req, res, next) {
             Sensor.find(callback);
         },
         visual: function(callback){ 
-        Visual.find(callback);
+            Visual.find(callback);
         },
     }, function(err, results){
         if (err) { return next(err); }
@@ -136,8 +217,8 @@ exports.new_glyph_create_post =  [
             console.log("name of the glyph before " + req.body.glyph_name);
             var visual = new Visual(
               { glyph_name: req.body.glyph_name,
-                glyph_type: req.body.glyph_type,
-                visual_type: 'glyph',
+                glyph_type: req.body.glyph_type+' Glyph',
+                visual_type: 'glyphs',
                 default_color:req.body.default_color,
                 marker: req.body.Marker,
                 x_pos: req.body.x_axis,
@@ -149,12 +230,12 @@ exports.new_glyph_create_post =  [
               }
             );
 
-            if ((req.body.opcity_data!='nothing') && (typeof req.body.opcity_data != 'undefined'))
+            if ((req.body.opacity_data!='nothing') && (typeof req.body.opacity_data != 'undefined'))
             {
                 var glyph_opacity = new Glyph(
                   { 
                     visual: visual._id,
-                    channel: 'opacity',
+                    channel: 'Opacity',
                     sensor: req.body.opacity_data, //substr(req.body.opacity_data, 0, 0),
                     min_val: req.body.opacity_min_val,
                     max_val: req.body.opacity_max_val,
@@ -172,7 +253,7 @@ exports.new_glyph_create_post =  [
                 var glyph_color = new Glyph(
                   { 
                     visual: visual._id,
-                    channel: 'color',
+                    channel: 'Color',
                     sensor: req.body.color_data, //substr(req.body.opacity_data, 0, 0),
                     min_val: req.body.color_min_val,
                     max_val: req.body.color_max_val,
@@ -190,7 +271,7 @@ exports.new_glyph_create_post =  [
                 var glyph_size = new Glyph(
                   { 
                     visual: visual._id,
-                    channel: 'size',
+                    channel: 'Size',
                     sensor: req.body.size_data, //substr(req.body.opacity_data, 0, 0),
                     min_val: req.body.size_min_val,
                     max_val: req.body.size_max_val,
@@ -223,7 +304,7 @@ exports.new_glyph_create_post =  [
                                     });
                                 }
 
-                                if ((req.body.opcity_data!='nothing') && (typeof req.body.opcity_data != 'undefined'))
+                                if ((req.body.opacity_data!='nothing') && (typeof req.body.opacity_data != 'undefined'))
                                 {
                                     glyph_opacity.save(function (err){
                                     if (err) { return next(err); }
@@ -239,7 +320,7 @@ exports.new_glyph_create_post =  [
 
 
 
-                                res.redirect('/');
+                                res.redirect('/detail/visualisation/list');
 
                             });
 
@@ -313,7 +394,7 @@ exports.new_chart_create_post =  [
             var visual = new Visual(
               { glyph_name: req.body.glyph_name,
                 glyph_type: req.body.type,
-                visual_type: 'bar_line',
+                visual_type: 'chart',
                 default_color:req.body.default_color,
                 max_batch:req.body.max_batch,
                 height:req.body.height,
@@ -367,10 +448,14 @@ exports.new_chart_create_post =  [
                             console.log("Value _id "+ visual._id);
                             visual.save(function (err){
                                 if (err) { return next(err);}
+                                var counting = 1;
                                 for(var i=2; i<=vars.length; i++)
                                 {
+                                    
                                     if ((vars[i]!='nothing') && (typeof vars[i] != 'undefined'))
                                     {
+                                        vars[i].channel='Sensor '+counting;
+                                        counting=counting+1;
                                         vars[i].save(function (err){
                                         if (err) { return next(err); }
                                         console.log('SUCCESS '+vars[i]);
@@ -380,7 +465,7 @@ exports.new_chart_create_post =  [
                                 }
 
 
-                                res.redirect('/');
+                                res.redirect('/detail/visualisation/list');
 
                             });
 
@@ -456,8 +541,8 @@ exports.new_scatter_create_post =  [
             console.log("name of the glyph before " + req.body.glyph_name);
             var visual = new Visual(
               { glyph_name: req.body.glyph_name,
-                glyph_type: 'scatter',
-                visual_type: 'scatter',
+                glyph_type: 'Scatter Plot',
+                visual_type: 'scatterplot',
                 default_color:req.body.default_color,
                 marker: req.body.Marker,
                 x_pos: req.body.x_axis,
@@ -474,7 +559,7 @@ exports.new_scatter_create_post =  [
                 var glyph_x = new Glyph(
                   { 
                     visual: visual._id,
-                    channel: 'x_axis',
+                    channel: 'X Axis',
                     sensor: req.body.scat_x_axis, //substr(req.body.opacity_data, 0, 0),
                     min_val: req.body.min_val_x,
                     max_val: req.body.max_val_x,
@@ -492,7 +577,7 @@ exports.new_scatter_create_post =  [
                 var glyph_y = new Glyph(
                   { 
                     visual: visual._id,
-                    channel: 'y_axis',
+                    channel: 'Y Axis',
                     sensor: req.body.scat_y_axis, //substr(req.body.opacity_data, 0, 0),
                     min_val: req.body.min_val_y,
                     max_val: req.body.max_val_y,
@@ -532,7 +617,7 @@ exports.new_scatter_create_post =  [
                                     });
                                 }
 
-                                res.redirect('/');
+                                res.redirect('/detail/visualisation/list');
 
                             });
 
@@ -546,6 +631,38 @@ exports.new_scatter_create_post =  [
         }
 
 ];
+
+
+
+
+
+
+
+exports.new_scatter_update_get = function(req, res, next) {
+        async.parallel({
+        visual: function(callback){ 
+                Visual.findById(req.params.id)
+                .populate('sensor', '_id')
+                .exec(callback);
+        },
+        marker: function(callback){ 
+            Marker.find(callback);
+        },
+        sensor: function(callback){ 
+            Sensor.find(callback);
+        },
+    }, function(err, results){
+        if (err) { return next(err); }
+        res.render('new_scatter_plot', { title: 'Create a New Scatter Plot', 
+            mark_list: results.sensor, visual: results.sensor,  
+            sensor: results.sensor, marker_list: results.marker, bar_type: bar_type, errors: err });
+
+    });
+};
+
+
+
+
 
 
 // Display list of device
@@ -598,6 +715,37 @@ exports.glyph_create_post =  [
 		}
 
 ];
+
+
+
+// Display list of device
+exports.visual_delete_post = function(req, res, next) {
+    console.log('HALLO'+req.params.id);
+
+    async.parallel({
+        visual: function(callback) {
+            Visual.findById(req.params.id).exec(callback);
+        },
+        glyph: function(callback) {
+            Glyph.find({'visual':req.params.id}).exec(callback);
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+
+              Glyph.deleteMany({"visual": results.visual._id }, function deleteChannel(err) {
+                                if (err) { return next(err); }
+                    });
+
+              Visual.findByIdAndRemove(results.visual._id, function deleteChannel(err) {
+                if (err) { return next(err); }
+                res.redirect('/detail/visualisation/list');
+            });
+
+    });
+};
+
+
+
 
 // Display list of device
 exports.glyph_delete_get = function(req, res, next) {

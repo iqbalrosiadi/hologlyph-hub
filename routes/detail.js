@@ -172,11 +172,15 @@ router.get('/glyph/:id', glyph_controller.glyph_detail);
 // GET request for list of all glyph items.
 router.get('/glyph/', glyph_controller.glyph_list);
 
+
+
 // POST request for creating glyph.
 router.post('/glyphs/create', glyph_controller.new_glyph_create_post);
 
 // GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
 router.get('/glyphs/create', glyph_controller.new_glyph_create_get);
+
+
 
 // GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
 router.get('/chart/create', glyph_controller.new_chart_create_get);
@@ -185,11 +189,29 @@ router.get('/chart/create', glyph_controller.new_chart_create_get);
 router.post('/chart/create', glyph_controller.new_chart_create_post);
 
 
+
+
+// GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
+//router.get('/chart/:id/update', glyph_controller.new_chart_update_get);
+
+// POST request for creating glyph.
+//router.post('/chart/:id/update', glyph_controller.new_chart_update_post);
+
+
+
 // GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
 router.get('/scatterplot/create', glyph_controller.new_scatter_create_get);
 
 // POST request for creating glyph.
 router.post('/scatterplot/create', glyph_controller.new_scatter_create_post);
+
+// GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
+router.get('/visualisation/list', glyph_controller.visual_list);
+
+// POST request to delete glyph.
+router.post('/visual/:id/delete', glyph_controller.visual_delete_post);
+
+router.get('/visual/:id/delete', glyph_controller.visual_delete_post);
 
 
 

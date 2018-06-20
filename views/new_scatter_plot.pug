@@ -7,9 +7,12 @@ block content
     form(method='POST' action='')
       div(style="padding: 30px;")
         div.form-group(style="width:200px")
-          label(for='glyph_name') Glyph Name:
+          label(for='glyph_name') Visualisation Title:
           input#glyph_name.form-control(type='text' placeholder='Set Glyph name' name='glyph_name'  value=(undefined===visual ? '' :  visual.glyph_name))
 
+        div.form-group
+        if visual
+          input#sensor.form-control(type='hidden' name='sensor' value=visual.sensor)
 
         div.form-group(style="width:200px")
           label(for='Marker') Marker:

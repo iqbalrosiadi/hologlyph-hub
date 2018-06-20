@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    div(style="margin:20px")
+        div(class="box" style=" display: flex; align-items: stretch; flex-wrap: wrap; border-bottom: 2px solid red; background-color: #F5F5F5;")
+            each val, idx in visual_list
+                div(style="position: relative; border: 1px solid #C0C0C0; border-radius:2px; margin:5px; margin-bottom:15px; background-color: white;")
+                    div(class="chart-container" style="position: relative; height:220px; width:195px;")
+                        h4(style="margin:5px; text-align: center; margin-top:10px") 
+                                b #{val.visual_name}
+                        img.image(src='/marker/'+val.marker+'.jpg' width="175px" height="175px" style='margin-right:10px; margin-left:10px; margin-top:10px; margin-bottom:10px;' alt="Marker")
+                    div(style="margin-left:5px; margin-top:10%")
+                        h6(style="margin:5px; margin-bottom:-10px; text-align: left;") Marker: #{val.marker}
+                        hr
+                        h6(style="margin:5px; margin-top:-10px; font-size:10px;") 
+                            b #{val.glpyh_type} Legend:
+                        each channels in val.glyph_list
+                            h6(style="margin:5px; margin-top:0px; font-size:8px;") #{channels.channel} : #{channels.sensor_name}  - #{channels.sensor_type} Sensor
+                        hr
+                        h6(style="margin-top:-15px; margin-left:5px; font-size:10px;") 
+                            b Visualisation Properties :
+                        h6(style="margin:5px; margin-top:0px; font-size:8px;") Default Colour: #{val.default_color};
+                        h6(style="margin:5px; margin-top:0px; font-size:8px;") Height: #{val.height}; Width: #{val.width}; Max Batch: #{val.max_batch};
+                        h6(style="margin:5px; margin-top:0px; font-size:8px;") X-Position: #{val.x_pos}; Y-Position: #{val.y_pos}; Z-Position: #{val.z_pos};
+                        h6(style="margin:5px; margin-top:0px; font-size:8px;") X-Rotation: #{val.x_rot}; Y-Rotation: #{val.y_rot}; Z-Rotation: #{val.z_rot};
+
+                    div(style="margin:5px; text-align: right")
+                        p
+                            a(href='/detail/'+val.visual_type+'/'+val._id+'/update')(style='font-size:10px') Edit |  
+                            |
+                            a(href='/detail/visual/'+val._id+'/delete')(style='font-size:10px; color:red') Delete    
+    br

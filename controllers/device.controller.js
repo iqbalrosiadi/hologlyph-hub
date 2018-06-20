@@ -20,7 +20,7 @@ exports.index = function(req, res, next) {
 			select: '_id value date'
 
 		},
-		select: 'sensor_name _id'
+		select: 'sensor_name sensor_type _id'
 	})
 	.exec(function(err, list_devices){
 		if (err) { return next(err); }
@@ -39,7 +39,7 @@ exports.index = function(req, res, next) {
 			for(j=0; j<list_devices[i].sensor.length; j++)
 			{
 				var k;
-				console.log(list_devices[i].sensor[j].sensor_name);
+				console.log(list_devices[i].sensor[j].sensor_type);
 				obj=obj+"{";
 				obj=obj+'"sensor_name":"'+list_devices[i].sensor[j].sensor_name+'",';
 				obj=obj+'"sensor_type":"'+list_devices[i].sensor[j].sensor_type+'",';
@@ -72,7 +72,7 @@ exports.index = function(req, res, next) {
 		//console.log(list_devices[0].sensor[1].dataset);
 		obj= obj+"]";
 		var dataset = JSON.parse(obj);
-		console.log(obj);
+		//console.log(obj);
 		//JSON.stringify( blabla, undefined, 4 )
 		res.render('visualized', { title: 'Registered Device', list_devices: dataset});
 	});

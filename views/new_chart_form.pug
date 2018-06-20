@@ -7,7 +7,7 @@ block content
     form(method='POST' action='')
       div(style="padding: 30px;")
         div.form-group(style="width:200px")
-          label(for='glyph_name') Glyph Name:
+          label(for='glyph_name') Visualisation Title:
           input#glyph_name.form-control(type='text' placeholder='Set Glyph name' name='glyph_name'  value=(undefined===visual ? '' :  visual.glyph_name))
 
 
@@ -108,7 +108,7 @@ block content
               block content
                 br
                 br
-                .row(id='readroot' style='display: none; margin:10px; -webkit-column-count: 6;  -moz-column-count: 6; column-count: 6; -webkit-column-gap: 30px; /* Chrome, Safari, Opera */ -moz-column-gap: 30px; /* Firefox */ column-gap: 30px; ')
+                .row(id='readroot' style='display: none;margin:10px; -webkit-column-count: 6;  -moz-column-count: 6; column-count: 6; -webkit-column-gap: 30px; /* Chrome, Safari, Opera */ -moz-column-gap: 30px; /* Firefox */ column-gap: 30px; ')
                   label(for='glyph') Sensor :
                   select#glyph.form-control(type='select'  placeholder='Select status' name='glyph'  style="width:120px;")
                     option(value='nothing') Not Assigned
