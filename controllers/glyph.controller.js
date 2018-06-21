@@ -27,6 +27,23 @@ bar_type_list=bar_type_list+']';
 var bar_type = JSON.parse(bar_type_list);
 
 
+var x;
+var marker_list='[';
+for(x=0; x<25; x++)
+    {
+    if(x<10)
+    {
+        marker_list=marker_list+'{"marker_name":"Mark-0'+x+'"},';
+    }
+    else
+    {
+        marker_list=marker_list+'{"marker_name":"Mark-'+x+'"},';
+    }    
+    }
+    marker_list=marker_list+'{"marker_name":"Mark-25"}';
+marker_list=marker_list+']';
+var mark_list = JSON.parse(marker_list);
+
 exports.visual_list = function(req, res, next) {
     Visual.find() //.select('glyph_name _id marker glyph_type visual_type')
     .populate({
@@ -92,7 +109,7 @@ exports.visual_list = function(req, res, next) {
             obj=obj+'"visual_name":"'+list_devices[i].glyph_name+'"';
             obj=obj+"}";
             if(i!=(list_devices.length-1)){obj=obj+",";}
-            console.log(list_devices[i]);
+            //console.log(list_devices[i]);
 
         }
         
@@ -172,7 +189,7 @@ exports.new_glyph_create_get = function(req, res, next) {
         if (err) { return next(err); }
         res.render('new_glyph_form', { title: 'Create a New Glyph', 
             channel_list: results.channels, mark_list: results.sensor,
-            sensor: results.sensor, marker_list: results.marker, glyph_type: glyph_type, errors: err });
+            sensor: results.sensor, marker_list: mark_list, glyph_type: glyph_type, errors: err });
 
     });
 };
@@ -470,6 +487,121 @@ exports.new_chart_create_post =  [
 
 
                     });
+
+            }
+
+        }
+
+];
+
+
+// Display list of device
+exports.new_chart_update_post =  [
+        
+       // body('glyph_name', 'Mark name required').isLength({ min: 1 }).trim(),
+
+        sanitizeBody('glyph_name').trim().escape(),
+
+        (req, res, next) => {
+            const errors = validationResult(req);
+
+            if (!errors.isEmpty()) {
+                        async.parallel({
+                            channels: function(callback){
+                                Channel.find(callback);
+                            },
+                            marker: function(callback){ 
+                                Marker.find(callback);
+                            },
+                            sensor: function(callback){ 
+                                Sensor.find(callback);
+                            },
+                        }, function(err, results){
+                            if (err) { return next(err); }
+                            res.render('new_glyph_form', { title: 'Create a New Glyph', 
+                                channel_list: results.channels, mark_list: results.sensor, visual: results.sensor,  
+                                sensor: results.sensor, marker_list: results.marker, glyph_type: glyph_type, errors: err });
+
+                        });
+                //res.render('new_glyph_form', { title: 'Create a New Glyph', glyph: glyph, errors: errors.array()});
+            return;
+            }
+            else {
+            
+            //console.log("name of the glyph before " + req.body.glyph_name);
+            var visual = new Visual(
+              { 
+                _id: req.body.visual_id,
+                glyph_name: req.body.glyph_name,
+                glyph_type: req.body.type,
+                visual_type: 'chart',
+                default_color:req.body.default_color,
+                max_batch:req.body.max_batch,
+                height:req.body.height,
+                width:req.body.width,
+                marker: req.body.Marker,
+                x_pos: req.body.x_axis,
+                y_pos: req.body.y_axis,
+                z_pos: req.body.z_axis,
+                x_rot: req.body.x_rot,
+                y_rot: req.body.y_rot,
+                z_rot: req.body.z_rot
+              }
+            );
+
+            var vars = [];
+
+            Glyph.deleteMany({"visual": req.body.visual_id }, function deleteChannel(err) {
+                                if (err) { return next(err); }
+                    });
+
+
+            for(var i=2; i<=parseInt(req.body.counter); i++)
+            {
+                console.log(req.body['glyph'+i]);
+                if ((req.body['glyph'+i]!='nothing') && (typeof req.body['glyph'+i] != 'undefined'))
+                {
+                    var glyph_chart = new Glyph(
+                      { 
+                        visual: req.body.visual_id,
+                        sensor: req.body['glyph'+i], 
+                        min_val: req.body['min_val'+i],
+                        max_val: req.body['max_val'+i],
+                        color: req.body['def_color'+i]
+
+                      }
+                    );
+
+                    visual.glyph.push(glyph_chart._id);
+                    vars[i] = glyph_chart;
+                    //console.log(vars[i]);
+                };
+
+                
+
+            }
+
+                console.log("Value _id "+ visual._id);
+                Visual.findByIdAndUpdate(visual._id, visual, function (err){
+                    if (err) { return next(err);}
+                    var counting = 1;
+
+                    for(var i=2; i<=vars.length; i++)
+                    {
+                        
+                        if ((vars[i]!='nothing') && (typeof vars[i] != 'undefined'))
+                        {
+                            vars[i].channel='Sensor '+counting;
+                            counting=counting+1;
+                            vars[i].save(function (err){
+                            if (err) { return next(err); }
+                            console.log('SUCCESS '+vars[i]);
+                            });
+                        }
+                            
+                    }
+                    res.redirect('/detail/visualisation/list');
+                });
 
             }
 

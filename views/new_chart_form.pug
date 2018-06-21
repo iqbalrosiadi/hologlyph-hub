@@ -112,74 +112,25 @@ block content
               block content
                 br
                 br
-                if glyph_list
-                  .row(id='readroots' style='display: true;margin:10px; -webkit-column-count: 6;  -moz-column-count: 6; column-count: 6; -webkit-column-gap: 10px; /* Chrome, Safari, Opera */ -moz-column-gap: 10px; /* Firefox */ column-gap: 10px; ')
-                    for val, idx in glyph_list
-                      label(for='glyph') Sensor :
-                      select#glyph.form-control(type='select'  placeholder='Select status' name='glyph'+idx  style="width:120px;")
-                        option(value='nothing') Not Assigned
-                        for glyph in mark_list
-                          if glyph_list
-                            option(value=glyph._id selected=(val.sensor.sensor_name==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name} 
-                          else
-                            option(value=glyph._id) #{glyph.sensor_name}
-                      label(for='min_val') Min. Value:
-                      input#min_val_.form-control(type='text' style=" width:70px; " placeholder='0'  name='min_val'+idx  value=(undefined===glyph_list ? '' : glyph_list.min_val))
-                      label(for='max_val') Max. Value:
-                      input#max_val_.form-control(type='text' style=" width:70px;" placeholder='0'  name='max_val'+idx  value=(undefined===glyph_list ? '' : glyph_list.max_val))
-                      label(for='def_color') Bar/Chart Color:
-                      input#def_color_.form-control(type='text' style="width:70px;" placeholder='0'  name='def_color'+idx value=(undefined===glyph_list ? '' : glyph_list.def_color))
-                      
-                      input(type='button' value="X" name='blabla' style='border-radius: 5px; margin:15px; width:40px; height:40px; background:#F88379; color:white' onclick="this.parentNode.parentNode.removeChild(this.parentNode);")
-
-                      br
-
-                  .row(id='readroot' style='display: none;margin:10px; -webkit-column-count: 6;  -moz-column-count: 6; column-count: 6; -webkit-column-gap: 30px; /* Chrome, Safari, Opera */ -moz-column-gap: 30px; /* Firefox */ column-gap: 30px; ')
-                    label(for='glyph') Sensor :
-                    select#glyph.form-control(type='select'  placeholder='Select status' name='glyph'  style="width:120px;")
-                      option(value='nothing') Not Assigned
-                      for glyph in mark_list
-                        if sensor
-                          option(value=glyph._id selected=(sensor.glyph==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
-                        else
-                          option(value=glyph._id) #{glyph.sensor_name}
-
-                    label(for='min_val') Min. Value:
-                    input#min_val_.form-control(type='text' style=" width:70px; " placeholder='0'  name='min_val'  value=(undefined===visual ? '' : visual.min_val_))
-
-                    label(for='max_val') Max. Value:
-                    input#max_val_.form-control(type='text' style=" width:70px;" placeholder='0'  name='max_val'  value=(undefined===visual ? '' : visual.max_val_))
-
-                    label(for='def_color') Bar/Chart Color:
-                    input#def_color_.form-control(type='text' style="width:70px;" placeholder='0'  name='def_color' value=(undefined===visual ? '' : visual.def_color_))
-                    
-                    input(type='button' value="X" name='blabla' style='border-radius: 5px; margin:15px; width:40px; height:40px; background:#F88379; color:white' onclick="this.parentNode.parentNode.removeChild(this.parentNode);")
-
-
-
-                else
-                  .row(id='readroot' style='display: none;margin:10px; -webkit-column-count: 6;  -moz-column-count: 6; column-count: 6; -webkit-column-gap: 30px; /* Chrome, Safari, Opera */ -moz-column-gap: 30px; /* Firefox */ column-gap: 30px; ')
-                    label(for='glyph') Sensor :
-                    select#glyph.form-control(type='select'  placeholder='Select status' name='glyph'  style="width:120px;")
-                      option(value='nothing') Not Assigned
-                      for glyph in mark_list
-                        if sensor
-                          option(value=glyph._id selected=(sensor.glyph==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
-                        else
-                          option(value=glyph._id) #{glyph.sensor_name}
-
-                    label(for='min_val') Min. Value:
-                    input#min_val_.form-control(type='text' style=" width:70px; " placeholder='0'  name='min_val'  value=(undefined===visual ? '' : visual.min_val_))
-
-                    label(for='max_val') Max. Value:
-                    input#max_val_.form-control(type='text' style=" width:70px;" placeholder='0'  name='max_val'  value=(undefined===visual ? '' : visual.max_val_))
-
-                    label(for='def_color') Bar/Chart Color:
-                    input#def_color_.form-control(type='text' style="width:70px;" placeholder='0'  name='def_color' value=(undefined===visual ? '' : visual.def_color_))
-                    
-                    input(type='button' value="X" name='blabla' style='border-radius: 5px; margin:15px; width:40px; height:40px; background:#F88379; color:white' onclick="this.parentNode.parentNode.removeChild(this.parentNode);")
-                
+                .row(id='readroot' style='display: none;margin:10px; -webkit-column-count: 6;  -moz-column-count: 6; column-count: 6; -webkit-column-gap: 30px; /* Chrome, Safari, Opera */ -moz-column-gap: 30px; /*Firefox */ column-gap: 30px; ')
+                  label(for='glyph') Sensor :
+                  select#glyph.form-control(type='select'  placeholder='Select status' name='glyph'  style="width:120px;")
+                    option(value='nothing') Not Assigned
+                    for glyph in mark_list
+                      if sensor
+                        option(value=glyph._id selected=(sensor.glyph==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
+                      else
+                        option(value=glyph._id) #{glyph.sensor_name}
+                  label(for='min_val') Min. Value:
+                  input#min_val_.form-control(type='text' style=" width:70px; " placeholder='0'  name='min_val'  value=(undefined===visual ? '' : visual.min_val_))
+                  label(for='max_val') Max. Value:
+                  input#max_val_.form-control(type='text' style=" width:70px;" placeholder='0'  name='max_val'  value=(undefined===visual ? '' : visual.max_val_))
+                  label(for='def_color') Bar/Chart Color:
+                  input#def_color_.form-control(type='text' style="width:70px;" placeholder='0'  name='def_color' value=(undefined===visual ? '' : visual.def_color_))
                   
+                  input(type='button' value="X" name='blabla' style='border-radius: 5px; margin:15px; width:40px; height:40px; background:#F88379; color:white' onclick="this.parentNode.parentNode.removeChild(this.parentNode);")
+                
+                 
 
                 span(id='writeroot')
 

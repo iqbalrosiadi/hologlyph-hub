@@ -225,7 +225,10 @@ router.post('/glyphs/:id/update', glyph_controller.new_glyph_update_post);
 router.get('/chart/:id/update', glyph_controller.new_chart_update_get);
 
 // POST request for creating glyph.
-//router.post('/glyphs/:id/update', glyph_controller.new_glyph_update_post);
+router.post('/chart/:id/update', glyph_controller.new_chart_update_post);
+
+// POST request for creating glyph.
+router.post('/glyphs/:id/update', glyph_controller.new_glyph_update_post);
 
 
 // GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
