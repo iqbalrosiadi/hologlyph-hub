@@ -13,8 +13,12 @@ block content
         div.form-group
         if visual
           input#visual_id.form-control(type='hidden' name='visual_id' value=visual._id)
+        
+        if sensor_color
           input#sensor_color_id.form-control(type='hidden' name='sensor_color_id' value=sensor_color._id)
+        if sensor_opacity
           input#sensor_opacity_id.form-control(type='hidden' name='sensor_opacity_id' value=sensor_opacity._id)
+        if sensor_size
           input#sensor_size_id.form-control(type='hidden' name='sensor_size_id' value=sensor_size._id)
 
         div.form-group(style="width:200px")

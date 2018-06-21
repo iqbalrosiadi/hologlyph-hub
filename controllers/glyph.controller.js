@@ -73,10 +73,10 @@ exports.visual_list = function(req, res, next) {
                 /* console.log(list_devices[i].glyph[j].channel);
                 console.log(list_devices[i].glyph[j].color);
                 console.log(list_devices[i].glyph[j]._id); */
-                console.log(list_devices[i].glyph_name);
-                console.log(list_devices[i].glyph[j]);
+                console.log(list_devices[i].glyph_name+" : ");
+                //console.log(list_devices[i].glyph[j]);
                 //console.log(list_devices[i].glyph[j].sensor);
-                //console.log(list_devices[i].glyph[j].sensor.sensor_name);
+                console.log(list_devices[i].glyph[j].sensor.sensor_name);
                 obj=obj+"{";
                 obj=obj+'"glyph_id":"'+list_devices[i].glyph[j]._id+'",';
                 obj=obj+'"channel":"'+list_devices[i].glyph[j].channel+'",';
@@ -107,6 +107,8 @@ exports.visual_list = function(req, res, next) {
             obj=obj+'"marker":"'+list_devices[i].marker+'",';
             obj=obj+'"glpyh_type":"'+list_devices[i].glyph_type+'",';
             obj=obj+'"visual_name":"'+list_devices[i].glyph_name+'"';
+            console.log(list_devices[i].glyph_name+" : ");
+            console.log(list_devices[i].glyph_name.glyph_list);
             obj=obj+"}";
             if(i!=(list_devices.length-1)){obj=obj+",";}
             //console.log(list_devices[i]);
@@ -794,7 +796,7 @@ exports.new_glyph_update_get = function(req, res, next) {
     }, function(err, results){
         if (err) { return next(err); }
 
-        console.log(results.glyph_size[0]);
+        console.log("HALLO");
         
         res.render('new_glyph_form', { title: 'Updating The New Glyph', 
             channel_list: results.channels, mark_list: results.sensor, visual: results.visual, glyph_type: glyph_type, 
@@ -876,11 +878,15 @@ exports.new_glyph_update_post =  [
               }
             );
 
+
+
+
+
             if ((req.body.opacity_data!='nothing') && (typeof req.body.opacity_data != 'undefined'))
             {
                 var glyph_opacity = new Glyph(
                   { 
-                    _id:req.body.sensor_opacity_id,
+                    
                     visual: visual._id,
                     channel: 'Opacity',
                     sensor: req.body.opacity_data, //substr(req.body.opacity_data, 0, 0),
@@ -892,6 +898,11 @@ exports.new_glyph_update_post =  [
                   }
                 );
 
+                if ((typeof req.body.sensor_opacity_id != 'undefined'))
+                {
+                    glyph_opacity._id=req.body.sensor_opacity_id
+                };
+
                 visual.glyph.push(glyph_opacity._id);
             };
 
@@ -899,7 +910,6 @@ exports.new_glyph_update_post =  [
             {
                 var glyph_color = new Glyph(
                   { 
-                    _id:req.body.sensor_color_id,
                     visual: visual._id,
                     channel: 'Color',
                     sensor: req.body.color_data, //substr(req.body.opacity_data, 0, 0),
@@ -911,6 +921,11 @@ exports.new_glyph_update_post =  [
                   }
                 );
 
+                if ((typeof req.body.sensor_color_id != 'undefined'))
+                {
+                    glyph_color._id=req.body.sensor_color_id
+                };
+
                 visual.glyph.push(glyph_color._id);
             };
 
@@ -918,7 +933,6 @@ exports.new_glyph_update_post =  [
             {
                 var glyph_size = new Glyph(
                   { 
-                    _id:req.body.sensor_size_id,
                     visual: visual._id,
                     channel: 'Size',
                     sensor: req.body.size_data, //substr(req.body.opacity_data, 0, 0),
@@ -930,26 +944,35 @@ exports.new_glyph_update_post =  [
                   }
                 );
 
+                if ((typeof req.body.sensor_size_id != 'undefined'))
+                {
+                    glyph_size._id=req.body.sensor_size_id
+                };
                 visual.glyph.push(glyph_size._id);
             };
+
+
+
 
                         Visual.findByIdAndUpdate(visual._id, visual, function (err){
                        if (err) { return next(err); }
                        if ((req.body.size_data!='nothing') && (typeof req.body.size_data != 'undefined'))
                        {
-                           Glyph.findByIdAndUpdate(glyph_size._id, glyph_size, function (err){
+                           Glyph.findByIdAndUpdate(glyph_size._id, glyph_size,  { upsert: true },function (err){
                            if (err) { return next(err); }
+                           console.log("SUCCESS RESULT :");
+                           console.log(visual);
                            });
                        }
                        if ((req.body.opacity_data!='nothing') && (typeof req.body.opacity_data != 'undefined'))
                        {
-                           Glyph.findByIdAndUpdate(glyph_opacity._id, glyph_opacity,function (err){
+                           Glyph.findByIdAndUpdate(glyph_opacity._id, glyph_opacity,  { upsert: true },function (err){
                            if (err) { return next(err); }
                            });
                        }
                        if ((req.body.color_data!='nothing') && (typeof req.body.color_data != 'undefined'))
                        {
-                           Glyph.findByIdAndUpdate(glyph_color._id, glyph_color,function (err){
+                           Glyph.findByIdAndUpdate(glyph_color._id, glyph_color,  { upsert: true },function (err){
                            if (err) { return next(err); }
                            });
                        }
@@ -1069,11 +1092,10 @@ exports.new_scatter_update_post =  [
               }
             );
 
-            if (req.body.scat_x_axis!='nothing')
+            if ((req.body.scat_x_axis!='nothing') && (typeof req.body.glyph_x_axis_id != 'undefined'))
             {
                 var glyph_x = new Glyph(
                   { 
-                    _id:req.body.glyph_x_axis_id,
                     visual: req.body.visual_id,
                     channel: 'X Axis',
                     sensor: req.body.scat_x_axis, //substr(req.body.opacity_data, 0, 0),
@@ -1084,15 +1106,19 @@ exports.new_scatter_update_post =  [
                   }
                 );
 
+                if ((typeof req.body.glyph_x_axis_id != 'undefined'))
+                {
+                    glyph_x._id=req.body.glyph_x_axis_id
+                };
+
                 visual.glyph.push(glyph_x._id);
             };
 
 
-            if (req.body.scat_y_axis!='nothing')
+            if ((req.body.scat_y_axis!='nothing') && (typeof req.body.glyph_y_axis_id != 'undefined'))
             {
                 var glyph_y = new Glyph(
                   { 
-                    _id:req.body.glyph_y_axis_id,
                     visual: req.body.visual_id,
                     channel: 'Y Axis',
                     sensor: req.body.scat_y_axis, 
@@ -1103,6 +1129,10 @@ exports.new_scatter_update_post =  [
                   }
                 );
 
+                if ((typeof req.body.glyph_y_axis_id != 'undefined'))
+                {
+                    glyph_y._id=req.body.glyph_y_axis_id
+                };
                 visual.glyph.push(glyph_y._id);
             };
 
@@ -1113,13 +1143,13 @@ exports.new_scatter_update_post =  [
                     if (err) { return next(err); }
                     if ((req.body.scat_y_axis!='nothing') && (typeof req.body.scat_y_axis != 'undefined'))
                     {
-                        Glyph.findByIdAndUpdate(glyph_y._id, glyph_y, {}, function (err){
+                        Glyph.findByIdAndUpdate(glyph_y._id, glyph_y, {upsert: true}, function (err){
                         if (err) { return next(err); }
                         });
                     }
                     if ((req.body.scat_x_axis!='nothing') && (typeof req.body.scat_x_axis != 'undefined'))
                     {
-                        Glyph.findByIdAndUpdate(glyph_x._id, glyph_x, {}, function (err){
+                        Glyph.findByIdAndUpdate(glyph_x._id, glyph_x, {upsert: true}, function (err){
                         if (err) { return next(err); }
                         });
                     }
