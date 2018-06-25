@@ -1,0 +1,45 @@
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strong3390/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strong3390/output/scrambled/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strong3305/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strong3305/output/scrambled/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strong0390/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strong0390/output/scrambled/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strong0305/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strong0305/output/scrambled/con*500*.party* | wc -l
+
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak3390/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak3390/output/scrambled/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak3305/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak3305/output/scrambled/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak0390/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak0390/output/scrambled/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak0305/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak0305/output/scrambled/con*500*.party* | wc -l
+
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strongint3390/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strongint3390/output/scrambled/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strongint3305/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strongint3305/output/scrambled/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strongint0390/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strongint0390/output/scrambled/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strongint0305/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/strongint0305/output/scrambled/con*500*.party* | wc -l
+
+
+
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak3390/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak3390/output/scrambled/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak3305/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak3305/output/scrambled/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak0390/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak0390/output/scrambled/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak0305/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/weak0305/output/scrambled/con*500*.party* | wc -l
+
+
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/null3390/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/null3305/output/con*500*.party* | wc -l
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/null0390/output/con*500*.party* | wc -l
+
+
+ls -ltr /exports/cmvm/eddie/smgphs/groups/eddie_igmm_nicodemus/vim/null0305/output/con*500*.party* | wc -l

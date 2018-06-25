@@ -41,26 +41,28 @@ block content
                 div(style=" float: left;")
                   .col-sm-3
                     div.form-group(style="width:150px;")
-                      label(for='height') Chart Height
+                      label(for='height') Chart Height(In Cm)
                       input#height.form-control(type='text' style="width:90px;" placeholder='0.5 to 1.5'  name='height'  value=(undefined===visual ? '' : visual.height))
 
                   .col-sm-3
                     div.form-group(style="width:150px;")
-                      label(for='width') Chart Width
+                      label(for='width') Chart Width(In Cm)
                       input#width.form-control(type='text' style="width:90px;" placeholder='1 to 2'  name='width'  value=(undefined===visual ? '' : visual.width))
 
                   .col-sm-3
                     div.form-group(style="width:150px;")
                       label(for='max_batch') Max Data Batches
                       input#max_batch.form-control(type='text' style="width:90px;" placeholder='1 to 10'  name='max_batch'  value=(undefined===visual ? '' : visual.max_batch))
-
+              hr
+              hr
               .row
                 .div(style=" float: left; margin:15px")
                     .image-block
                       img.image(src='/direction.png' width="225" height="225" alt="Marker")
                 .div(style=" float: left; margin-left:50px")
                   .row
-                    h4 Glyph Position
+                    h4 
+                      b Glyph Position
                   .row
                     .div
                       .col-sm-2
@@ -79,7 +81,8 @@ block content
                           input#z_axis.form-control(type='text' style="width:70px;" placeholder='0'  name='z_axis'  value=(undefined===visual ? '' : visual.z_axis))
 
                   .row
-                    h4 Glyph Rotation
+                    h4 
+                      b Glyph Rotation
                   .row
                     .div
                       .col-sm-2

@@ -61,14 +61,15 @@ block content
                       span.input-group-addon#basic-addon2 Choose Colour 
                         i 
                     script(type="text/javascript") $(function (){ $('#default_color').colorpicker() });
-
+              hr
               .row
                 .div(style=" float: left; margin:15px")
                     .image-block
                       img.image(src='/direction.png' width="225" height="225" alt="Marker")
                 .div(style=" float: left; margin-left:50px")
                   .row
-                    h4 Glyph Position
+                    h4 
+                      b Glyph Position
                   .row
                     .div
                       .col-sm-2
@@ -87,7 +88,8 @@ block content
                           input#z_axis.form-control(type='text' style="width:70px;" placeholder='0'  name='z_axis'  value=(undefined===visual ? '' : visual.z_pos))
 
                   .row
-                    h4 Glyph Rotation
+                    h4 
+                      b Glyph Rotation
                   .row
                     .div
                       .col-sm-2
