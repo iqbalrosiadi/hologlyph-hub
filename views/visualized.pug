@@ -15,7 +15,9 @@ block content
                             canvas(id=sensor._id)
                         h6(style="margin:5px") 
                             b #{sensor.sensor_name}
-                        h6(style="margin:5px; font-size:10px;" ) (id: #{sensor._id})
+                        h6(style="margin:5px; font-size:10px;" ) 
+                            b API Key: 
+                            i #{sensor._id}
                         h6(style="margin:5px; margin-top:0px; font-size:8px;") last data update: #{sensor.last_input_date}
                         div(style="margin:5px; text-align: right")
                             p
