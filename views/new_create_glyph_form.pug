@@ -7,7 +7,7 @@ block content
       div(style="padding: 30px;")
         div.form-group(style="width:200px")
           label(for='glyph_name') Visualisation Title:
-          input#glyph_name.form-control(type='text' placeholder='Set Glyph name' name='glyph_name'  value=(undefined===visual ? '' :  visual.glyph_name))
+          input#glyph_name.form-control(type='text' required='true' placeholder='Set Glyph name' name='glyph_name'  value=(undefined===visual ? '' :  visual.glyph_name))
 
 
         div.form-group
@@ -23,7 +23,7 @@ block content
 
         div.form-group(style="width:200px")
           label(for='Marker') Marker:
-          select#Marker.form-control(type='select' placeholder='Select status' name='Marker' )
+          select#Marker.form-control(type='select' required='true' placeholder='Select status' name='Marker' )
             for glyph in marker_list
               if visual
                 option(value=glyph.marker_name selected=(visual.marker==glyph.marker_name ? 'selected' : false)) #{glyph.marker_name}
@@ -121,7 +121,7 @@ block content
                     .col-sm-2
                       div.form-group
                         label(for='size_data') Sensor:
-                        select#size_data.form-control(type='select'  style="width:120px;"  placeholder='Select status' name='size_data' )
+                        select#size_data.form-control(type='select' required='true' style="width:120px;"  placeholder='Select status' name='size_data' )
                           option(value="nothing") Not Assigned
                           for glyph in mark_list
                             if sensor_size
@@ -153,7 +153,7 @@ block content
                     .col-sm-2
                       div.form-group
                         label(for='opacity_data') 
-                        select#opacity_data.form-control(type='select'  style="width:120px;"  placeholder='Select status' name='opacity_data')
+                        select#opacity_data.form-control(type='select' required='true' style="width:120px;"  placeholder='Select status' name='opacity_data')
                           option(value="nothing") Not Assigned
                           for glyph in mark_list
                             if sensor_opacity
@@ -184,7 +184,7 @@ block content
                     .col-sm-2
                       div.form-group
                         label(for='color_data') Sensor:
-                        select#color_data.form-control(type='select'  style="width:120px;"  placeholder='Select status' name='color_data' )
+                        select#color_data.form-control(type='select' required='true' style="width:120px;"  placeholder='Select status' name='color_data' )
                           option(value="nothing") Not Assigned
                           for glyph in mark_list
                             if sensor_color

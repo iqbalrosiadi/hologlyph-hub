@@ -8,7 +8,7 @@ block content
       div(style="padding: 30px;")
         div.form-group(style="width:200px")
           label(for='glyph_name') Visualisation Title:
-          input#glyph_name.form-control(type='text' placeholder='Set Glyph name' name='glyph_name'  value=(undefined===visual ? '' :  visual.glyph_name))
+          input#glyph_name.form-control(type='text' placeholder='Set Glyph name' name='glyph_name' required='true' value=(undefined===visual ? '' :  visual.glyph_name))
 
         div.form-group
         if visual
@@ -17,7 +17,7 @@ block content
 
         div.form-group(style="width:200px")
           label(for='Marker') Marker:
-          select#Marker.form-control(type='select' placeholder='Select status' name='Marker' )
+          select#Marker.form-control(type='select' placeholder='Select status' name='Marker' required='true')
             for glyph in marker_list
               if visual
                 option(value=glyph.marker_name selected=(visual.marker==glyph.marker_name ? 'selected' : false)) #{glyph.marker_name}

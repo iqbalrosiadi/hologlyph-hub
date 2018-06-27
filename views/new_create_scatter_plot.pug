@@ -8,7 +8,7 @@ block content
       div(style="padding: 30px;")
         div.form-group(style="width:200px")
           label(for='glyph_name') Visualisation Title:
-          input#glyph_name.form-control(type='text' placeholder='Set Glyph name' name='glyph_name'  value=(undefined===visual ? '' :  visual.glyph_name))
+          input#glyph_name.form-control(type='text' placeholder='Set Glyph name' required='true' name='glyph_name'  value=(undefined===visual ? '' :  visual.glyph_name))
 
         div.form-group
         if visual
@@ -18,7 +18,7 @@ block content
 
         div.form-group(style="width:200px")
           label(for='Marker') Marker:
-          select#Marker.form-control(type='select' placeholder='Select status' name='Marker' )
+          select#Marker.form-control(type='select' placeholder='Select status' required='true' name='Marker' )
             for glyph in marker_list
               if visual
                 option(value=glyph.marker_name selected=(visual.marker==glyph.marker_name ? 'selected' : false)) #{glyph.marker_name}
@@ -109,7 +109,7 @@ block content
                   .col-sm-2(style="margin-right:50px")
                     div.form-group
                       label(for='scat_x_axis') X-Axis Data:
-                      select#scat_x_axis.form-control(type='select'  placeholder='Select status' name='scat_x_axis'  style="width:150px;")
+                      select#scat_x_axis.form-control(type='select' required='true' placeholder='Select status' name='scat_x_axis'  style="width:150px;")
                         option(value='nothing') Not Assigned
                         for glyph in mark_list
                           if glyph_x_axis
@@ -133,7 +133,7 @@ block content
                   .col-sm-2(style="margin-right:50px")
                     div.form-group
                       label(for='scat_y_axis') Y-Axis Data:
-                      select#scat_y_axis.form-control(type='select'  placeholder='Select status' name='scat_y_axis' style="width:150px;")
+                      select#scat_y_axis.form-control(type='select' required='true'  placeholder='Select status' name='scat_y_axis' style="width:150px;")
                         option(value='nothing') Not Assigned
                         for glyph in mark_list
                           if glyph_y_axis
