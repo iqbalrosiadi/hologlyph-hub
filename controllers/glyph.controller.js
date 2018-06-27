@@ -16,6 +16,7 @@ const { sanitizeBody } = require('express-validator/filter');
 var glyph_model_list='[';
 glyph_model_list=glyph_model_list+'{"glyph_type":"Sphere Glyph"},';
 glyph_model_list=glyph_model_list+'{"glyph_type":"Sun Glyph"},';
+glyph_model_list=glyph_model_list+'{"glyph_type":"Bar Glyph"},';
 glyph_model_list=glyph_model_list+'{"glyph_type":"Fire Glyph"}';
 glyph_model_list=glyph_model_list+']';
 var glyph_type = JSON.parse(glyph_model_list);
