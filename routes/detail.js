@@ -13,7 +13,7 @@ var glyph_controller = require('../controllers/glyph.controller.js');
 /// DEVICE ROUTES ///
 
 // GET catalog home page.
-router.get('/', device_controller.index);
+router.get('/', glyph_controller.visual_detail);
 
 // GET request for creating a device. NOTE This must come before routes that display device (uses id).
 router.get('/device/create', device_controller.device_create_get);
@@ -233,6 +233,7 @@ router.post('/glyphs/:id/update', glyph_controller.new_glyph_update_post);
 
 // GET request for creating a sensor. NOTE This must come before routes that display sensor (uses id).
 router.get('/visualisation/list', glyph_controller.visual_list);
+
 
 // POST request to delete glyph.
 router.post('/visual/:id/delete', glyph_controller.visual_delete_post);

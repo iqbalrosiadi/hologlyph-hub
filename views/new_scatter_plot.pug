@@ -112,7 +112,7 @@ block content
                       select#scat_x_axis.form-control(type='select'  placeholder='Select status' name='scat_x_axis'  style="width:150px;")
                         option(value='nothing') Not Assigned
                         for glyph in mark_list
-                          if glyph_x_axis
+                          if glyph_x_axis.sensor
                             option(value=glyph._id selected=(glyph_x_axis.sensor.sensor_name==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
                           else
                             option(value=glyph._id) #{glyph.sensor_name}
@@ -136,7 +136,7 @@ block content
                       select#scat_y_axis.form-control(type='select'  placeholder='Select status' name='scat_y_axis' style="width:150px;")
                         option(value='nothing') Not Assigned
                         for glyph in mark_list
-                          if glyph_y_axis
+                          if glyph_y_axis.sensor
                             option(value=glyph._id selected=(glyph_y_axis.sensor.sensor_name==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
                           else
                             option(value=glyph._id) #{glyph.sensor_name}

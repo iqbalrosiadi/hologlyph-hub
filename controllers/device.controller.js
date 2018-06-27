@@ -10,6 +10,78 @@ var Marker = require('../models/marker.model.js');
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
+
+exports.json_file = function(req, res, next) {
+    Device.find()
+	.select('device_name _id')
+	.populate({
+		path: 'sensor',
+		populate: { 
+			path: 'data',
+			select: '_id value date'
+
+		},
+		select: 'sensor_name sensor_type _id'
+	})
+	.exec(function(err, list_devices){
+		if (err) { return next(err); }
+
+		
+		var obj = "[" ;
+		//obj.device = [];
+		var i;
+		
+		for(i=0; i<list_devices.length; i++)
+		{
+			obj=obj+"{";
+
+			var j;
+			obj=obj+'"sensor":[';
+			for(j=0; j<list_devices[i].sensor.length; j++)
+			{
+				var k;
+				console.log(list_devices[i].sensor[j].sensor_type);
+				obj=obj+"{";
+				obj=obj+'"sensor_name":"'+list_devices[i].sensor[j].sensor_name+'",';
+				obj=obj+'"sensor_type":"'+list_devices[i].sensor[j].sensor_type+'",';
+				obj=obj+'"_id":"'+list_devices[i].sensor[j]._id+'",';
+				obj=obj+'"data":[';
+				for(k=0; k<list_devices[i].sensor[j].data.length; k++)
+				{
+					obj=obj+list_devices[i].sensor[j].data[k].value;
+					if(k!=(list_devices[i].sensor[j].data.length-1)){obj=obj+",";}
+				}
+				obj=obj+"]";
+				//console.log(list_devices[i].sensor[j].data.length);
+				if(list_devices[i].sensor[j].data.length!=0)
+				{
+					//let date = new Date(list_devices[i].sensor[j].data[k-1].value);
+					obj=obj+',"last_input_date":"'+list_devices[i].sensor[j].data[k-1].date+'"';
+				}
+				//obj=obj+',"datee":"'+list_devices[i].sensor[j].data[k].value+'"';
+				obj=obj+"}";
+				if(j!=(list_devices[i].sensor.length-1)){obj=obj+",";}
+			} 
+			obj=obj+'],';
+			//console.log(list_devices[i].sensor[0].dataset);
+			obj=obj+'"_id":"'+list_devices[i]._id+'",';
+			obj=obj+'"device_name":"'+list_devices[i].device_name+'"';
+			obj=obj+"}";
+			if(i!=(list_devices.length-1)){obj=obj+",";}
+
+		}
+		//console.log(list_devices[0].sensor[1].dataset);
+		obj= obj+"]";
+		var dataset = JSON.parse(obj);
+		//console.log(obj);
+		//JSON.stringify( blabla, undefined, 4 )
+		res.render('json_file', { title: 'Registered Microcontroller', list_devices: JSON.stringify( dataset, undefined, 4 )});
+	});
+
+};
+
+
+
 exports.index = function(req, res, next) {
     Device.find()
 	.select('device_name _id')
@@ -185,11 +257,11 @@ exports.device_delete_post = function(req, res, next) {
 				    });
 			  }
 
-			  Sensor.deleteMany({"device": results.device._id }, function deleteChannel(err) {
+			  	Sensor.deleteMany({"device": results.device._id }, function deleteChannel(err) {
 				                if (err) { return next(err); }
 				    });
 
-			  Device.findByIdAndRemove(results.device._id, function deleteChannel(err) {
+			  	Device.findByIdAndRemove(results.device._id, function deleteChannel(err) {
                 if (err) { return next(err); }
                 // Success - go to genres list.
                 res.redirect('/');

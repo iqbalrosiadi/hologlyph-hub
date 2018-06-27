@@ -124,7 +124,7 @@ block content
                         select#size_data.form-control(type='select'  style="width:120px;"  placeholder='Select status' name='size_data' )
                           option(value="nothing") Not Assigned
                           for glyph in mark_list
-                            if sensor_size
+                            if sensor_size.sensor
                               option(value=glyph._id selected=(sensor_size.sensor.sensor_name==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
                             else
                               option(value=glyph._id) #{glyph.sensor_name}
@@ -156,7 +156,7 @@ block content
                         select#opacity_data.form-control(type='select'  style="width:120px;"  placeholder='Select status' name='opacity_data')
                           option(value="nothing") Not Assigned
                           for glyph in mark_list
-                            if sensor_opacity
+                            if sensor_opacity.sensor
                               option(value=glyph._id selected=(sensor_opacity.sensor.sensor_name==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
                             else
                               option(value=glyph._id) #{glyph.sensor_name}
@@ -187,7 +187,7 @@ block content
                         select#color_data.form-control(type='select'  style="width:120px;"  placeholder='Select status' name='color_data' )
                           option(value="nothing") Not Assigned
                           for glyph in mark_list
-                            if sensor_color
+                            if sensor_color.sensor
                               option(value=glyph._id selected=(sensor_color.sensor.sensor_name==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
                             else
                               option(value=glyph._id) #{glyph.sensor_name}

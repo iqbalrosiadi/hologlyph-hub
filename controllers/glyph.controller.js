@@ -73,17 +73,26 @@ exports.visual_list = function(req, res, next) {
                 /* console.log(list_devices[i].glyph[j].channel);
                 console.log(list_devices[i].glyph[j].color);
                 console.log(list_devices[i].glyph[j]._id); */
-                console.log(list_devices[i].glyph_name+" : ");
+                //console.log(list_devices[i].glyph_name+" : ");
                 //console.log(list_devices[i].glyph[j]);
                 //console.log(list_devices[i].glyph[j].sensor);
-                console.log(list_devices[i].glyph[j].sensor.sensor_name);
+                //console.log(list_devices[i].glyph[j].sensor.sensor_name);
                 obj=obj+"{";
                 obj=obj+'"glyph_id":"'+list_devices[i].glyph[j]._id+'",';
                 obj=obj+'"channel":"'+list_devices[i].glyph[j].channel+'",';
                 obj=obj+'"color":"'+list_devices[i].glyph[j].color+'",';
-                obj=obj+'"sensor_id":"'+list_devices[i].glyph[j].sensor._id+'",';
-                obj=obj+'"sensor_name":"'+list_devices[i].glyph[j].sensor.sensor_name+'",';
-                obj=obj+'"sensor_type":"'+list_devices[i].glyph[j].sensor.sensor_type+'"';
+                if ((list_devices[i].glyph[j].sensor!=null) && (typeof list_devices[i].glyph[j].sensor != 'undefined')) 
+                    { 
+                        obj=obj+'"sensor_id":"'+list_devices[i].glyph[j].sensor._id+'",';
+                        obj=obj+'"sensor_name":"'+list_devices[i].glyph[j].sensor.sensor_name+'",';
+                        obj=obj+'"sensor_type":"'+list_devices[i].glyph[j].sensor.sensor_type+'"';
+                    }
+                    else
+                    {
+                        obj=obj+'"sensor_id":"deleted",';
+                        obj=obj+'"sensor_name":"deleted",';
+                        obj=obj+'"sensor_type":"deleted"';
+                    }
                 obj=obj+"}";
                 if(j!=(list_devices[i].glyph.length-1)){obj=obj+",";}
             } 
@@ -124,6 +133,38 @@ exports.visual_list = function(req, res, next) {
     });
 
 };
+
+
+
+exports.visual_detail = function(req, res, next) {
+    Visual.find() //.select('glyph_name _id marker glyph_type visual_type')
+    .populate({
+        path: 'glyph',
+        populate: { 
+            path: 'sensor',
+            select: '_id sensor_name sensor_type'
+        },
+        select: 'channel color _id'
+    })
+    .exec(function(err, list_devices){
+        if (err) { return next(err); }
+
+                var obj = "[" ;
+        //obj.device = [];
+        var i;
+        console.log(JSON.stringify(list_devices, undefined, 4 ));
+        
+        obj= obj+"]";
+
+        //var dataset = JSON.parse(obj);
+        //console.log(obj);
+
+
+        res.render('json_file', { title: 'Visualisation List' });//visual_list:JSON.stringify( dataset, undefined, 4 )});
+    });
+
+};
+
 
 
 
