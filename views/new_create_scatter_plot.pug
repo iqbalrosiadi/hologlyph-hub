@@ -1,0 +1,158 @@
+extends layout
+
+
+block content
+  h3=title
+  div(style="margin-left: auto; margin-right: auto; background-color: #F5F5F5; border-bottom: 2px solid red;")
+    form(method='POST' action='')
+      div(style="padding: 30px;")
+        div.form-group(style="width:200px")
+          label(for='glyph_name') Visualisation Title:
+          input#glyph_name.form-control(type='text' placeholder='Set Glyph name' name='glyph_name'  value=(undefined===visual ? '' :  visual.glyph_name))
+
+        div.form-group
+        if visual
+          input#visual_id.form-control(type='hidden' name='visual_id' value=visual._id)
+          input#glyph_x_axis_id.form-control(type='hidden' name='glyph_x_axis_id' value=glyph_x_axis._id)
+          input#glyph_y_axis_id.form-control(type='hidden' name='glyph_y_axis_id' value=glyph_y_axis._id)
+
+        div.form-group(style="width:200px")
+          label(for='Marker') Marker:
+          select#Marker.form-control(type='select' placeholder='Select status' name='Marker' )
+            for glyph in marker_list
+              if visual
+                option(value=glyph.marker_name selected=(visual.marker==glyph.marker_name ? 'selected' : false)) #{glyph.marker_name}
+              else
+                option(value=glyph.marker_name) #{glyph.marker_name}
+
+                h4.border-bottom TABS
+
+        .tab-wrapper
+            ul.nav.nav-tabs.u-mr-top-20#myTab(role="tablist")
+                li.nav-item
+                    a.nav-link#profile-tab(data-toggle="tab", href="#profile1", role="tab", aria-controls="profile1", aria-selected="false") Visualisation Attributes
+                li.nav-item
+                    a.nav-link#profile-tab(data-toggle="tab", href="#profile", role="tab", aria-controls="profile", aria-selected="false") Data Mapping
+        
+        .tab-content.u-pd-15#myTabContent
+            .tab-pane.fade#profile1(role="tabpanel", aria-labelledby="profile-tab")
+              br
+              .row
+                div(style=" float: left;")
+                  .col-sm-3
+                    div.form-group(style="width:150px;")
+                      label(for='height') Chart Height(In Cm)
+                      input#height.form-control(type='text' style="width:90px;" placeholder='0.5 to 1.5'  name='height'  value=(undefined===visual ? '' : visual.height))
+
+                  .col-sm-3
+                    div.form-group(style="width:150px;")
+                      label(for='width') Chart Width(In Cm)
+                      input#width.form-control(type='text' style="width:90px;" placeholder='1 to 2'  name='width'  value=(undefined===visual ? '' : visual.width))
+
+                  .col-sm-3
+                    div.form-group(style="width:150px;")
+                      label(for='max_batch') Max Data Batches
+                      input#max_batch.form-control(type='text' style="width:90px;" placeholder='1 to 10'  name='max_batch'  value=(undefined===visual ? '' : visual.max_batch))
+              hr
+              hr
+              .row
+                .div(style=" float: left; margin:15px")
+                    .image-block
+                      img.image(src='/direction.png' width="225" height="225" alt="Marker")
+                .div(style=" float: left; margin-left:50px")
+                  .row
+                    h4 
+                      b Glyph Position
+                  .row
+                    .div
+                      .col-sm-2
+                        div.form-group
+                          label(for='x_axis') X Axis:
+                          input#x_axis.form-control(type='text' style=" width:70px;" placeholder='0'  name='x_axis'  value=(undefined===visual ? '' : visual.x_axis))
+
+                      .col-sm-2(style="margin-left:20px")
+                        div.form-group
+                          label(for='y_axis') Y Axis:
+                          input#y_axis.form-control(type='text' style=" width:70px;" placeholder='0'  name='y_axis' value=(undefined===visual ? '' : visual.y_axis))
+
+                      .col-sm-2(style="margin-left:20px")
+                        div.form-group
+                          label(for='z_axis') Z Axis:
+                          input#z_axis.form-control(type='text' style="width:70px;" placeholder='0'  name='z_axis'  value=(undefined===visual ? '' : visual.z_axis))
+
+                  .row
+                    h4 
+                      b Glyph Rotation
+                  .row
+                    .div
+                      .col-sm-2
+                        div.form-group
+                          label(for='x_rot') X Rotation:
+                          input#x_rot.form-control(type='text' style=" width:70px;" placeholder='0'  name='x_rot'  value=(undefined===visual ? '' : visual.x_rot))
+
+                      .col-sm-2(style="margin-left:20px")
+                        div.form-group
+                          label(for='y_rot') Y Rotation:
+                          input#y_rot.form-control(type='text' style=" width:70px;" placeholder='0'  name='y_rot'  value=(undefined===visual ? '' : visual.y_rot))
+
+                      .col-sm-2(style="margin-left:20px")
+                        div.form-group
+                          label(for='z_rot') Z Rotation:
+                          input#z_rot.form-control(type='text' style="width:70px;" placeholder='0'  name='z_rot'  value=(undefined===visual ? '' : visual.z_rot))
+
+
+
+            .tab-pane.fade#profile(role="tabpanel", aria-labelledby="profile-tab")
+              block content
+                br
+                .row
+                  .col-sm-2(style="margin-right:50px")
+                    div.form-group
+                      label(for='scat_x_axis') X-Axis Data:
+                      select#scat_x_axis.form-control(type='select'  placeholder='Select status' name='scat_x_axis'  style="width:150px;")
+                        option(value='nothing') Not Assigned
+                        for glyph in mark_list
+                          if glyph_x_axis
+                            option(value=glyph._id selected=(glyph_x_axis.sensor.sensor_name==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
+                          else
+                            option(value=glyph._id) #{glyph.sensor_name}
+                  .col-sm-2(name='min_val_x')
+                    div.form-group(style='width:100px')
+                      label(for='min_val_x') Min. Value:
+                      input#min_val_x.form-control(type='text' style=" width:70px;" placeholder='0'  name='min_val_x'  value=(undefined===glyph_x_axis ? '' : glyph_x_axis.min_val))
+                  .col-sm-2(name='max_val_x')
+                    div.form-group(style='width:100px')
+                      label(for='max_val_x') Max. Value:
+                      input#max_val_x.form-control(type='text' style=" width:70px;" placeholder='0'  name='max_val_x'  value=(undefined===glyph_x_axis ? '' : glyph_x_axis.max_val))
+                  //.col-sm-2(name='def_color_x')
+                    //div.form-group(style='width:120px')
+                      //label(for='def_color_x' ) Bar/Chart Color:
+                      //input#def_color_x.form-control(type='text' style="width:70px;" placeholder='0'  name='def_color_x' value=(undefined===glyph_x_axis ? '' : glyph_x_axis.def_color))
+                
+                .row
+                  .col-sm-2(style="margin-right:50px")
+                    div.form-group
+                      label(for='scat_y_axis') Y-Axis Data:
+                      select#scat_y_axis.form-control(type='select'  placeholder='Select status' name='scat_y_axis' style="width:150px;")
+                        option(value='nothing') Not Assigned
+                        for glyph in mark_list
+                          if glyph_y_axis
+                            option(value=glyph._id selected=(glyph_y_axis.sensor.sensor_name==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
+                          else
+                            option(value=glyph._id) #{glyph.sensor_name}
+                  .col-sm-2(name='min_val_y')
+                    div.form-group(style='width:100px')
+                      label(for='min_val_y') Min. Value:
+                      input#min_val_y.form-control(type='text' style=" width:70px;" placeholder='0'  name='min_val_y'  value=(undefined===glyph_y_axis ? '' : glyph_y_axis.min_val))
+                  .col-sm-2(name='max_val_y')
+                    div.form-group(style='width:100px')
+                      label(for='max_val_y') Max. Value:
+                      input#max_val_y.form-control(type='text' style=" width:70px;" placeholder='0'  name='max_val_y'  value=(undefined===glyph_y_axis ? '' : glyph_y_axis.max_val))
+
+                  //.col-sm-2(name='def_color_y')
+                    //div.form-group(style='width:120px')
+                      //label(for='def_color_y' ) Bar/Chart Color:
+                      //input#def_color_y.form-control(type='text' style="width:70px;" placeholder='0'  name='def_color_y' value=(undefined===glyph_y_axis ? '' : glyph_y_axis.def_color))
+
+        hr
+        button.btn.btn-primary() Submit

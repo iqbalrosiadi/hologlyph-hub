@@ -230,7 +230,7 @@ exports.new_glyph_create_get = function(req, res, next) {
         },
     }, function(err, results){
         if (err) { return next(err); }
-        res.render('new_glyph_form', { title: 'Create a New Glyph', 
+        res.render('new_create_glyph_form', { title: 'Create a New Glyph', 
             channel_list: results.channels, mark_list: results.sensor,
             sensor: results.sensor, marker_list: mark_list, glyph_type: glyph_type, errors: err });
 
@@ -667,7 +667,7 @@ exports.new_scatter_create_get = function(req, res, next) {
         },
     }, function(err, results){
         if (err) { return next(err); }
-        res.render('new_scatter_plot', { title: 'Create a New Scatter Plot', 
+        res.render('new_create_scatter_plot', { title: 'Create a New Scatter Plot', 
             mark_list: results.sensor, 
             sensor: results.sensor, marker_list: results.marker, bar_type: bar_type, errors: err });
 
