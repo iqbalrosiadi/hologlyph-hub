@@ -38,7 +38,7 @@ block content
               br
               .row
                 div(style=" float: left;")
-                  .col-sm-2(style=" margin-right:100px")
+                  .col-sm-2(style=" margin-right:50px")
                     div.form-group(style="width:150px;")
                       label(for='type') Chart Type:
                       select#type.form-control(type='select' placeholder='Set maximum value of your data, 10, 13, 300, etc' name='type' required='true')
@@ -47,7 +47,11 @@ block content
                             option(value=type.bar_type selected=(visual.glyph_type==type.bar_type ? 'selected' : false)) #{type.bar_type}
                           else
                             option(value=type.bar_type) #{type.bar_type}
-                  
+                  .col-sm-2
+                    div.form-group(style="width:200px; margin-left:10px; margin-right:70px")
+                      label(for='x_axis') Data interval (in Minutes):
+                      input#x_axis.form-control(type='text' style=" width:70px;" placeholder='0'  name='x_axis'  value=(undefined===visual ? '' : visual.x_rot))
+
                   .col-sm-2
                     div.form-group(style="width:150px;")
                       label(for='height') Chart Height(In Cm)
@@ -121,9 +125,9 @@ block content
                     option(value='nothing') Not Assigned
                     for glyph in mark_list
                       if sensor
-                        option(value=glyph._id selected=(sensor.glyph==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
+                        option(value=glyph._id selected=(sensor.glyph==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name} : #{glyph.sensor_type} Sensor
                       else
-                        option(value=glyph._id) #{glyph.sensor_name}
+                        option(value=glyph._id) #{glyph.sensor_name} : #{glyph.sensor_type} Sensor
                   label(for='min_val') Min. Value:
                   input#min_val_.form-control(type='text' style=" width:70px; " placeholder='0'  name='min_val'  value=(undefined===visual ? '' : visual.min_val_))
                   label(for='max_val') Max. Value:

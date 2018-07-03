@@ -17,11 +17,8 @@ exports.json_file = function(req, res, next) {
 	.populate({
 		path: 'sensor',
 		populate: { 
-			path: 'data',
-			select: '_id value date'
-
-		},
-		select: 'sensor_name sensor_type _id'
+			path: 'data'
+		}
 	})
 	.exec(function(err, list_devices){
 		if (err) { return next(err); }
@@ -73,7 +70,7 @@ exports.json_file = function(req, res, next) {
 		//console.log(list_devices[0].sensor[1].dataset);
 		obj= obj+"]";
 		var dataset = JSON.parse(obj);
-		//console.log(obj);
+		console.log(dataset);
 		//JSON.stringify( blabla, undefined, 4 )
 		res.render('json_file', { title: 'Registered Microcontroller', list_devices: JSON.stringify( dataset, undefined, 4 )});
 	});

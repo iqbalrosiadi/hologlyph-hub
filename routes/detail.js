@@ -15,6 +15,8 @@ var glyph_controller = require('../controllers/glyph.controller.js');
 // GET catalog home page.
 router.get('/', glyph_controller.visual_detail);
 
+router.get('/microcontroller', device_controller.index);
+
 // GET request for creating a device. NOTE This must come before routes that display device (uses id).
 router.get('/device/create', device_controller.device_create_get);
 

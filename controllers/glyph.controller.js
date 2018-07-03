@@ -143,9 +143,11 @@ exports.visual_detail = function(req, res, next) {
         path: 'glyph',
         populate: { 
             path: 'sensor',
-            select: '_id sensor_name sensor_type'
-        },
-        select: 'channel color _id'
+            populate: { 
+                        path: 'data',
+                        select: 'value -_id'
+                    }
+        }
     })
     .exec(function(err, list_devices){
         if (err) { return next(err); }
@@ -157,11 +159,11 @@ exports.visual_detail = function(req, res, next) {
         
         obj= obj+"]";
 
-        //var dataset = JSON.parse(obj);
-        //console.log(obj);
+        var dataset = JSON.parse(obj);
+        console.log(obj);
 
 
-        res.render('json_file', { title: 'Visualisation List' });//visual_list:JSON.stringify( dataset, undefined, 4 )});
+        res.render('json_file', { title: 'Visualisation List', visual_list:JSON.stringify( list_devices, undefined, 4 )});
     });
 
 };

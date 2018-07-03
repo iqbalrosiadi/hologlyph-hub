@@ -52,9 +52,14 @@ block content
                           option(value=type.glyph_type selected=(visual.glyph_type==type.glyph_type ? 'selected' : false)) #{type.glyph_type}
                         else
                           option(value=type.glyph_type) #{type.glyph_type}
-                
+
                 .col-sm-2
-                  div.form-group(style="width:350px; margin-left:100px")
+                  div.form-group(style="width:200px; margin-left:10px")
+                    label(for='x_axis') Data interval (in Minutes):
+                    input#x_axis.form-control(type='text' style=" width:70px;" placeholder='0'  name='x_axis'  value=(undefined===visual ? '' : visual.x_rot))
+
+                .col-sm-2
+                  div.form-group(style="width:350px; margin-left:5px")
                     label(for='default_color') Default Color :
                     .input-group(class='colorpicker-component' id='default_color')
                       input#default_color.form-control(type='text' class='input-lg' style="height:35px;" name='default_color'  value=(undefined===visual ? '#9eebcd' : visual.default_color))
@@ -127,7 +132,7 @@ block content
                             if sensor_size
                               option(value=glyph._id selected=(sensor_size.sensor.sensor_name==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
                             else
-                              option(value=glyph._id) #{glyph.sensor_name}
+                              option(value=glyph._id) #{glyph.sensor_name} : #{glyph.sensor_type} Sensor
                     .col-sm-2
                       div.form-group
                         label(for='size_min_val') Min Domain
@@ -159,7 +164,7 @@ block content
                             if sensor_opacity
                               option(value=glyph._id selected=(sensor_opacity.sensor.sensor_name==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
                             else
-                              option(value=glyph._id) #{glyph.sensor_name}
+                              option(value=glyph._id) #{glyph.sensor_name} : #{glyph.sensor_type} Sensor
                     .col-sm-2
                       div.form-group
                         label(for='opacity_min_val') 
@@ -190,7 +195,7 @@ block content
                             if sensor_color
                               option(value=glyph._id selected=(sensor_color.sensor.sensor_name==glyph.sensor_name ? 'selected' : false)) #{glyph.sensor_name}
                             else
-                              option(value=glyph._id) #{glyph.sensor_name}
+                              option(value=glyph._id) #{glyph.sensor_name} : #{glyph.sensor_type} Sensor
                     .col-sm-2
                       div.form-group
                         label(for='color_min_val') Min Value
