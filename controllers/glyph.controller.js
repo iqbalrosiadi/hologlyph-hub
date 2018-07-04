@@ -145,25 +145,67 @@ exports.visual_detail = function(req, res, next) {
             path: 'sensor',
             populate: { 
                         path: 'data',
-                        select: 'value -_id'
+                        select: 'value date -_id'
                     }
         }
     })
     .exec(function(err, list_devices){
         if (err) { return next(err); }
 
-                var obj = "[" ;
+        var obj = "[" ;
         //obj.device = [];
         var i;
-        console.log(JSON.stringify(list_devices, undefined, 4 ));
         
+        for(i=0; i<list_devices.length; i++)
+        {
+            obj=obj+"{";
+
+            var j;
+            obj=obj+'"glyph":[';
+            for(j=0; j<list_devices[i].glyph.length; j++)
+            {
+                var k;
+                //console.log(list_devices[i].glyph[j].max_val);
+
+
+                obj=obj+"{";
+                obj=obj+'"max_val":"'+list_devices[i].glyph[j].max_val+'",';
+                obj=obj+'"min_val":"'+list_devices[i].glyph[j].min_val+'",';
+                obj=obj+'"_id":"'+list_devices[i].glyph[j]._id+'",';
+                obj=obj+'"data":"'+list_devices[i].glyph[j].sensor.data[list_devices[i].glyph[j].sensor.data.length-1].value+'",';
+                obj=obj+'"def_color":"'+list_devices[i].glyph[j].color+'",';
+                obj=obj+'"sensor_name":"'+list_devices[i].glyph[j].sensor.sensor_name+' : '+list_devices[i].glyph[j].sensor.sensor_type+'"';
+                //console.log(list_devices[i].glyph[j].sensor.data[list_devices[i].glyph[j].sensor.data.length-1].date);
+
+                for(k=0; k<list_devices[i].glyph[j].sensor.length; j++)
+                {
+                    console.log(list_devices[i].glyph[j].sensor.length);
+                }
+                obj=obj+"}";
+
+
+
+                if(j!=(list_devices[i].glyph.length-1)){obj=obj+",";}
+            } 
+            obj=obj+'],'; 
+            //console.log(list_devices[i].sensor[0].dataset);
+            obj=obj+'"_id":"'+list_devices[i]._id+'",';
+            obj=obj+'"glyph_type":"'+list_devices[i].glyph_type+'",';
+            obj=obj+'"visual_type":"'+list_devices[i].visual_type+'",';
+            obj=obj+'"max_batch":"'+list_devices[i].max_batch+'",';
+            obj=obj+'"glyph_name":"'+list_devices[i].glyph_name+'"';
+            obj=obj+"}";
+            if(i!=(list_devices.length-1)){obj=obj+",";}
+
+        }
+        //console.log(list_devices[0].sensor[1].dataset);
         obj= obj+"]";
 
         var dataset = JSON.parse(obj);
         console.log(obj);
 
 
-        res.render('json_file', { title: 'Visualisation List', visual_list:JSON.stringify( list_devices, undefined, 4 )});
+        res.render('json_file', { title: 'Visualisation List', visual_list:JSON.stringify( dataset, undefined, 4 )});
     });
 
 };

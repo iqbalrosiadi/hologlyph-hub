@@ -133,7 +133,7 @@ exports.index = function(req, res, next) {
 			obj=obj+'],';
 			//console.log(list_devices[i].sensor[0].dataset);
 			obj=obj+'"_id":"'+list_devices[i]._id+'",';
-			obj=obj+'"device_name":"'+list_devices[i].device_name+'"';
+			obj=obj+'"blabla":"'+list_devices[i].device_name+'"';
 			obj=obj+"}";
 			if(i!=(list_devices.length-1)){obj=obj+",";}
 
