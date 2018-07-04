@@ -114,18 +114,22 @@ exports.index = function(req, res, next) {
 				obj=obj+'"sensor_type":"'+list_devices[i].sensor[j].sensor_type+'",';
 				obj=obj+'"_id":"'+list_devices[i].sensor[j]._id+'",';
 				obj=obj+'"data":[';
-				for(k=0; k<list_devices[i].sensor[j].data.length; k++)
+				x=list_devices[i].sensor[j].data.length-1
+				for(k=list_devices[i].sensor[j].data.length-1; k>=0; k--)
 				{
 					obj=obj+list_devices[i].sensor[j].data[k].value;
-					if(k!=(list_devices[i].sensor[j].data.length-1)){obj=obj+",";}
+					if(k!=0){obj=obj+",";}
+					//if(k!=(list_devices[i].sensor[j].data.length-1)){obj=obj+",";}
 				}
 				obj=obj+"]";
 				//console.log(list_devices[i].sensor[j].data.length);
 				if(list_devices[i].sensor[j].data.length!=0)
 				{
 					//let date = new Date(list_devices[i].sensor[j].data[k-1].value);
-					obj=obj+',"last_input_date":"'+list_devices[i].sensor[j].data[k-1].date+'"';
+					obj=obj+',"last_input_date":"'+list_devices[i].sensor[j].data[x].date+'"';
 				}
+				console.log(obj);
+
 				//obj=obj+',"datee":"'+list_devices[i].sensor[j].data[k].value+'"';
 				obj=obj+"}";
 				if(j!=(list_devices[i].sensor.length-1)){obj=obj+",";}
