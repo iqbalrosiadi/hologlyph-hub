@@ -167,20 +167,37 @@ exports.visual_detail = function(req, res, next) {
                 var k;
                 //console.log(list_devices[i].glyph[j].max_val);
 
-
                 obj=obj+"{";
                 obj=obj+'"max_val":"'+list_devices[i].glyph[j].max_val+'",';
                 obj=obj+'"min_val":"'+list_devices[i].glyph[j].min_val+'",';
+                obj=obj+'"max_color":"'+list_devices[i].glyph[j].max_val+'",';
+                obj=obj+'"min_color":"'+list_devices[i].glyph[j].min_val+'",';
+                obj=obj+'"channel":"'+list_devices[i].glyph[j].channel+'",';
                 obj=obj+'"_id":"'+list_devices[i].glyph[j]._id+'",';
+                obj=obj+'"set_size":0.5,';
+                obj=obj+'"opacity":1,';
+                
+
+                var date = new Date(list_devices[i].glyph[j].sensor.data[list_devices[i].glyph[j].sensor.data.length-1].date); 
+                var d = date.getMinutes()-1; //interval
+                var data_value = 0.0;
+                for(k=0; k<list_devices[i].glyph[j].sensor.data.length; k++)
+                {
+                    date = new Date(list_devices[i].glyph[j].sensor.data[k].date); 
+                    if((date.getMinutes()-d)==1)
+                    {
+                        data_value = data_value+list_devices[i].glyph[j].sensor.data[k].value;
+                    }
+                    
+                }
+                console.log("hallo "+ data_value);
+                
                 obj=obj+'"data":"'+list_devices[i].glyph[j].sensor.data[list_devices[i].glyph[j].sensor.data.length-1].value+'",';
                 obj=obj+'"def_color":"'+list_devices[i].glyph[j].color+'",';
                 obj=obj+'"sensor_name":"'+list_devices[i].glyph[j].sensor.sensor_name+' : '+list_devices[i].glyph[j].sensor.sensor_type+'"';
                 //console.log(list_devices[i].glyph[j].sensor.data[list_devices[i].glyph[j].sensor.data.length-1].date);
 
-                for(k=0; k<list_devices[i].glyph[j].sensor.length; j++)
-                {
-                    console.log(list_devices[i].glyph[j].sensor.length);
-                }
+   
                 obj=obj+"}";
 
 
@@ -191,6 +208,7 @@ exports.visual_detail = function(req, res, next) {
             //console.log(list_devices[i].sensor[0].dataset);
             obj=obj+'"_id":"'+list_devices[i]._id+'",';
             obj=obj+'"glyph_type":"'+list_devices[i].glyph_type+'",';
+            obj=obj+'"marker":"'+list_devices[i].marker+'",';
             obj=obj+'"visual_type":"'+list_devices[i].visual_type+'",';
             obj=obj+'"max_batch":"'+list_devices[i].max_batch+'",';
             obj=obj+'"glyph_name":"'+list_devices[i].glyph_name+'"';
@@ -202,7 +220,7 @@ exports.visual_detail = function(req, res, next) {
         obj= obj+"]";
 
         var dataset = JSON.parse(obj);
-        console.log(obj);
+        //console.log(obj);
 
 
         res.render('json_file', { title: 'Visualisation List', visual_list:JSON.stringify( dataset, undefined, 4 )});
